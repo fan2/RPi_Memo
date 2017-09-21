@@ -1,0 +1,11 @@
+faner@THOMASFAN-MB0:~/Projects/git/FuturismSchedule|master⚡ 
+⇒  brew install screen
+Updating Homebrew...
+==> Downloading https://homebrew.bintray.com/bottles/screen-4.6.1.sierra.bottle.tar.gz
+######################################################################## 100.0%
+==> Pouring screen-4.6.1.sierra.bottle.tar.gz
+🍺  /usr/local/Cellar/screen/4.6.1: 28 files, 1MB
+
+faner@THOMASFAN-MB0:~/Projects/git/FuturismSchedule|master⚡ 
+⇒  screen -v
+Screen version 4.00.03 (FAU) 23-Oct-06

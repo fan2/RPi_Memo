@@ -1,0 +1,16 @@
+faner@THOMASFAN-MB0:~|⇒  whereis screen
+/usr/bin/screen
+faner@THOMASFAN-MB0:~|⇒  which screen
+/usr/bin/screen
+
+brew install screen 之后
+
+faner@THOMASFAN-MB0:~|⇒  whereis screen
+/usr/bin/screen
+faner@THOMASFAN-MB0:~|⇒  which screen
+/usr/local/bin/screen
+
+brew uninstall screen 可卸载
+
+faner@THOMASFAN-MB0:~|⇒  screen -v
+Screen version 4.00.03 (FAU) 23-Oct-06

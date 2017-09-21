@@ -1,0 +1,26 @@
+faner@THOMASFAN-MB0:~/Projects/git/FuturismSchedule|master⚡ 
+⇒  brew install minicom
+Updating Homebrew...
+==> Downloading https://homebrew.bintray.com/bottles/minicom-2.7.1.sierra.bottle.tar.gz
+######################################################################## 100.0%
+==> Pouring minicom-2.7.1.sierra.bottle.tar.gz
+==> Caveats
+Terminal Compatibility
+======================
+If minicom doesn't see the LANG variable, it will try to fallback to
+make the layout more compatible, but uglier. Certain unsupported
+encodings will completely render the UI useless, so if the UI looks
+strange, try setting the following environment variable:
+
+  LANG="en_US.UTF-8"
+
+Text Input Not Working
+======================
+Most development boards require Serial port setup -> Hardware Flow
+Control to be set to "No" to input text.
+==> Summary
+🍺  /usr/local/Cellar/minicom/2.7.1: 17 files, 345.3KB
+
+⇒  minicom -v
+minicom version 2.7.1 (compiled May 17 2017)
+Copyright (C) Miquel van Smoorenburg.
