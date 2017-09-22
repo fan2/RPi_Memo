@@ -58,37 +58,3 @@ Single-board computer with wireless LAN and Bluetooth connectivity
 [树莓派刷入Win10：极客手上的无限可能](http://www.sohu.com/a/12268418_114760) 2015-04-24  
 [树莓派 Ubuntu 64 位系统玩家体验版](http://shumeipai.nxez.com/2017/09/10/raspberry-pi-ubuntu-64-bit-system-player-experience-version.html) 20170910  
 [Ubuntu MATE for the Raspberry Pi 2 and Raspberry Pi 3](https://ubuntu-mate.org/raspberry-pi/)  
-
-## uboot
-[RaspberryPi3_OS](https://github.com/Yradex/RaspberryPi3_OS) - [树莓派 3 启动过程概述](https://github.com/Yradex/RaspberryPi3_OS/wiki/%E6%A0%91%E8%8E%93%E6%B4%BE-3-%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E6%A6%82%E8%BF%B0) @github   
-
-[移植u-boot到树莓派](http://blog.csdn.net/luckyapple1028/article/details/43957327) 2015-02-26 [耀光科技](http://www.yaoguangkeji.com/a_Z3ozqlPb.html)  
-[使用U-Boot让树莓派从U盘启动](http://shumeipai.nxez.com/2014/07/08/u-boot-raspberry-pi.html) 2014年7月8日  
-[Linux主机上使用交叉编译移植u-boot到树莓派](http://www.cnblogs.com/cursorhu/p/5896800.html) 2016-09-24  
-
-## Server
-[用树莓派做一个服务器是否可行？](https://www.zhihu.com/question/35801849)  
-[如何在家用宽带中搭建一个个人网站](https://blog.chenjia.me/articles/150125-180500.html)  
-
-[树莓派开发系列教程7——树莓派做web服务器(nginx、Apache)](http://blog.csdn.net/xdw1985829/article/details/38919495)  2014-08-29  
-[在树莓派上搭建Django服务器](http://www.guokr.com/post/740415/) 2016-06-15  
-[Raspbian+Nginx+MySQL+PHP打造树莓派个人博客](http://www.jianshu.com/p/efcca02fcbc8) 2016.09.10  
-
-[树莓派搭建私人服务器](https://juejin.im/post/5885d4412f301e00699e5072)  2017.01.23  
-[树莓派搭建Web服务器(LMNP)](http://www.jianshu.com/p/8b161d03835d) 2017.03.28  
-[教程：树莓派LNMP开Web服务器搭网站，可外网访问](http://www.sohu.com/a/136650141_114760) 2017-04-27  
-[如何用树莓派搭建个人 web 服务器](https://linux.cn/article-8508-1.html) 2017-05-14  
-
-## WAN
-[如何在另一个地方（很远的地方）SSH登录家里的通过路由器上网的树莓派？（是宽带上网）？](https://www.zhihu.com/question/21868759)  
-[如何使一个树莓派的服务器端可以外网访问（小区宽带无外网IP，TP-Link路由器）？](https://www.zhihu.com/question/26096461)  
-
-[树莓派（raspberryPi）的终极玩法 1: 平台搭建](https://segmentfault.com/a/1190000002579917)  2015年03月05日  
-[树莓派通过邮件上报实时IP，随时随地远程登录树莓派](https://www.kawabangga.com/posts/1398)  2015年10月15日  
-[讓RaspberryPi對外服務：切換電信公網IP](http://sunshine17.github.io/network/chinatel-pub-ip.html)  2016-04-25  
-[外网访问树莓派](http://io.itabas.com/2016/09/08/raspberry/access-raspberry/) 09/08/2016  
-[Raspberry Pi从零开始搭建低成本NAS(9)-外网登录树莓派](http://www.mkitby.com/2016/04/07/raspberry-pi-nas-remote-management/) 2016-04-07  
-[树莓派搭建可公网访问的服务器](http://blog.csdn.net/shawpan/article/details/53983572) 2017-01-02 22:42  
-[Raspberry Pi 3 Model B外网访问](http://jiangxiaoqiang.com/2017/02/19/raspberry-internet-access/)  2017-02-19  
-
-
