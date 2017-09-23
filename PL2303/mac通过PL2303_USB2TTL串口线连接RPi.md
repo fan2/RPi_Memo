@@ -24,11 +24,11 @@ PL2303 USB2TTL 转换串口板的四根线如下图：
 
 ![RPi-serial-connection](2-PL2303-USB2TTL/RPi-serial-connection.png)
 
-[Raspberry Pi：透過序列埠登入系統](http://yehnan.blogspot.com/2013/09/raspberry-pi.html)  
-[Getting Started with PL2303 USB to UART Converter](https://electrosome.com/pl2303-usb-to-uart-converter/)  
-[Setup and PL2303 Serial Console on your Raspberry PI 3B](https://www.raspberrypi.org/forums/viewtopic.php?f=41&t=148208#p974975)  
-[Read and Write From Serial Port With Raspberry Pi](http://www.instructables.com/id/Read-and-write-from-serial-port-with-Raspberry-Pi/)  
-[How to Work With USB to TTL Converters Using Minicom on Mac](http://tinaunglinn.com/blog/2016/04/04/how-to-work-with-usb-to-ttl-converters-using-minicom-on-mac/)  
+> [Raspberry Pi：透過序列埠登入系統](http://yehnan.blogspot.com/2013/09/raspberry-pi.html)  
+> [Getting Started with PL2303 USB to UART Converter](https://electrosome.com/pl2303-usb-to-uart-converter/)  
+> [Setup and PL2303 Serial Console on your Raspberry PI 3B](https://www.raspberrypi.org/forums/viewtopic.php?f=41&t=148208#p974975)  
+> [Read and Write From Serial Port With Raspberry Pi](http://www.instructables.com/id/Read-and-write-from-serial-port-with-Raspberry-Pi/)  
+> [How to Work With USB to TTL Converters Using Minicom on Mac](http://tinaunglinn.com/blog/2016/04/04/how-to-work-with-usb-to-ttl-converters-using-minicom-on-mac/)  
 
 # RPi 启用串口
 根据 Raspberry Pi 文档 [The Raspberry Pi UARTs](https://www.raspberrypi.org/documentation/configuration/uart.md) 中的描述。
@@ -47,13 +47,13 @@ sudo vi /boot/config.txt
 
 Add at the end of the file 
 
-	- if you want to change the blutooth to miniuart port(bad)
+- if you want to change the blutooth to miniuart port(bad)
 
 ```Shell
 dtoverlay=pi3‐miniuart‐bt
 ```
 
-	- if you want to disable the blutooth(good)
+- if you want to disable the blutooth(good)
 
 ```Shell
 dtoverlay=pi3‐disable‐bt
@@ -90,18 +90,61 @@ dtoverlay=pi3‐disable‐bt
 
 # serial terminal
 ## [GNU Screen](https://en.wikipedia.org/wiki/GNU_Screen)
- [Screen](https://ss64.com/osx/screen.html)  is  a  full-screen  window manager that multiplexes a physical terminal between several processes (typically interactive shells).
+[**Screen**](https://ss64.com/osx/screen.html)  is  a text version of full-screen graphical <u>window manager</u> that ***multiplexes*** a physical terminal between several processes (typically interactive shells).
 
-macOS 默认安装了 screen：
+GNU Screen 目前最新版本为 [v.4.3.0](https://savannah.gnu.org/forum/forum.php?forum_id=8293)；在 macOS 终端输入 `screen -v` 可查看 macOS 默认安装的是比较旧的 screen 4.00.03：
 
 ![screen-builtin-macOS](./3-serial_connection/screen/screen-builtin.png)
 
+在终端输入 `screen`，即可打开 screen 会话窗口。
+
+![screen](./3-serial_connection/screen/screen.png)
+
 > [Using Screen on Mac OS X ](http://www.kinnetica.com/2011/05/29/using-screen-on-mac-os-x/)  
-> [Use 'screen' as a serial terminal emulator](http://hints.macworld.com/article.php?story=20061109133825654)  
 > [Taking Command of the Terminal with GNU Screen](https://www.linux.com/learn/taking-command-terminal-gnu-screen)  
-> [GNU SCREEN - USB serial tty communication problems with MAC OS X 10.8.2](https://stackoverflow.com/questions/14474893/gnu-screen-usb-serial-tty-communication-problems-with-mac-os-x-10-8-2)  
+> [Use 'screen' as a serial terminal emulator](http://hints.macworld.com/article.php?story=20061109133825654)  
+
+### Screen key bingdings
+先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>?</kbd> 可调出 Screen key bingdings 帮助页面。
+
+![screen_key_bindings-1](./3-serial_connection/screen/screen_key_bindings-1.png)
+
+Command key:  <kbd>^</kbd><kbd>a</kbd>，前置引导键，意义同 minicom 的 Meta Key。  
+
+按下 space 键翻页：
+
+![screen_key_bindings-2](./3-serial_connection/screen/screen_key_bindings-2.png)
+
+- **version**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>v</kbd> 在 bottom prompt 显示版本。  
+	> 注意：如果按下 <kbd>ctrl</kbd>+<kbd>V</kbd> 键，则成了 digraph 命令！  
+- **time**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>ctrl</kbd>+<kbd>T</kbd>（此处可省略 <kbd>ctrl</kbd>，直接 literal <kbd>t</kbd>）在 bottom prompt 显示时间。  
+- **title**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>shift</kbd>+<kbd>a</kbd>（也即<kbd>A</kbd>）在 bottom prompt 显示 `Set window’s title to: ~`，可修改会话标题（默认为 ~）。  
+	> 注意：如果不按下 <kbd>shift</kbd> 键，则成了 meta 命令！  
+- **clear**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>shift</kbd>+<kbd>c</kbd>（也即大写<kbd>C</kbd>） 执行清屏。  
+- **screen**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>ctrl</kbd>+<kbd>C</kbd>（此处可省略 <kbd>ctrl</kbd>，直接 literal <kbd>c</kbd>）新建 screen 会话窗口。  
+	- 查看所有已打开的 screen session(window) 编号：<kbd>ctrl</kbd>+<kbd>a</kbd>，<kbd>ctrl</kbd>+<kbd>W</kbd>（或直接 literal <kbd>w</kbd>），带*号标识当前会话窗口编号；  
+	-  切换到上一 screen session(window)：<kbd>ctrl</kbd>+<kbd>a</kbd>，<kbd>ctrl</kbd>+<kbd>P</kbd>（或直接 literal <kbd>p</kbd>）；  
+	-  切换到下一 screen session(window)：<kbd>ctrl</kbd>+<kbd>a</kbd>，<kbd>space</kbd>（或  <kbd>ctrl</kbd>+<kbd>N</kbd>，或直接 literal <kbd>n</kbd>）；  
+	-  切换到指定编号 screen session(window)：<kbd>ctrl</kbd>+<kbd>a</kbd>，<kbd>number</kbd>（number 可为 [0,..,9]）；  
+	-  切换到指定编号 screen session(window)：<kbd>ctrl</kbd>+<kbd>a</kbd>，<kbd>’</kbd>。在 bottom prompt 出现 `Switch to window: ` ，输入想要跳转的窗口编号再按 enter 键确认切换。   
+	-  切换到指定编号 screen session(window)：<kbd>ctrl</kbd>+<kbd>a</kbd>，<kbd>”</kbd>（<kbd>shift</kbd>+<kbd>’</kbd>）。出现 Num Name 窗格列表提示，输入想要跳转的窗口编号再按 enter 键确认切换。   
+- **reset**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>Z</kbd>（<kbd>shift</kbd>+<kbd>z</kbd>） 执行重置，退回到标准终端提示 `[1]  + 5265 suspended  screen`。  
+- **detach**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>ctrl</kbd>+<kbd>D</kbd>（或直接 literal <kbd>d</kbd>） 执行detach（所有会话），退回到标准终端提示 `[detached]`。  
+- **kill**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>ctrl</kbd>+<kbd>K</kbd>（或直接 literal <kbd>k</kbd>）杀死当前会话。  
+- **quit**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>ctrl</kbd>+<kbd>\\</kbd> 杀死所有会话并退出 screen，回到标准终端提示 `[screen is terminating]`。  
+
+按下 enter 键退出帮助页面。
+
+detach screen 回到标准终端，可运行 `screen -list` 命令查看打开过和正在活跃（Attached）的 screen session。  
+包括 detach、reset 和关闭（<kbd>ctrl</kbd>+<kbd>w</kbd>）的 Detached 会话；不包括 kill 和 quit 至 terminated 的会话。  
+
+![screen-list](./3-serial_connection/screen/screen-list.png)
+
+执行 `screen -r <PID>` 可恢复（reattach）已经 Detached 的会话；-R 为尝试恢复，否则新建会话。
 
 ### screen 通过 PL2303 连接 RPi
+执行 `screen /dev/tty.usbserial 115200` 命令（可选 8N1）可以连接到串口板：
+
 ```Shell
 screen /dev/tty.usbserial 115200
 ```
@@ -124,21 +167,47 @@ raspberrypi login:
 
 ![screen-connect-to-raspberrypi-ttyS0-login](./3-serial_connection/screen/screen-connect-to-raspberrypi-ttyS0-login.png)
 
-### quit screen
+### hardcopy & screenlog
+#### hardcopy to note session
+先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>h</kbd>，可将当前 screen 会话内容复制保存到当前工作目录下。
+
+> 弹出 bottom prompt 提示 `Screen image written to "hardcopy.n".`。
+
+保存的文本文件命名格式为 `hardcopy.n`（n为会话编号，=[0,...,9]）。  
+
+#### screenlog  to log session
+先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>shift</kbd>+<kbd>h</kbd>（<kbd>H</kbd>），可将当前 screen 会话的实时流水日志保存到当前工作目录下。
+
+> 弹出 bottom prompt 提示 `Appending to logfile "screenlog.n".`。
+
+保存的日志文件命名格式为`screenlog.n`（n为会话编号，=[0,...,9]）。
+
+再次按下 **Ctrl-a H** 则关闭日志输出。
+
+> 弹出 bottom prompt 提示 `Logfile "screenlog.n" closed.`
+
+macOS 自带系统终端一般受限于缓存buffer限制或内存大小限制，可回滚查看命令行数有限。  
+因此 screen 的 log 功能非常适用于执行大型的命令流水需要记录的场景，如需记录编译内核的完整过程输出方便日后查阅。
+
+### kill screen session or quit
 [Using a serial console on Mac OS X](https://www.packetgeek.net/2016/02/using-a-serial-console-on-mac-os-x/)
 
-按下 <kbd>ctrl</kbd>+<kbd>A</kbd>+<kbd>\\</kbd> 组合键可退出 screen，状态栏将弹窗提示：Really quit and kill all your windows [y/n]  
-按下 <kbd>y</kbd> 键确定退出。
+- **kill**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>ctrl</kbd>+<kbd>K</kbd>（或直接 literal <kbd>k</kbd>）杀死当前会话。  
+
+> 状态栏将弹窗提示：`Really kill this window  [y/n]`，按下 <kbd>y</kbd> 键确定杀死当前会话。  
+> 如果还有其他会话，screen窗口不会退出；如果当前为最后一个会话，则退回到标准终端提示 `[screen is terminating]`。  
+
+- **quit**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>ctrl</kbd>+<kbd>\\</kbd> 退出 screen。  
+
+> 状态栏将弹窗提示：`Really quit and kill all your windows [y/n]`，按下 <kbd>y</kbd> 键确定杀死所有会话并退出，回到标准终端提示 `[screen is terminating]`。  
 
 ```Shell
 faner@THOMASFAN-MB0:~|⇒  screen /dev/tty.usbserial 115200
 [screen is terminating]
 ```
 
-### kill screen
-需要注意的是，screeen 程序退出的时候不会自动断开连接，如果直接拔掉 USB 串口板，会造成系统重启。
-
-1. 通过终端命令 `ps | grep tty` 查找串口连接进程号。
+### kill screen process
+有串口板连接会话时，通过终端命令 `ps | grep tty` 可查找到串口连接进程号。
 
 ```Shell
 Last login: Sun Sep 17 16:28:45 on ttys001
@@ -150,12 +219,16 @@ faner@THOMASFAN-MB0:~|⇒  ps | grep tty
  1439 tty.usbserial   0:04.54 SCREEN /dev/tty.usbserial 115200
 ```
 
-以上查到 screen 连接 Raspberry-Pi 的 PL2303 串口板的进程号（PID）为 1438。
+断开串口会话的正确方式是  kill 或 quit，串口 `/dev/tty.usbserial` 相关的进程 1438（screen）和 1439（SCREEN） 都会退出。
 
-2. 通过 `kill pid` 命令强杀 screen 进程，则不会导致 macOS 重启。
+仅仅通过 <kbd>ctrl</kbd>+<kbd>w</kbd> 关闭 screeen 窗口（1438（screen）会退出），并不会自动断开串口连接（1439（SCREEN）残存）。  
+此时，如果直接拔掉 USB 串口板，可能会造成系统重启。  
+
+1. 通过 `screen -r 1439` 恢复 1438 串口通信会话，然后再执行正常的 kill or quit 操作。  
+2. 通过 `kill pid`（pid=1439）命令强杀残留的 screen 进程，则不会导致 macOS 重启。  
 
 ```Shell
-faner@THOMASFAN-MB0:~|⇒  kill 1438
+faner@THOMASFAN-MB0:~|⇒  kill 1439
 ```
 
 窗口 screen 终端窗口会输出 terminated 信息：
@@ -216,7 +289,7 @@ Copyright (C) Miquel van Smoorenburg.
 
 ![2-minicom-Serial_port_setup-default](./3-serial_connection/minicom/2-minicom-Serial_port_setup-default.png)
 
-- 按下 <kbd>A</kbd> 进入 - **Serial Device** 编辑模式，需改为 `/dev/tty.usbserial`。  
+- 按下 <kbd>a</kbd> 进入 - **Serial Device** 编辑模式，需改为 `/dev/tty.usbserial`。  
 - 按下 <kbd>F</kbd> 进入 - **Hardware Flow Control**  编辑模式，修改为 `NO`。
 
 ![3-minicom-Serial_port_setup-[A]-[F]-modified](./3-serial_connection/minicom/3-minicom-Serial_port_setup-[A]-[F]-modified.png)
@@ -225,8 +298,27 @@ Copyright (C) Miquel van Smoorenburg.
 
 ![4-minicom-Serial_port_setup-[A]-[F]-save](./3-serial_connection/minicom/4-minicom-Serial_port_setup-[A]-[F]-save.png)
 
+### Meta-Z for help
+底部状态栏显示 `Meta-Z for help`，那么到底啥是 Meta 键呢？
+
+在 macOS 终端运行命令 `minicom -s`，弹出 minicom 的配置控制台。  
+通过上下箭头定位到 Screen and keyboard：  
+
+![7-[minicom-s]-configuration-Screen_and_keyboard](./3-serial_connection/minicom/7-[minicom-s]-configuration-Screen_and_keyboard.png)
+
+![8-configuration-Screen_and_keyboard](./3-serial_connection/minicom/8-configuration-Screen_and_keyboard.png)
+
+可以看到 Command key is: Escape(Meta)，所谓 Meta 键即指 Escape（<kbd>esc</kbd>），此处可配置修改。  
+非 mac 普通键盘下的 Meta Key 一般默认为 <kbd>ctrl</kbd>+<kbd>a</kbd>，同 screen 的 Command key。  
+
+在 minicom 窗口，按下 <kbd>esc</kbd>+<kbd>Z</kbd> 组合键可调出 Minicom Command Summary 帮助页面查看功能热键：
+
+![9-<esc><Z>-help](./3-serial_connection/minicom/9-<esc><Z>-help.png)
+
+<kbd>esc</kbd>+<kbd>O</kbd> 可重新打开 Configuration 页面。
+
 ### minicom 通过 PL2303 连接 RPi
-上面执行 -s 执行 Configuration | Serial port setup 配置之后，在 macOS 终端运行命令 `minicom` 即可启动串口连接 RPi。
+上面执行 -s 执行 Configuration | Serial port setup 配置之后，在 macOS 终端运行命令 `minicom` 即可按照上一步预设的参数启动串口连接 RPi。
 
 如果找不到设备（连接失败），则不会进入 minicom 串口控制台窗口，mac 终端出现以下信息：
 
@@ -260,27 +352,59 @@ raspberrypi login:
 
 ![6-minicom-connected-login](./3-serial_connection/minicom/6-minicom-connected-login.png)
 
-### Meta-Z for help
-底部状态栏显示 `Meta-Z for help`，那么到底啥是 Meta 键呢？
-
-在 macOS 终端运行命令 `minicom -s`，弹出 minicom 的配置控制台。  
-通过上下箭头定位到 Screen and keyboard：  
-
-![7-[minicom-s]-configuration-Screen_and_keyboard](./3-serial_connection/minicom/7-[minicom-s]-configuration-Screen_and_keyboard.png)
-
-![8-configuration-Screen_and_keyboard](./3-serial_connection/minicom/8-configuration-Screen_and_keyboard.png)
-
-可以看到 Command key is: Escape(Meta)，所谓 Meta 键即指 Escape（<kbd>esc</kbd>）。Windows 下可能默认为 <kbd>ctrl</kbd>+<kbd>A</kbd>，此处可配置修改。
-
-在 minicom 窗口，按下 <kbd>esc</kbd>+<kbd>Z</kbd> 组合键可调出 Minicom Command Summary 帮助页面查看功能热键：
-
-![9-<esc><Z>-help](./3-serial_connection/minicom/9-<esc><Z>-help.png)
-
-### 中文乱码问题
+#### 中文乱码问题
 minicom 连接上 RPi 之后，ls 列举中文目录或文件名显示乱码。
 退出 minicom，重新启动可带 -R utf8 参数指定采用  UTF8 编码通信，则可解决。
 
-`minicom -c on -R utf8`
+```Shell
+minicom -c on -R utf8
+```
+
+### Capture Log
+minicom 默认的 History Buffer Size 为 2000，如果想记录回看所有的运行命令，则需要 screen log 那样的日志功能。
+
+在 macOS 终端输入 `minicom -h` 可查看帮助，其中 `-C` 选项可指定日志文件的名称（--capturefile=FILE）。
+
+```Shell
+-C, --capturefile=FILE : start capturing to FILE
+```
+
+例如，以下 minicom 启动通过 PL2303 USB2TTL 串口板连接 Raspberry Pi 串口，捕获日志增加了[日期时间后缀](http://blog.csdn.net/vichie2008/article/details/48440535)，保存到类似名为 `minicom_rpi_log-2017-09-23_11/50/27.log` 。
+
+```Shell
+minicom -c on -R utf8 -C minicom_rpi_log-$(date +%Y-%m-%d_%H:%M:%S).log
+```
+
+---
+
+如果启动 minicom 时没有指定 `-C` 选项参数，那么默认不保存运行日志。  
+在 minicom 启动之后，在 `Meta-Z for help` - Minicom Command Summary 帮助页中，有一项 [`Capture on/off.....L`](http://blog.csdn.net/mcgrady_tracy/article/details/46350121) 即是 minicom 与 screenlog 对应的日志功能启动开关。
+
+按下 <kbd>esc</kbd>+<kbd>L</kbd>，可将当前 minicom 会话的实时流水日志保存到当前工作目录下。
+弹出如下确认 prompt ：
+
+```Shell
++-----------------------------------------+
+|Capture to which file?                   |
+|> minicom.cap                            |
++-----------------------------------------+
+```
+
+默认日志名为 minicom.cap，保存到当前用户目录下（~/）。可编辑重命名，按 <enter> 键确认开启。  
+
+再次按下 <kbd>esc</kbd>+<kbd>L</kbd>，可关闭或暂停日志。
+弹出如下确认 prompt ：
+
+```Shell
++--------------------------------+
+|          Capture file          |
+|    Close    Pause      Exit    |
++--------------------------------+
+```
+
+- Close：关闭；  
+- Pause：暂停；  
+- Exit：放弃，退出。  
 
 ### exit minicom
 [minicom disconnect](https://www.linuxquestions.org/questions/linux-newbie-8/minicom-disconnect-209775/)  
