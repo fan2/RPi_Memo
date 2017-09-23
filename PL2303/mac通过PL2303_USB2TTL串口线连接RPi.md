@@ -190,14 +190,12 @@ macOS 自带系统终端一般受限于缓存buffer限制或内存大小限制�
 因此 screen 的 log 功能非常适用于执行大型的命令流水需要记录的场景，如需记录编译内核的完整过程输出方便日后查阅。
 
 ### kill screen session or quit
-[Using a serial console on Mac OS X](https://www.packetgeek.net/2016/02/using-a-serial-console-on-mac-os-x/)
-
 - **kill**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>ctrl</kbd>+<kbd>K</kbd>（或直接 literal <kbd>k</kbd>）杀死当前会话。  
 
 > 状态栏将弹窗提示：`Really kill this window  [y/n]`，按下 <kbd>y</kbd> 键确定杀死当前会话。  
 > 如果还有其他会话，screen窗口不会退出；如果当前为最后一个会话，则退回到标准终端提示 `[screen is terminating]`。  
 
-- **quit**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>ctrl</kbd>+<kbd>\\</kbd> 退出 screen。  
+- **quit**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>ctrl</kbd>+<kbd>\\</kbd> [退出 screen](https://www.packetgeek.net/2016/02/using-a-serial-console-on-mac-os-x/)。  
 
 > 状态栏将弹窗提示：`Really quit and kill all your windows [y/n]`，按下 <kbd>y</kbd> 键确定杀死所有会话并退出，回到标准终端提示 `[screen is terminating]`。  
 
@@ -290,7 +288,7 @@ Copyright (C) Miquel van Smoorenburg.
 ![2-minicom-Serial_port_setup-default](./3-serial_connection/minicom/2-minicom-Serial_port_setup-default.png)
 
 - 按下 <kbd>a</kbd> 进入 - **Serial Device** 编辑模式，需改为 `/dev/tty.usbserial`。  
-- 按下 <kbd>F</kbd> 进入 - **Hardware Flow Control**  编辑模式，修改为 `NO`。
+- 按下 <kbd>f</kbd> 进入 - **Hardware Flow Control**  编辑模式，修改为 `NO`。
 
 ![3-minicom-Serial_port_setup-[A]-[F]-modified](./3-serial_connection/minicom/3-minicom-Serial_port_setup-[A]-[F]-modified.png)
 
@@ -407,11 +405,19 @@ minicom -c on -R utf8 -C minicom_rpi_log-$(date +%Y-%m-%d_%H:%M:%S).log
 - Exit：放弃，退出。  
 
 ### exit minicom
-[minicom disconnect](https://www.linuxquestions.org/questions/linux-newbie-8/minicom-disconnect-209775/)  
-[How to exit minicom?](https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=75493)  
+[minicom disconnect](https://www.linuxquestions.org/questions/linux-newbie-8/minicom-disconnect-209775/) / [How to exit minicom?](https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=75493)  
 
 在 Minicom Command Summary 帮助页面可以看到 `eXit and reset.....X`。  
-通过 <kbd>esc</kbd>+<kbd>X</kbd> 组合键调出 Leave Minicom 对话框，点击 yes 确认断开 minicom 串口连接；或通过 tab 键控点击 no 放弃退出。  
+通过 <kbd>esc</kbd>+<kbd>X</kbd> 组合键调出 Leave Minicom 对话框：
+
+```Shell
++----------------------+
+|    Leave Minicom?    |
+|     Yes       No     |
++----------------------+
+```
+
+点选 Yes 确认断开 minicom 串口连接；或通过 tab 键控点选 No 放弃退出。  
 
 ## PuTTY
 [PuTTY: a free SSH and Telnet client](https://www.chiark.greenend.org.uk/~sgtatham/putty/)  
