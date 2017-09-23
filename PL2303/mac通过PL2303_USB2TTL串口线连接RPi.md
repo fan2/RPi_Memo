@@ -92,6 +92,8 @@ dtoverlay=pi3‐disable‐bt
 ## [GNU Screen](https://en.wikipedia.org/wiki/GNU_Screen)
 [**Screen**](https://ss64.com/osx/screen.html)  is  a text version of full-screen graphical <u>window manager</u> that ***multiplexes*** a physical terminal between several processes (typically interactive shells).
 
+screen 有点类似 [tmux](https://github.com/tmux/tmux/wiki)，可在一个终端窗口管理多个会话（ [multiplex several virtual consoles](https://en.wikipedia.org/wiki/Tmux)）。 
+
 GNU Screen 目前最新版本为 [v.4.3.0](https://savannah.gnu.org/forum/forum.php?forum_id=8293)；在 macOS 终端输入 `screen -v` 可查看 macOS 默认安装的是比较旧的 screen 4.00.03：
 
 ![screen-builtin-macOS](./3-serial_connection/screen/screen-builtin.png)
@@ -419,7 +421,7 @@ lrzsz 是一个 UNIX 通信套件，实现了 XModem，YModem 和 ZModem 文件�
 在嵌入式开发初期，SoC 开发板除了串口，没有任何外部输入输出设备，也没有网线。要想和这块板子传输文件，就需要用到串口传输了。  
 宿主电脑（Host PC，本文中指 macOS）通过串口连接到 SoC 目标开发板（Remote Target Board，本文中指 raspbian）。板上嵌入式 elinux 一般都会移植 lrzsz 传输组件，宿主电脑通过支持 ZModem 的 telnet 或 SSH 客户端（例如 SecureCRT、minicom），即可实现与开发板互传文件。一种典型的场景可能是：将交叉编译生成的系统镜像（binary image）传输到开发板，然后通过 uboot 引导启动调试。  
 
-考虑这样一种场景，如果通过 ssh 连接到主机A，再在 A 上 通过 ssh 连接到B，怎样把 B 的文件传到本地呢？如果使用 [scp](https://www.raspberrypi.org/documentation/remote-access/ssh/scp.md) 或 [sftp](https://www.raspberrypi.org/documentation/remote-access/ssh/sftp.md)，得先把文件从 B 通过 scp 传输到 A，再从 A 通过 scp 传输到本地。  
+考虑这样一种场景，如果通过 ssh 连接到主机A，再在 A 上 通过 ssh 连接到B，怎样把 B 的文件传到本地呢？如果使用 [scp](https://www.raspberrypi.org/documentation/remote-access/ssh/scp.md) 或 [sftp](https://www.raspberrypi.org/documentation/remote-access/ssh/sftp.md)（支持 ssh 的机器通常支持这两种协议），得先把文件从 B 通过 scp 传输到 A，再从 A 通过 scp 传输到本地。  
 如果使用基于 ZModem 的传输协议命令 [sz/rz](http://iukg.blog.163.com/blog/static/19412814220100842148614/)，则可以一次搞定。  
 
 若要使用 ZModem 协议收发文件，则收发两端都必须安装 lrzsz 服务组件。接收端执行 rz 监听接收文件；发送端执行 sz 主动发送文件。  
@@ -427,6 +429,7 @@ lrzsz 是一个 UNIX 通信套件，实现了 XModem，YModem 和 ZModem 文件�
 > [How to Transfer Text Files Between Linux, Macintosh, and Microsoft Windows Operating Systems](http://www.websiterepairguy.com/articles/os/crlf.html)  
 > [Transfering file using zmodem/picocom/minicom noninteractively](https://stackoverflow.com/questions/19273030/transfering-file-using-zmodem-picocom-minicom-noninteractively)  
 > [Transfer File From Computer to Raspberry Pi Using USB-Serial Cable by mirza irwan osman in raspberry-pi](http://www.instructables.com/id/Transfer-file-from-PC-to-Raspberry-Pi-Using-USB-Se/)  
+> [mac 怎么登录到 linux 服务器并传输文件？](https://www.zhihu.com/question/22407930)  
 > [KERMIT,XMODEM,YMODEM,ZMODEM传输协议小结](http://blog.sina.com.cn/s/blog_81f1e2680101bdws.html)  
 > [Linux下几种文件传输命令 sz rz sftp scp](http://blog.163.com/fjm_520/blog/static/18904914820119284847660/)  
 > [lrzsz串口工具移植到ARM Linux教程](http://www.veryarm.com/879.html)  
