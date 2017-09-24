@@ -5,7 +5,8 @@
 2. 在 raspbian 上执行 `sudo apt-get install lrzsz` 命令安装 lrzsz。  
 
 ## macOS 安装 lrzsz
-1. 在 macOS 上执行 `brew install lrzsz` 命令安装 lrzsz。
+在 macOS 上执行 `brew install lrzsz` 命令安装 lrzsz。  
+关于 macOS 下使用 homebrew 安装软件的步骤可参考《[Mac 下的软件安装 —— 从 pkg,dmg 到 brew,cask](http://col.dog/2015/11/22/homebrew/)》。  
 
 ```Shell
 faner@THOMASFAN-MB0:~|⇒  brew search lrzsz
@@ -21,7 +22,27 @@ faner@THOMASFAN-MB0:~|⇒  brew install lrzsz
 🍺  /usr/local/Cellar/lrzsz/0.12.20: 18 files, 415.9KB
 ```
 
-2. 执行 `sz -h` 查看发送组件命令 sz 的帮助说明：
+执行 `ls /usr/local/Cellar/lrzsz/0.12.20/bin` 可以查看安装的 lrzsz binutils：
+
+```Shell
+faner@THOMASFAN-MB0:~|⇒  ls /usr/local/Cellar/lrzsz/0.12.20
+AUTHORS              INSTALL_RECEIPT.json TODO
+COPYING              NEWS                 bin
+ChangeLog            README               share
+faner@THOMASFAN-MB0:~|⇒  cd /usr/local/Cellar/lrzsz/0.12.20/bin
+faner@THOMASFAN-MB0:/usr/local/Cellar/lrzsz/0.12.20/bin|
+⇒  ls
+lrb lrx lrz lsb lsx lsz rz  sz
+```
+
+- **xmodem**: lrx / lsx  
+- **ymodem**: lrb / lsb  
+- **zmodem**: lrz / lsz  
+
+sz 是 lsz 的替身；rz 是 lrz 的替身。
+
+### Usage help
+1. 执行 `sz -h` 查看发送组件命令 [sz](https://linux.die.net/man/1/sz) 的帮助说明：
 
 ```Shell
 faner@THOMASFAN-MB0:~|⇒  sz -h
@@ -31,7 +52,7 @@ Usage: sz [options] file ...
 Send file(s) with ZMODEM/YMODEM/XMODEM protocol
 ```
 
-3. 执行 `rz -h` 查看接收组件命令 rz 的帮助说明：
+2. 执行 `rz -h` 查看接收组件命令 [rz](https://linux.die.net/man/1/rz) 的帮助说明：
 
 ```Shell
 faner@THOMASFAN-MB0:~|⇒  rz -h
@@ -39,6 +60,88 @@ rz version 0.12.20
 Usage: rz [options] [filename.if.xmodem]
 Receive files with ZMODEM/YMODEM/XMODEM protocol
 ```
+
+### [minicom](https://linux.die.net/man/1/minicom) 设置传输协议
+> [Homebrew](https://brew.sh/) installs packages to their own directory and then symlinks their files into /usr/local.  
+> `/usr/local` must be writable!  
+
+brew 将 lrzsz 安装到 `/usr/local/Cellar/lrzsz/` 目录，然后会执行 `ln -s` 命令将 sz/rz 软链到 `/usr/local/bin/` 目录下。  
+
+执行 `which sz` 和 `which rz`：
+
+```Shell
+faner@THOMASFAN-MB0:~|⇒  which sz
+/usr/local/bin/sz
+faner@THOMASFAN-MB0:~|⇒  which rz
+/usr/local/bin/rz
+```
+
+在 macOS 终端运行命令 `minicom -s`，弹出 minicom 的配置控制台。  
+
+```Shell
++-----[configuration]------+
+| Filenames and paths      |
+| File transfer protocols  |
+| Serial port setup        |
+| Modem and dialing        |
+| Screen and keyboard      |
+| Save setup as dfl        |
+| Save setup as..          |
+| Exit                     |
+| Exit from Minicom        |
++--------------------------+
+```
+
+通过上下箭头定位到 `File transfer protocols`，点击进去可以看到 minicom 调用 zmodem 收发文件的实际程序（Program）是 `/usr/local/bin/rz` 和 `/usr/local/bin/sz`。
+
+```Shell
++------------------------------------------------------------------------------+
+|     Name             Program                 Name U/D FullScr IO-Red. Multi  |
+| A  zmodem     /usr/local/bin/sz -vv           Y    U    N       Y       Y    |
+| B  ymodem     /usr/local/bin/sb -vv           Y    U    N       Y       Y    |
+| C  xmodem     /usr/local/bin/sx -vv           Y    U    N       Y       N    |
+| D  zmodem     /usr/local/bin/rz -vv           N    D    N       Y       Y    |
+| E  ymodem     /usr/local/bin/rb -vv           N    D    N       Y       Y    |
+| F  xmodem     /usr/local/bin/rx -vv           Y    D    N       Y       N    |
+| G  kermit     /usr/local/bin/kermit -i -l %l  Y    U    Y       N       N    |
+| H  kermit     /usr/local/bin/kermit -i -l %l  N    D    Y       N       N    |
+| I  ascii      /usr/bin/ascii-xfr -dsv         Y    U    N       Y       N    |
+| J    -                                                                       |
+| K    -                                                                       |
+| L    -                                                                       |
+| M  Zmodem download string activates... D                                     |
+| N  Use filename selection window...... Yes                                   |
+| O  Prompt for download directory...... No                                    |
+|                                                                              |
+|   Change which setting? (SPACE to delete)                                    |
++------------------------------------------------------------------------------+
+```
+
+- **xmodem**: 需要修改配置为 lsx / lrx  
+- **ymodem**: 需要修改配置为 lsb / lrb  
+- 建议开启 Prompt for download directory...... Yes  
+
+至此，macOS/minicom 安装配置好了 lrzsz，minicom 即可调用 lrzsz 协议（xmodem/ymodem/zmodem）进行文件传输（Send Files/Recv Files）。
+
+### minicom 设置下载目录
+在 macOS 终端运行命令 `minicom -s`，弹出 minicom 的配置控制台。  
+通过上下箭头定位到 `Filenames and paths`：  
+
+```Shell
++-----------------------------------------------------------------------+
+| A - Download directory :                                              |
+| B - Upload directory   :                                              |
+| C - Script directory   :                                              |
+| D - Script program     : runscript                                    |
+| E - Kermit program     :                                              |
+| F - Logging options                                                   |
+|                                                                       |
+|    Change which setting?                                              |
++-----------------------------------------------------------------------+
+```
+
+点按 <kbd>A</kbd> 定位到 Download directory，可修改默认下载目录。  
+例如设置为 `/Users/faner/Downloads/`，点按  <kbd>enter</kbd> 确认返回到 [configuration] 对话框，选中 `Save setup as dfl`，再次点按  <kbd>enter</kbd> 确认保存配置修改并退出。  
 
 ## raspbian 安装 lrzsz
 1. 在 raspbian 上执行 `sudo apt-get install lrzsz` 命令安装 lrzsz。
@@ -113,7 +216,7 @@ pi@raspberrypi:~/Downloads$ rx -EZ
 rx waiting to receive.
 ```
 
-在 minicom 终端窗口中，按 <kbd>esc</kbd><kbd>S</kbd> 组合键可打开发送文件（Upload）对话框。
+在 macOS/minicom 终端窗口中，按 <kbd>esc</kbd><kbd>S</kbd> 组合键可打开发送文件（Upload）对话框。
 
 ```Shell
 +-[Upload]--+
@@ -126,9 +229,11 @@ rx waiting to receive.
 ```
 
 1. 选择 zmodem 传输协议，进入本地文件浏览器 `[Select one or more files for upload]` ；  
+	> 当带参数 `-R utf8` 启动 minicom，这里出现乱码，暂时不明原因。  
 2. 按 <kbd>↑</kbd><kbd>↓</kbd> 在当前文件夹的 item 上移动光标。  
 3. 双击空格键确定进入光标所在文件夹（Space to tag）；光标 <kbd>↑</kbd> 上移到 `[..]`，双击空格则回到上一级目录。  
 4. 若光标在文件上，按下空格键选中，再按一次撤销选中。通过按 <kbd>↑</kbd><kbd>↓</kbd> 可选中多个文件。选好后，按下 <kbd>enter</kbd> 键确认发送。  
+	> 这里选择的和实际鼠标定位错位，暂时不明原因。  
 	> 如果没有选中任何文件，按下 <kbd>enter</kbd> 键，则会弹出 `No file selected - enter filename:` 对话框，可直接输入当前目录下想要发送的文件名。  
 5. 按 <kbd>←</kbd><kbd>→</kbd> 在底部的菜单栏（Goto、Prev、Show、Tag、Untag）切换。  
 
@@ -160,7 +265,7 @@ rx waiting to receive.
 
 ![RPi-rz_minicom-sz](./RPi-rz_minicom-sz.gif)
 
-传输速度较慢，传输大文件，还是建议采用基于 SSH 的 SCP/SFTP 协议。
+传输速度较慢，仅适合传输小文件；若要传输大文件，还是建议接好网线配好网络，采用基于 SSH 的 SCP/SFTP 传输协议。
 
 ## Receive Files(rz)
 在 macOS/minicom 上通过 rz 接收文件，在 raspbian 中执行 sz 发送文件。
@@ -185,3 +290,4 @@ rx waiting to receive.
 > [KERMIT,XMODEM,YMODEM,ZMODEM传输协议小结](http://blog.sina.com.cn/s/blog_81f1e2680101bdws.html)  
 > [Linux下几种文件传输命令 sz rz sftp scp](http://blog.163.com/fjm_520/blog/static/18904914820119284847660/)  
 > [lrzsz串口工具移植到ARM Linux教程](http://www.veryarm.com/879.html)  
+> [Linux系统上传下载命令rz和sz](http://oldboy.blog.51cto.com/2561410/588592)  
