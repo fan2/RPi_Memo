@@ -100,3 +100,7 @@ faner@THOMASFAN-MB0:~|⇒  diskutil list
 默认配置从 microSD 卡引导（启动），当检测到装有 raspbian 系统的可引导 microSD 卡时，将启动 raspbian 系统。  
 在没有启动系统前，只有红色电源指示灯常亮；启动 raspbian 系统过程中，绿灯会常亮一段时间；系统启动完毕，绿灯偶尔会闪一下。  
 接下来，通过 USB 连接键盘鼠标、HDMI 接上显示屏后，即可进入 raspbian 系统图形界面。  
+
+## references
+[树莓派启动：for Mac](http://blog.csdn.net/selina013/article/details/51029900)  
+[树莓派Ｂ＋使用心得](http://www.cnblogs.com/uestc-mm/p/6290521.html)  
