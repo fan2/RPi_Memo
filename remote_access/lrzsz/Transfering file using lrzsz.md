@@ -9,7 +9,7 @@ lrzsz 是一个 UNIX 通信套件，实现了 XModem，YModem 和 ZModem 文件�
 
 考虑这样一种场景，如果通过 ssh 连接到主机A，再在 A 上 通过 ssh 连接到B，怎样把 B 的文件传到本地呢？如果使用 [scp](https://www.raspberrypi.org/documentation/remote-access/ssh/scp.md) 或 [sftp](https://www.raspberrypi.org/documentation/remote-access/ssh/sftp.md)（支持 ssh 的机器通常支持这两种协议），得先把文件从 B 通过 scp 传输到 A，再从 A 通过 scp 传输到本地。如果使用基于 ZModem 的传输协议命令 [sz/rz](http://iukg.blog.163.com/blog/static/19412814220100842148614/)，则可以一次搞定。  
 
-mac 通过 PL2303 USB2TTL 串口板连接 Raspberry Pi 3 的波特率为 115200，根据[波特率与数据传输速率](http://blog.csdn.net/u011392772/article/details/51496067)的 [关系](http://blog.csdn.net/wfc_02/article/details/48002391)，换算出的 [传输速率](http://blog.csdn.net/sinat_23338865/article/details/52873429) 大概为 10 KB/s。  
+mac 通过 PL2303 USB2TTL 串口板连接 Raspberry Pi 3 的波特率为 115200，根据[波特率与数据传输速率](http://blog.csdn.net/u011392772/article/details/51496067)的 [关系](http://blog.csdn.net/wfc_02/article/details/48002391)，换算出的 [传输速率](http://blog.csdn.net/sinat_23338865/article/details/52873429)（BPS，Bits Per Second）大概为 10 KB/s。  
 可见基于串口的 lrzsz 传输速率实在太慢，仅适合传输小文件；若要传送大文件，还是建议先调好无线网卡驱动（一般 uboot  就）、接好网线配好网络，再采用基于 SSH 的网络传输协议（SCP/SFTP）。  
 
 # install lrzsz
@@ -181,6 +181,8 @@ Unpacking lrzsz (0.12.21-8) ...
 Setting up lrzsz (0.12.21-8) ...
 Processing triggers for man-db (2.7.6.1-2) ...
 ```
+
+关于 apt 参考 Raspberry 组织的官方文档：[APT](https://www.raspberrypi.org/documentation/linux/software/apt.md)。
 
 2. 执行 `sz -h` 查看发送组件命令 sz 的帮助说明：
 
