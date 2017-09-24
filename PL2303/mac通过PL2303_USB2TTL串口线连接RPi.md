@@ -1,3 +1,4 @@
+[Serial Terminal Basics](https://learn.sparkfun.com/tutorials/terminal-basics/tips-and-tricks)  
 [Mac's and serial TTY's](https://pbxbook.com/other/mac-tty.html)  
 [RPi Serial Connection](http://elinux.org/RPi_Serial_Connection)  
 
@@ -83,18 +84,31 @@ dtoverlay=pi3‐disable‐bt
 关于 TTY 和 Terminal 的相关概念可参考 [Console-TTY-Terminal.md](./Console-TTY-Terminal.md)。
 
 ## tty vs cu
+> The difference between the two is that a **TTY** device is used to call into a device/system, and the **CU** device (call-up) is used to call out of a device/system. Thus, this allows for two-way communication at the same time (full-duplex). 
+> 
 > You might notice that each serial device shows up twice in `/dev`, once as a `tty.*` and once as a `cu.*`. So, what's the difference? Well, **TTY** devices are for <u>calling into</u> UNIX systems, whereas CU (Call Up) devices are for <u>calling out</u> from them (eg, modems). We want to *call out* from our Mac, so `/dev/cu.*` is the correct device to use.  
 > The technical difference is that `/dev/tty.*` devices will wait (or listen) for DCD (data carrier detect), eg, someone calling in, before responding. `/dev/cu.*` devices do not assert DCD, so they will always connect (respond or succeed) immediately.  
 
-以下配置使用 screen 和 minicom 串口终端时，以 `/dev/tty.usbserial` 为主，相对 cu 而言，支持 [DCD](https://en.wikipedia.org/wiki/Data_Carrier_Detect)（Data Carrier Detect，数据载波检测）。
+以下配置使用 screen 和 minicom 串口终端时，以 `/dev/tty.usbserial` 为主，相对 cu 而言，支持 [DCD](https://en.wikipedia.org/wiki/Data_Carrier_Detect)（Data Carrier Detect，数据载波检测）。  
+启动配置的 Serial Device 建议使用 `/dev/cu.usbserial`。  
+
+> [MacOS: what's the difference between /dev/tty.* and /dev/cu.*?](https://stackoverflow.com/questions/8632586/macos-whats-the-difference-between-dev-tty-and-dev-cu)  
+> [choosing between /dev/tty.usbserial vs /dev/cu.usbserial](https://stackoverflow.com/questions/37688257/choosing-between-dev-tty-usbserial-vs-dev-cu-usbserial)  
+> [Difference between cu.* and tty.*](https://pastebin.com/WCC5qqav)  
 
 # serial terminal
-## [GNU Screen](https://en.wikipedia.org/wiki/GNU_Screen)
-[**Screen**](https://ss64.com/osx/screen.html)  is  a text version of full-screen graphical <u>window manager</u> that ***multiplexes*** a physical terminal between several processes (typically interactive shells).
+## [GNU Screen](https://www.gnu.org/software/screen/)
+[**Screen**](https://en.wikipedia.org/wiki/GNU_Screen)  is  a text version of full-screen graphical <u>window manager</u> that ***multiplexes*** a physical terminal between several processes (typically interactive shells).
 
-screen 有点类似 [tmux](https://github.com/tmux/tmux/wiki)，可在一个终端窗口管理多个会话（ [multiplex several virtual consoles](https://en.wikipedia.org/wiki/Tmux)）。 
+[screen](https://www.gnu.org/software/screen/manual/screen.html) 有点类似 [tmux](https://github.com/tmux/tmux/wiki)，可在一个终端窗口管理多个会话（[multiplex several virtual consoles](https://en.wikipedia.org/wiki/Tmux)）。 
+例如我们可以在同一个 screen 终端窗口中与 Raspberry Pi 3 同时建立串口连接和 SSH 连接：
 
-GNU Screen 目前最新版本为 [v.4.3.0](https://savannah.gnu.org/forum/forum.php?forum_id=8293)；在 macOS 终端输入 `screen -v` 可查看 macOS 默认安装的是比较旧的 screen 4.00.03：
+![screen-serial&ssh](./3-serial_connection/screen/screen-serial&ssh.png)
+
+  0 cu.usbserial
+  1 pi@192.168.1.107   
+
+GNU Screen 目前最新版本为 [v.4.3.0](https://savannah.gnu.org/forum/forum.php?forum_id=8293)；在 macOS 终端输入 `screen -v` 可查看 macOS 默认安装的是比较旧的 [screen](https://ss64.com/osx/screen.html) 4.00.03：
 
 ![screen-builtin-macOS](./3-serial_connection/screen/screen-builtin.png)
 
@@ -102,9 +116,25 @@ GNU Screen 目前最新版本为 [v.4.3.0](https://savannah.gnu.org/forum/forum.
 
 ![screen](./3-serial_connection/screen/screen.png)
 
+> [GNU Screen](http://lugatgt.org/content/gnu_screen/downloads/presentation.pdf)  
 > [Using Screen on Mac OS X ](http://www.kinnetica.com/2011/05/29/using-screen-on-mac-os-x/)  
 > [Taking Command of the Terminal with GNU Screen](https://www.linux.com/learn/taking-command-terminal-gnu-screen)  
 > [Use 'screen' as a serial terminal emulator](http://hints.macworld.com/article.php?story=20061109133825654)  
+
+### .screenrc
+screen 的基本配置文件是 `~/.screenrc`（当前用户目录下的一个隐藏文件），类似 vim 的配置文件（`~/.vimrc`）。如果没有可以手动创建一个。  
+
+启动 screen 时，可携带 `-c` 参数加载指定配置文件（Read configuration file instead of '.screenrc'.）。
+
+在配置文件中增加一行 `startup_message off`，则下次启动 screen，不会再出现欢迎介绍页面。
+
+```Shell
+faner@THOMASFAN-MB0:~|⇒  cat .screenrc 
+startup_message off
+caption always "%{= Wk}%-w%{= Bw}%n %t%{-}%+w %-="
+```
+
+> [screenrc简单设置](http://blog.csdn.net/asx20042005/article/details/7035115)  
 
 ### Screen key bingdings
 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>?</kbd> 可调出 Screen key bingdings 帮助页面。
@@ -130,6 +160,7 @@ Command key:  <kbd>^</kbd><kbd>a</kbd>，前置引导键，意义同 minicom 的
 	-  切换到指定编号 screen session(window)：<kbd>ctrl</kbd>+<kbd>a</kbd>，<kbd>number</kbd>（number 可为 [0,..,9]）；  
 	-  切换到指定编号 screen session(window)：<kbd>ctrl</kbd>+<kbd>a</kbd>，<kbd>’</kbd>。在 bottom prompt 出现 `Switch to window: ` ，输入想要跳转的窗口编号再按 <kbd>enter</kbd> 键确认切换。   
 	-  切换到指定编号 screen session(window)：<kbd>ctrl</kbd>+<kbd>a</kbd>，<kbd>”</kbd>（<kbd>shift</kbd>+<kbd>’</kbd>）。出现 Num Name 窗格列表提示，按<kbd>↑</kbd><kbd>↓</kbd>选择或输入想要跳转的窗口编号再按 <kbd>enter</kbd> 键确认切换。   
+	-  切换到其他 screen session(window)：<kbd>ctrl</kbd>+<kbd>a</kbd>，<kbd>ctrl</kbd>+<kbd>a</kbd>。  
 - **reset**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>Z</kbd>（<kbd>shift</kbd>+<kbd>z</kbd>） 执行重置，退回到标准终端提示 `[1]  + 5265 suspended  screen`。  
 - **detach**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>ctrl</kbd>+<kbd>D</kbd>（或直接 literal <kbd>d</kbd>） 执行detach（所有会话），退回到标准终端提示 `[detached]`。  
 - **kill**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>ctrl</kbd>+<kbd>K</kbd>（或直接 literal <kbd>k</kbd>）杀死当前会话。  
@@ -143,6 +174,12 @@ detach screen 回到标准终端，可运行 `screen -list` 命令查看打开�
 ![screen-list](./3-serial_connection/screen/screen-list.png)
 
 执行 `screen -r <PID>` 可恢复（reattach）已经 Detached 的会话；-R 为尝试恢复，否则新建会话。
+
+在运行 screen 期间，为区分编辑模式，可通过 <kbd>ctrl</kbd>+<kbd>a</kbd>,<kbd>:</kbd> 快捷键明确进入命令行操作模式。
+
+> [GNU Screen简单操作](http://blog.csdn.net/asx20042005/article/details/7035093)  
+> [GNU Screen cheat-sheet](http://arundelo.livejournal.com/390.html)  
+> [How to scroll in GNU Screen](https://www.saltycrane.com/blog/2008/01/how-to-scroll-in-gnu-screen/)  
 
 ### screen 通过 PL2303 连接 RPi
 执行 `screen /dev/tty.usbserial 115200` 命令（可选 8N1）可以连接到串口板：
@@ -158,7 +195,10 @@ faner@THOMASFAN-MB0:~|⇒  screen /dev/tty.usbserial 115200
 [screen is terminating]
 ```
 
-若连接串口成功，则进入 screen 串口控制台窗口会出现以下信息：
+若连接串口成功，默认的窗口标题（window's title）是 `tty.usbserial`，启动时可指定 `-t` 参数；启动后可通过 <kbd>ctrl</kbd>+<kbd>a</kbd>,<kbd>shift</kbd>+<kbd>a</kbd>（也即<kbd>A</kbd>）修改。  
+在 `screen -list` 中显示的是 `<pid>.<tty>.<host>`，启动时可指定 `-S` 参数设置 sockname，会话标题将定制为 `<pid>.sockname`，方便辨识。  
+
+进入 screen 控制台终端窗口，将出现以下信息：
 
 ```Shell
 Raspberry GNU/Linux 9 raspberrypi ttyS0
@@ -177,8 +217,28 @@ raspberrypi login:
 
 保存的文本文件命名格式为 `hardcopy.n`（n为会话编号，=[0,...,9]）。  
 
+#### scrollback softcopy
+screen 中滚动鼠标默认响应并非滚屏，而是显示过往敲击过的历史命令。
+
+**Ctrl-a h** 执行 hardcopy 只能拷贝当前屏幕的内容，如果运行内容较长（如执行 `sudo apt-get dist-upgrade` 更新软件），之前滚屏的部分无法读取（拷贝）。  
+
+启动 screen 时可携带 `-h lines` 参数，指定可翻滚历史缓存大小（Set the size of the scrollback history buffer）。  
+
+若要拷贝之前执行过的内容，则需要进入选择拷贝模式：
+
+1. <kbd>ctrl</kbd>+<kbd>a</kbd>,<kbd>[</kbd>：进入 copy/scrollback 模式，类似 vi text editor，可进行滚屏选择。  
+2. 通过上下左右方向键或 vi 方向键（hjkl）移动光标到选择起点。  
+3. 按下空格键开始选择。  
+4. 通过上下左右方向键或 vi 方向键（hjkl）移动光标到选择终点。  
+5. 再次按下空格键确认拷贝所选。  
+6. <kbd>ctrl</kbd>+<kbd>a</kbd>,<kbd>]</kbd>：将拷贝的 buffer 粘贴到当前光标处。  
+	> <kbd>ctrl</kbd>+<kbd>a</kbd>,<kbd>></kbd>：writebuf，将拷贝的 buffer 重定向输出到 `/tmp/screen-exchange` 文件，以便阅读分析之用。  
+7. 按下 <kbd>esc</kbd> 退出选择拷贝模式。  
+
+![screen-copy.gif](./3-serial_connection/screen/screen-copy.gif)
+
 #### screenlog  to log session
-先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>shift</kbd>+<kbd>h</kbd>（<kbd>H</kbd>），可将当前 screen 会话的实时流水日志保存到当前工作目录下。
+先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>shift</kbd>+<kbd>h</kbd>（<kbd>H</kbd>），可将当前 screen 会话的实时流水日志保存到输入启动 screen 时终端所在的工作目录下。
 
 > 弹出 bottom prompt 提示 `Appending to logfile "screenlog.n".`。
 
@@ -370,12 +430,14 @@ raspberrypi login:
 ![6-minicom-connected-login](./3-serial_connection/minicom/6-minicom-connected-login.png)
 
 #### [中文乱码问题](http://www.unixresources.net/linux/clf/embedded/archive/00/00/52/46/524666.html)
-minicom 连接上 RPi 之后，ls 列举中文目录或文件名显示乱码。  
-退出 minicom，重新启动可带 -R utf8 参数指定采用  UTF8 编码通信，则可解决？  
+minicom 连接上 RPi 之后，ls 列举中文目录或文件名显示乱码（screen 没有问题）。  
+退出 minicom，重新启动可带 -R utf8 参数指定采用  UTF8 编码通信，但未完全解决。  
 
 ```Shell
 minicom configuration RPi.usbserial -c on -R utf8
 ```
+
+为简便起见，macOS 下建议还是使用自带的 GNU screen 作为串口连接控制终端。
 
 ### Capture Log
 minicom 默认的 History Buffer Size 为 2000，如果想记录回看所有的运行命令，则需要 screen log 那样的日志功能。
