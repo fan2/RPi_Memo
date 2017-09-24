@@ -34,7 +34,7 @@ wlan0: flags=4098<BROADCAST,MULTICAST>  mtu 1500
 ```
 
 ```Shell
-pi@raspberrypi:~$ iwconfig                                                     
+pi@raspberrypi:~$ iwconfig
 eth0      no wireless extensions.
 
 lo        no wireless extensions.
