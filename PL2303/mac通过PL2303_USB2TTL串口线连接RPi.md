@@ -294,13 +294,26 @@ Copyright (C) Miquel van Smoorenburg.
 ![2-minicom-Serial_port_setup-default](./3-serial_connection/minicom/2-minicom-Serial_port_setup-default.png)
 
 - 按下 <kbd>a</kbd> 进入 - **Serial Device** 编辑模式，需改为 `/dev/tty.usbserial`。  
-- 按下 <kbd>f</kbd> 进入 - **Hardware Flow Control**  编辑模式，修改为 `NO`。
+- 按下 <kbd>f</kbd> 进入 - **Hardware Flow Control**  编辑模式，修改为 `NO` 关闭流控。
+
+> [Configure minicom to use hardware flow control](https://stackoverflow.com/questions/16726559/configure-minicom-to-use-hardware-flow-control)  
+> [RTS/CTS and DTR/DSR Flow Control](http://www.tldp.org/HOWTO/Serial-HOWTO.html#toc19.4)  
+> [Hardware Flow Control (RTS/CTS etc.)](http://www.tldp.org/HOWTO/Text-Terminal-HOWTO.html#toc11.7)  
+> [Raspberry Pi 3 Hardware Flow Control](http://www.deater.net/weave/vmwprod/hardware/pi-rts/)  
 
 ![3-minicom-Serial_port_setup-[A]-[F]-modified](./3-serial_connection/minicom/3-minicom-Serial_port_setup-[A]-[F]-modified.png)
 
 按下 <kbd>enter</kbd> 键，返回选择 Set save as dfl 再按 <kbd>enter</kbd> 键，保存修改退出重启。
 
 ![4-minicom-Serial_port_setup-[A]-[F]-save](./3-serial_connection/minicom/4-minicom-Serial_port_setup-[A]-[F]-save.png)
+
+作为默认配置(default)将存储为 `/usr/local/Cellar/minicom/2.7.1/etc` 下的 `minirc.dfl`。  
+也可以选择 Save setup as..，例如 `RPi(cu.usbserial)`，将存储为 `/usr/local/Cellar/minicom/2.7.1/etc` 下的 `minirc.RPi.usbserial`。  
+下次启动 minicom 可带上 configuration 参数指定 `RPi.usbserial` 即可：
+
+```Shell
+minicom configuration RPi.usbserial
+```
 
 ### Meta-Z for help
 底部状态栏显示 `Meta-Z for help`，那么到底啥是 Meta 键呢？
@@ -356,12 +369,12 @@ raspberrypi login:
 
 ![6-minicom-connected-login](./3-serial_connection/minicom/6-minicom-connected-login.png)
 
-#### 中文乱码问题
-minicom 连接上 RPi 之后，ls 列举中文目录或文件名显示乱码。
-退出 minicom，重新启动可带 -R utf8 参数指定采用  UTF8 编码通信，则可解决。
+#### [中文乱码问题](http://www.unixresources.net/linux/clf/embedded/archive/00/00/52/46/524666.html)
+minicom 连接上 RPi 之后，ls 列举中文目录或文件名显示乱码。  
+退出 minicom，重新启动可带 -R utf8 参数指定采用  UTF8 编码通信，则可解决？  
 
 ```Shell
-minicom -c on -R utf8
+minicom configuration RPi.usbserial -c on -R utf8
 ```
 
 ### Capture Log
@@ -376,7 +389,7 @@ minicom 默认的 History Buffer Size 为 2000，如果想记录回看所有的�
 例如，以下 minicom 启动通过 PL2303 USB2TTL 串口板连接 Raspberry Pi 串口，捕获日志增加了[日期时间后缀](http://blog.csdn.net/vichie2008/article/details/48440535)，保存到类似名为 `minicom_rpi_log-2017-09-23_11/50/27.log` 。
 
 ```Shell
-minicom -c on -R utf8 -C minicom_rpi_log-$(date +%Y-%m-%d_%H:%M:%S).log
+minicom configuration RPi.usbserial -c on -R utf8 -C minicom_rpi_log-$(date +%Y-%m-%d_%H:%M:%S).log
 ```
 
 ---
