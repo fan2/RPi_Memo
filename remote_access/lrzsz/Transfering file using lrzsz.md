@@ -1,3 +1,17 @@
+# about lrzsz
+[lrzsz](http://freecode.com/projects/lrzsz/) is a portable and fast implementation of the X/Y/Zmodem protocols.  
+*lrzsz* is a unix communication package providing the [XMODEM, YMODEM](ftp://ftp.std.com/obi/Standards/FileTransfer/YMODEM8.DOC.1.Z) [ZMODEM](http://www.easysw.com/~mike/serial/zmodem.html) file transfer protocols  
+
+lrzsz 是一个 UNIX 通信套件，实现了 XModem，YModem 和 ZModem 文件传输协议。  
+
+在嵌入式开发初期，SoC 开发板除了串口，没有任何外部输入输出设备，也没有网线。要想和这块板子传输文件，就需要用到串口传输了。  
+宿主电脑（Host PC，本文中指 macOS）通过串口连接到 SoC 目标开发板（Remote Target Board，本文中指 raspbian）。板上嵌入式 elinux 一般都会移植 lrzsz 传输组件，宿主电脑通过支持 ZModem 的 telnet 或 SSH 客户端（例如 SecureCRT、minicom），即可实现与开发板互传文件。一种典型的场景可能是：将交叉编译生成的系统镜像（binary image）传输到开发板，然后通过 uboot 引导启动调试。  
+
+考虑这样一种场景，如果通过 ssh 连接到主机A，再在 A 上 通过 ssh 连接到B，怎样把 B 的文件传到本地呢？如果使用 [scp](https://www.raspberrypi.org/documentation/remote-access/ssh/scp.md) 或 [sftp](https://www.raspberrypi.org/documentation/remote-access/ssh/sftp.md)（支持 ssh 的机器通常支持这两种协议），得先把文件从 B 通过 scp 传输到 A，再从 A 通过 scp 传输到本地。如果使用基于 ZModem 的传输协议命令 [sz/rz](http://iukg.blog.163.com/blog/static/19412814220100842148614/)，则可以一次搞定。  
+
+mac 通过 PL2303 USB2TTL 串口板连接 Raspberry Pi 3 的波特率为 115200，根据[波特率与数据传输速率](http://blog.csdn.net/u011392772/article/details/51496067)的 [关系](http://blog.csdn.net/wfc_02/article/details/48002391)，换算出的 [传输速率](http://blog.csdn.net/sinat_23338865/article/details/52873429) 大概为 10 KB/s。  
+可见基于串口的 lrzsz 传输速率实在太慢，仅适合传输小文件；若要传送大文件，还是建议先调好无线网卡驱动（一般 uboot  就）、接好网线配好网络，再采用基于 SSH 的网络传输协议（SCP/SFTP）。  
+
 # install lrzsz
 若要使用 ZModem 协议收发文件，则收发两端都必须安装 lrzsz 服务组件。
 
@@ -188,22 +202,14 @@ Receive files with ZMODEM/YMODEM/XMODEM protocol
 ```
 
 # transfering by lrzsz
-[lrzsz](http://freecode.com/projects/lrzsz/) is a portable and fast implementation of the X/Y/Zmodem protocols.  
-
 [lrzsz](https://ohse.de/uwe/software/lrzsz.html)：free x/y/zmodem implementation  
-*lrzsz* is a unix communication package providing the [XMODEM, YMODEM](ftp://ftp.std.com/obi/Standards/FileTransfer/YMODEM8.DOC.1.Z) [ZMODEM](http://www.easysw.com/~mike/serial/zmodem.html) file transfer protocols  
 
-lrzsz 是一个 UNIX 通信套件，实现了 XModem，YModem 和 ZModem 文件传输协议。  
+宿主电脑（Host macOS/minicom）和目标板（Remote raspbian）上都安装了 lrzsz 组件后，双方就可以通过 sz/rz 收发文件：接收端执行 rz 监听接收文件；发送端执行 sz 主动发送文件。  
 
-在嵌入式开发初期，SoC 开发板除了串口，没有任何外部输入输出设备，也没有网线。要想和这块板子传输文件，就需要用到串口传输了。  
-宿主电脑（Host PC，本文中指 macOS）通过串口连接到 SoC 目标开发板（Remote Target Board，本文中指 raspbian）。板上嵌入式 elinux 一般都会移植 lrzsz 传输组件，宿主电脑通过支持 ZModem 的 telnet 或 SSH 客户端（例如 SecureCRT、minicom），即可实现与开发板互传文件。一种典型的场景可能是：将交叉编译生成的系统镜像（binary image）传输到开发板，然后通过 uboot 引导启动调试。  
-
-考虑这样一种场景，如果通过 ssh 连接到主机A，再在 A 上 通过 ssh 连接到B，怎样把 B 的文件传到本地呢？如果使用 [scp](https://www.raspberrypi.org/documentation/remote-access/ssh/scp.md) 或 [sftp](https://www.raspberrypi.org/documentation/remote-access/ssh/sftp.md)（支持 ssh 的机器通常支持这两种协议），得先把文件从 B 通过 scp 传输到 A，再从 A 通过 scp 传输到本地。如果使用基于 ZModem 的传输协议命令 [sz/rz](http://iukg.blog.163.com/blog/static/19412814220100842148614/)，则可以一次搞定。  
-
-宿主电脑（Host macOS/minicom）和目标板（Remote raspbian）上都安装了 lrzsz 组件后，双方可以通过 sz/rz 收发文件：接收端执行 rz 监听接收文件；发送端执行 sz 主动发送文件。  
-
-- Host macOS 上传文件到 Remote raspbian（Remote raspbian 从 Host macOS 下载文件）：raspbian(lrzsz) 执行 rz；minicom 执行 Send Files（也可直接在 mac 终端执行 sz 命令）；  
-- Host macOS 从 Remote raspbian 下载文件（Remote raspbian 上传文件到 Host macOS）：minicom 执行 Receive Files（也可直接在 mac 终端执行 rz 命令）；raspbian(lrzsz) 执行 sz。  
+- Host macOS 上传文件到 Remote raspbian（Remote raspbian 从 Host macOS 下载文件）：raspbian(lrzsz) 执行 rz；minicom 执行 Send Files；  
+	> 也可不使用 minicom，直接在 mac 终端执行 sz 命令。  
+- Host macOS 从 Remote raspbian 下载文件（Remote raspbian 上传文件到 Host macOS）：minicom 执行 Receive Files；raspbian(lrzsz) 执行 sz。  
+	> 也可不使用 minicom，直接在 mac 终端执行 rz 命令。  
 
 ## Send Files(sz)
 在 raspbian 当前目录（~/Downloads）执行 rx 命令接收文件。
@@ -264,8 +270,6 @@ rx waiting to receive.
 ```
 
 ![RPi-rz_minicom-sz](./RPi-rz_minicom-sz.gif)
-
-传输速度较慢，仅适合传输小文件；若要传输大文件，还是建议接好网线配好网络，采用基于 SSH 的 SCP/SFTP 传输协议。
 
 ## Receive Files(rz)
 在 macOS/minicom 上通过 rz 接收文件，在 raspbian 中执行 sz 发送文件。
