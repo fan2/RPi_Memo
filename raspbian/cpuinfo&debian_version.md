@@ -90,6 +90,11 @@ Linux version 4.9.41-v7+ (dc4@dc4-XPS13-9333) (gcc version 4.9.3 (crosstool-NG c
 pi@raspberrypi:~ $ cat /etc/issue
 Raspbian GNU/Linux 9 \n \l
 
+pi@raspberrypi:~$ more /boot/issue.txt
+Raspberry Pi reference 2017-09-07
+Generated using pi-gen, https://github.com/RPi-Distro/pi-gen, 496e41575eeb9fa13f
+394ffb407b7bc1d00b21c2, stage5
+
 pi@raspberrypi:~ $ cat /etc/debian_version 
 9.1
 
