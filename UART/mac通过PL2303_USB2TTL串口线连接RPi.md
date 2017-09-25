@@ -62,6 +62,7 @@ pi@raspberrypi:~$ ls /dev/tty*
 > [Raspberry Pi 3 UART Boot Overlay Part Two](http://www.briandorey.com/post/Raspberry-Pi-3-UART-Boot-Overlay-Part-Two)  
 > [树莓派3串口使用问题的解决](http://ukonline2000.com/?p=880)  
 > [树莓派3硬件串口的使用及编程](http://etrd.org/2017/01/29/%E6%A0%91%E8%8E%93%E6%B4%BE3%E7%A1%AC%E4%BB%B6%E4%B8%B2%E5%8F%A3%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8F%8A%E7%BC%96%E7%A8%8B/)  
+> [树莓派3B中串口设置成外接控制器](http://www.geek-workshop.com/archiver/tid-27060.html)  
 
 ## 方式1：修改配置文件
 此时，我们还没有进入 raspbian 系统，没法直接配置。  
