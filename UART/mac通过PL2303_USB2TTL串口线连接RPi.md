@@ -6,9 +6,6 @@
 [RPi Serial Connection](http://elinux.org/RPi_Serial_Connection)  
 [THE RASPBERRY PI UARTS](https://www.raspberrypi.org/documentation/configuration/uart.md)  
 
-[How do I make serial work on the Raspberry Pi3](https://raspberrypi.stackexchange.com/questions/45570/how-do-i-make-serial-work-on-the-raspberry-pi3)  
-[How can I test if the serial / UART is good on a Raspberry Pi?](https://raspberrypi.stackexchange.com/questions/26593/how-can-i-test-if-the-serial-uart-is-good-on-a-raspberry-pi)  
-
 # mac 安装 PL2303 USB2TTL 驱动
 下载安装 [PL2303 Mac OS X Driver](http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=229&pcid=41)，安装完成要求重启。  
 macOS 安装好 PL2303 USB2TTL 驱动后，网络偏好设置中将会多出一项名为 `USB-Serial Controller` 的服务配置项。  
@@ -41,11 +38,36 @@ PL2303 USB2TTL 转换串口板的四根线如下图：
 # RPi 启用串口
 根据 Raspberry Pi 文档 [The Raspberry Pi UARTs](https://www.raspberrypi.org/documentation/configuration/uart.md) 中的描述。
 
+```Shell
+pi@raspberrypi:~$ ls /dev/serial*
+/dev/serial0  /dev/serial1
+```
+
+```Shell
+pi@raspberrypi:~$ ls /dev/tty*
+/dev/tty    /dev/tty19  /dev/tty3   /dev/tty40  /dev/tty51  /dev/tty62
+/dev/tty0   /dev/tty2   /dev/tty30  /dev/tty41  /dev/tty52  /dev/tty63
+/dev/tty1   /dev/tty20  /dev/tty31  /dev/tty42  /dev/tty53  /dev/tty7
+/dev/tty10  /dev/tty21  /dev/tty32  /dev/tty43  /dev/tty54  /dev/tty8
+/dev/tty11  /dev/tty22  /dev/tty33  /dev/tty44  /dev/tty55  /dev/tty9
+/dev/tty12  /dev/tty23  /dev/tty34  /dev/tty45  /dev/tty56  /dev/ttyAMA0
+/dev/tty13  /dev/tty24  /dev/tty35  /dev/tty46  /dev/tty57  /dev/ttyprintk
+/dev/tty14  /dev/tty25  /dev/tty36  /dev/tty47  /dev/tty58  /dev/ttyS0
+/dev/tty15  /dev/tty26  /dev/tty37  /dev/tty48  /dev/tty59
+/dev/tty16  /dev/tty27  /dev/tty38  /dev/tty49  /dev/tty6
+/dev/tty17  /dev/tty28  /dev/tty39  /dev/tty5   /dev/tty60
+/dev/tty18  /dev/tty29  /dev/tty4   /dev/tty50  /dev/tty61
+```
+
+> [Raspberry Pi 3 UART Boot Overlay Part Two](http://www.briandorey.com/post/Raspberry-Pi-3-UART-Boot-Overlay-Part-Two)  
+> [树莓派3串口使用问题的解决](http://ukonline2000.com/?p=880)  
+> [树莓派3硬件串口的使用及编程](http://etrd.org/2017/01/29/%E6%A0%91%E8%8E%93%E6%B4%BE3%E7%A1%AC%E4%BB%B6%E4%B8%B2%E5%8F%A3%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8F%8A%E7%BC%96%E7%A8%8B/)  
+
 ## 方式1：修改配置文件
 此时，我们还没有进入 raspbian 系统，没法直接配置。  
 实际上，我们可以将安装 raspbian 系统的 microSD 卡从 RPi 再次取出，放入读卡器插入 mac USB 口。此时，macOS 会自动加载 SD 卡，在 finder 中可进入 MS-DOS FAT32 格式的 boot 文件夹，修改对应的引导配置文件。
 
-根据 [pi 3 - How do I make serial work on the Raspberry Pi3 - Raspberry Pi Stack Exchange](https://raspberrypi.stackexchange.com/questions/45570/how-do-i-make-serial-work-on-the-raspberry-pi3) 中 naseer mohamad 的回答：
+根据 [How do I make serial work on the Raspberry Pi3](https://raspberrypi.stackexchange.com/questions/45570/how-do-i-make-serial-work-on-the-raspberry-pi3) 中 naseer mohamad 的回答：
 
 Add device tree to `/boot/config.txt` to disable the Raspberry Pi 3 bluetooth.
 
@@ -365,11 +387,6 @@ Copyright (C) Miquel van Smoorenburg.
 
 - 按下 <kbd>a</kbd> 进入 - **Serial Device** 编辑模式，需改为 `/dev/tty.usbserial`。  
 - 按下 <kbd>f</kbd> 进入 - **Hardware Flow Control**  编辑模式，修改为 `NO` 关闭流控。
-
-> [Configure minicom to use hardware flow control](https://stackoverflow.com/questions/16726559/configure-minicom-to-use-hardware-flow-control)  
-> [RTS/CTS and DTR/DSR Flow Control](http://www.tldp.org/HOWTO/Serial-HOWTO.html#toc19.4)  
-> [Hardware Flow Control (RTS/CTS etc.)](http://www.tldp.org/HOWTO/Text-Terminal-HOWTO.html#toc11.7)  
-> [Raspberry Pi 3 Hardware Flow Control](http://www.deater.net/weave/vmwprod/hardware/pi-rts/)  
 
 ![3-minicom-Serial_port_setup-[A]-[F]-modified](./3-serial_connection/minicom/3-minicom-Serial_port_setup-[A]-[F]-modified.png)
 
