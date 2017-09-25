@@ -182,7 +182,7 @@ Setting up lrzsz (0.12.21-8) ...
 Processing triggers for man-db (2.7.6.1-2) ...
 ```
 
-关于 apt 参考 Raspberry 组织的官方文档：[APT](https://www.raspberrypi.org/documentation/linux/software/apt.md)。
+关于 [apt](https://en.wikipedia.org/wiki/APT_(Debian)) 参考 Raspberry 组织的官方文档：[APT](https://www.raspberrypi.org/documentation/linux/software/apt.md)。
 
 2. 执行 `sz -h` 查看发送组件命令 sz 的帮助说明：
 
