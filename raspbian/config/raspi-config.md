@@ -3,7 +3,7 @@
 
 在系统偏好菜单 `Preferences | Raspberry Pi Configuration` 中可修改相关系统配置。
 
-![Raspberry_Pi_Configuration](Raspberry_Pi_Configuration.png)
+![Raspberry_Pi_Configuration](./Raspberry_Pi_Configuration/Raspberry_Pi_Configuration.png)
 
 ## System
 ![1-System](./Raspberry_Pi_Configuration/1-System.png)  
@@ -18,6 +18,10 @@
 ![4-Localisation](./Raspberry_Pi_Configuration/4-Localisation.png)  
 
 # raspi-config(CUI)
+除了进入图形用户界面（GUI）使用键鼠修改系统偏好设置，还可以在控制终端通过命令行（CUI）工具 `raspi-config` 修改配置参数。
+
+无论是通过 GUI 还是 CUI 修改系统配置，都会同步修改 `/boot/config.txt` 和一些其他的 raspbian/Linux 系统配置文件。有些修改配置需要重启系统才能生效。
+
 ```Shell
 sudo raspi-config
 
@@ -47,7 +51,7 @@ Raspberry Pi 3 Model B Rev 1.2
 <kbd>↑</kbd><kbd>↓</kbd>：选择选项。  
 <kbd>←</kbd><kbd>→</kbd>：切换菜单（Select / Finish）。  
 
-![raspi-config](raspi-config.png)
+![raspi-config](./raspi-config/raspi-config.png)
 
 ## 1 Change User Password
 raspbian 默认账户为 pi，默认密码为 raspberry。  
