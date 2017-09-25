@@ -1,6 +1,13 @@
 [Serial Terminal Basics](https://learn.sparkfun.com/tutorials/terminal-basics/tips-and-tricks)  
 [Mac's and serial TTY's](https://pbxbook.com/other/mac-tty.html)  
+
+[UART](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter) / [UART接口](http://blog.chinaunix.net/uid-24148050-id-170849.html) / [UART串行通信](http://www.51hei.com/bbs/dpj-22296-1.html) / [认识UART接口](http://blog.csdn.net/junyeer/article/details/46761853)  
+
 [RPi Serial Connection](http://elinux.org/RPi_Serial_Connection)  
+[THE RASPBERRY PI UARTS](https://www.raspberrypi.org/documentation/configuration/uart.md)  
+
+[How do I make serial work on the Raspberry Pi3](https://raspberrypi.stackexchange.com/questions/45570/how-do-i-make-serial-work-on-the-raspberry-pi3)  
+[How can I test if the serial / UART is good on a Raspberry Pi?](https://raspberrypi.stackexchange.com/questions/26593/how-can-i-test-if-the-serial-uart-is-good-on-a-raspberry-pi)  
 
 # mac 安装 PL2303 USB2TTL 驱动
 下载安装 [PL2303 Mac OS X Driver](http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=229&pcid=41)，安装完成要求重启。  
@@ -95,6 +102,9 @@ dtoverlay=pi3‐disable‐bt
 > [MacOS: what's the difference between /dev/tty.* and /dev/cu.*?](https://stackoverflow.com/questions/8632586/macos-whats-the-difference-between-dev-tty-and-dev-cu)  
 > [choosing between /dev/tty.usbserial vs /dev/cu.usbserial](https://stackoverflow.com/questions/37688257/choosing-between-dev-tty-usbserial-vs-dev-cu-usbserial)  
 > [Difference between cu.* and tty.*](https://pastebin.com/WCC5qqav)  
+
+> [Linux 中 tty、pty、pts 的概念区别](http://7056824.blog.51cto.com/69854/276610)  
+> [Terminal，Shell，tty 和 console 的区别](https://www.zhihu.com/question/21711307)  
 
 # serial terminal
 ## [GNU Screen](https://www.gnu.org/software/screen/)
@@ -502,6 +512,9 @@ minicom configuration RPi.usbserial -c on -R utf8 -C minicom_rpi_log-$(date +%Y-
 
 ## [SecureCRT®](https://www.vandyke.com/products/securecrt/)
 SecureCRT client for Windows, Mac, and Linux provides rock-solid terminal emulation for computing professionals.
+
+[SecureCRT 8.1.4 一款终端仿真程序](http://xclient.info/s/securecrt.html?_=baf317d2a9932afca9b32c327f8a34c9)  
+[mac 安装 SecureCRT 连接串口调试](http://blog.csdn.net/XieYupeng520/article/details/47285371)  
 
 ## [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/)
 PuTTY is a free implementation of SSH and Telnet for Windows and Unix platforms, along with an `xterm` terminal emulator.
