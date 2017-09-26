@@ -35,7 +35,7 @@ PL2303 USB2TTL 转换串口板的四根线如下图：
 > [Read and Write From Serial Port With Raspberry Pi](http://www.instructables.com/id/Read-and-write-from-serial-port-with-Raspberry-Pi/)  
 > [How to Work With USB to TTL Converters Using Minicom on Mac](http://tinaunglinn.com/blog/2016/04/04/how-to-work-with-usb-to-ttl-converters-using-minicom-on-mac/)  
 
-# RPi 启用串口
+# RPi 3B 启用串口
 根据 Raspberry Pi 文档 [The Raspberry Pi UARTs](https://www.raspberrypi.org/documentation/configuration/uart.md) 中的描述。
 
 ```Shell
@@ -62,6 +62,7 @@ pi@raspberrypi:~$ ls /dev/tty*
 > [Raspberry Pi 3 UART Boot Overlay Part Two](http://www.briandorey.com/post/Raspberry-Pi-3-UART-Boot-Overlay-Part-Two)  
 > [树莓派3串口使用问题的解决](http://ukonline2000.com/?p=880)  
 > [树莓派3硬件串口的使用及编程](http://etrd.org/2017/01/29/%E6%A0%91%E8%8E%93%E6%B4%BE3%E7%A1%AC%E4%BB%B6%E4%B8%B2%E5%8F%A3%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8F%8A%E7%BC%96%E7%A8%8B/)  
+> [树莓派3B设置通用串口的方法](http://blog.csdn.net/berryfish/article/details/60147631)  
 > [树莓派3B中串口设置成外接控制器](http://www.geek-workshop.com/archiver/tid-27060.html)  
 
 ## 方式1：修改配置文件
@@ -153,18 +154,25 @@ GNU Screen 目前最新版本为 [v.4.3.0](https://savannah.gnu.org/forum/forum.
 > [Using Screen on Mac OS X ](http://www.kinnetica.com/2011/05/29/using-screen-on-mac-os-x/)  
 > [Taking Command of the Terminal with GNU Screen](https://www.linux.com/learn/taking-command-terminal-gnu-screen)  
 > [Use 'screen' as a serial terminal emulator](http://hints.macworld.com/article.php?story=20061109133825654)  
+> [使用 GNU Screen 管理终端会话](https://meiriyitie.com/2015/07/15/using-gnu-screen-to-manage-persistent-terminal-sessions/)  
+> [使用 Screen 创建并管理多个 shell](https://www.ibm.com/developerworks/cn/aix/library/au-gnu_screen/index.html)  
+> [使用 Screen 指令操控 UNIX/Linux 終端機的教學與範例](https://blog.gtwang.org/linux/screen-command-examples-to-manage-linux-terminals/)  
 
 ### .screenrc
-screen 的基本配置文件是 `~/.screenrc`（当前用户目录下的一个隐藏文件），类似 vim 的配置文件（`~/.vimrc`）。如果没有可以手动创建一个。  
+启动 screen 时，默认加载配置文件 `~/.screenrc`（如果存在的话），`~/.screenrc` 是当前用户目录下的一个隐藏文件，类似 vim 的配置文件 `~/.vimrc`。
 
-启动 screen 时，可携带 `-c` 参数加载指定配置文件（Read configuration file instead of '.screenrc'.）。
+启动 screen 时，可携带 `-c` 参数加载指定的配置文件（Read configuration file instead of '.screenrc'.）。
 
-在配置文件中增加一行 `startup_message off`，则下次启动 screen，不会再出现欢迎介绍页面。
+如果不存在 `~/.screenrc`，可以手动创建一个。例如我们创建名为 `rpi_uart.screenrc` 的配置文件，用于连接 Raspberry Pi 串口。  
+在配置文件中增加一行 `startup_message off`，则下次执行 `screen -c rpi_uart.screenrc` 启动 screen，将不再出现欢迎介绍页面。  
 
 ```Shell
 faner@THOMASFAN-MB0:~|⇒  cat .screenrc 
 startup_message off
-caption always "%{= Wk}%-w%{= Bw}%n %t%{-}%+w %-="
+#starting screen for Raspberry Pi's UART
+screen -fn -t "rpi_uart" /dev/cu.usbserial 115200 8N1
+
+faner@THOMASFAN-MB0:~|⇒  screen -c rpi_uart.screenrc
 ```
 
 > [screenrc简单设置](http://blog.csdn.net/asx20042005/article/details/7035115)  
@@ -204,13 +212,22 @@ Command key:  <kbd>^</kbd><kbd>a</kbd>，前置引导键，意义同 minicom 的
 detach screen 回到标准终端，可运行 `screen -list` 命令查看打开过和正在活跃（Attached）的 screen session。  
 包括 detach、reset 和关闭（<kbd>ctrl</kbd>+<kbd>w</kbd>）的 Detached 会话；不包括 kill 和 quit 至 terminated 的会话。  
 
+```Shell
+⇒  screen -ls                 
+There is a screen on:
+	660.ttys000.THOMASFAN-MB0	(Attached)
+1 Socket in /var/folders/k6/7f8bh1ws4ygfg9pcq48w5tk00000gn/T/.screen.
+```
+
 ![screen-list](./3-serial_connection/screen/screen-list.png)
 
+关于 screen session 的状态，可参考 [GNU Screen](http://lugatgt.org/content/gnu_screen/downloads/presentation.pdf) | Screen Modes。  
 执行 `screen -r <PID>` 可恢复（reattach）已经 Detached 的会话；-R 为尝试恢复，否则新建会话。
 
 在运行 screen 期间，为区分编辑模式，可通过 <kbd>ctrl</kbd>+<kbd>a</kbd>,<kbd>:</kbd> 快捷键明确进入命令行操作模式。
 
 > [GNU Screen简单操作](http://blog.csdn.net/asx20042005/article/details/7035093)  
+> [SCREEN Quick Reference](http://aperiodic.net/screen/quick_reference)  
 > [GNU Screen cheat-sheet](http://arundelo.livejournal.com/390.html)  
 > [How to scroll in GNU Screen](https://www.saltycrane.com/blog/2008/01/how-to-scroll-in-gnu-screen/)  
 

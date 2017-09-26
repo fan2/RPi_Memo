@@ -1,0 +1,23 @@
+startup_message off # remove startup message
+
+# http://blog.csdn.net/asx20042005/article/details/7035115
+#caption always "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%H %Y/%m/%d "
+#caption always "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y} %Y/%m/%d "
+hardstatus on
+hardstatus alwayslastline "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y} %Y/%m/%d %c:%s"
+defscrollback 5000  #设置屏显可回滚缓冲行数
+vbell off           #关闭可视bell
+autodetach on       #断线的时候自动detach
+#select 0            #选择screen0作为选中窗口
+
+# http://lugatgt.org/content/gnu_screen/downloads/presentation.pdf
+nethack on                  #slightly entertaining messages
+#hardstatus on               #toggle on
+#hardstatus alwayslastline   #how to handle
+#backtick 42 1 1 cat /tmp/.temp
+#hardstatus string "%{kw}%-w%{r}%n,%t%{-}%+w %42‘%=%D %m/%d/%y :: [%c:%s]"
+
+#starting screen for Raspberry Pi's UART
+screen -fn -t "rpi_uart" /dev/cu.usbserial 115200 8N1
+
+#Cannot open line '/dev/cu.usbserial' for R/W: Resource busy
