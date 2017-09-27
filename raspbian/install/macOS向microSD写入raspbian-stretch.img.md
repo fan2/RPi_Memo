@@ -104,3 +104,7 @@ faner@THOMASFAN-MB0:~|⇒  diskutil list
 ## references
 [树莓派启动：for Mac](http://blog.csdn.net/selina013/article/details/51029900)  
 [树莓派Ｂ＋使用心得](http://www.cnblogs.com/uestc-mm/p/6290521.html)  
+
+[Raspbian Stretch not 64bit?](https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=192321&sid=505b5ad936e7d4f9a69253b89ced4b3a)  
+[Raspberry Pi 3 has 64-bit CPU, but 32-bit Raspbian OS (for now)](http://linuxgizmos.com/raspberry-pi-3-has-a-64-bit-cpu-but-a-32-bit-raspbian-os/)  
+[树莓派升级arm64 debian stretch小记](http://www.jianshu.com/p/7b962b038a6c)  
