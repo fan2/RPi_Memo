@@ -33,3 +33,25 @@ Upgrade any held back packages:
 Start by fully upgrade your current Raspbian system before you proceed with a Stretch upgrade.
 
 ## [How to Update Raspbian: All you need to know!](https://pimylifeup.com/update-raspbian/)
+
+## source
+`/etc/apt/sources.list`：
+
+```Shell
+#中科大的源 自己ping后发现比较适合我(深圳ping50ms平均)
+deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ wheezy main contrib non-free
+deb-src http://mirrors.ustc.edu.cn/raspbian/raspbian/ wheezy main contrib non-free
+```
+
+### 清除 apt-get update 失败后的缓冲文件
+**原因**：当update不成功，直接upgrade会提示失败。  
+此外如更换了软件源，也会需要清除缓存数据。  
+(这一步更具需求选择执行)
+
+```Shell
+sudo rm -vf /var/lib/apt/lists/*
+sudo mkdir -pv /var/lib/apt/lists/partial
+sudo apt-get clean
+sudo apt-get update ##rebuilds the index files
+sudo apt-get upgrade
+```
