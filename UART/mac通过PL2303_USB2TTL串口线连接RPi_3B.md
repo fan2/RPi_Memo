@@ -59,6 +59,7 @@ pi@raspberrypi:~$ ls /dev/tty*
 /dev/tty18  /dev/tty29  /dev/tty4   /dev/tty50  /dev/tty61
 ```
 
+> [Pi3-Serial_notes](https://github.com/DexterInd/Raspbian_For_Robots/blob/291f949eb40d329f62ca23b5299a51d66c743abb/pi3/Pi3-Serial_notes.txt)  
 > [Raspberry Pi 3 UART Boot Overlay Part Two](http://www.briandorey.com/post/Raspberry-Pi-3-UART-Boot-Overlay-Part-Two)  
 > [树莓派3串口使用问题的解决](http://ukonline2000.com/?p=880)  
 > [树莓派3硬件串口的使用及编程](http://etrd.org/2017/01/29/%E6%A0%91%E8%8E%93%E6%B4%BE3%E7%A1%AC%E4%BB%B6%E4%B8%B2%E5%8F%A3%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8F%8A%E7%BC%96%E7%A8%8B/)  
@@ -151,9 +152,11 @@ GNU Screen 目前最新版本为 [v.4.3.0](https://savannah.gnu.org/forum/forum.
 ![screen](./3-serial_connection/screen/screen.png)
 
 > [GNU Screen](http://lugatgt.org/content/gnu_screen/downloads/presentation.pdf)  
+> [GNU Screen](https://wiki.archlinux.org/index.php/GNU_Screen#Use_256_colors) @archlinux  
 > [Using Screen on Mac OS X ](http://www.kinnetica.com/2011/05/29/using-screen-on-mac-os-x/)  
 > [Taking Command of the Terminal with GNU Screen](https://www.linux.com/learn/taking-command-terminal-gnu-screen)  
 > [Use 'screen' as a serial terminal emulator](http://hints.macworld.com/article.php?story=20061109133825654)  
+> [screen-session](https://github.com/skoneka/screen-session) - a collection of tools for GNU Screen  
 > [使用 GNU Screen 管理终端会话](https://meiriyitie.com/2015/07/15/using-gnu-screen-to-manage-persistent-terminal-sessions/)  
 > [使用 Screen 创建并管理多个 shell](https://www.ibm.com/developerworks/cn/aix/library/au-gnu_screen/index.html)  
 > [使用 Screen 指令操控 UNIX/Linux 終端機的教學與範例](https://blog.gtwang.org/linux/screen-command-examples-to-manage-linux-terminals/)  
@@ -204,7 +207,7 @@ Command key:  <kbd>^</kbd><kbd>a</kbd>，前置引导键，意义同 minicom 的
 	-  切换到其他 screen session(window)：<kbd>ctrl</kbd>+<kbd>a</kbd>，<kbd>ctrl</kbd>+<kbd>a</kbd>。  
 - **reset**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>Z</kbd>（<kbd>shift</kbd>+<kbd>z</kbd>） 执行重置，退回到标准终端提示 `[1]  + 5265 suspended  screen`。  
 - **detach**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>ctrl</kbd>+<kbd>D</kbd>（或直接 literal <kbd>d</kbd>） 执行detach（所有会话），退回到标准终端提示 `[detached]`。  
-- **kill**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>ctrl</kbd>+<kbd>K</kbd>（或直接 literal <kbd>k</kbd>）杀死当前会话。  
+- **kill**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>ctrl</kbd>+<kbd>K</kbd>（或直接 literal <kbd>k</kbd>）杀死当前会话（正常情况不会再出现在 `screen -list` 中）。  
 - **quit**: 先按下 <kbd>ctrl</kbd>+<kbd>a</kbd>，再按下 <kbd>ctrl</kbd>+<kbd>\\</kbd> 杀死所有会话并退出 screen，回到标准终端提示 `[screen is terminating]`。  
 
 按下 <kbd>enter</kbd> 键退出帮助页面。
