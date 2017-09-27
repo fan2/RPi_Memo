@@ -1,0 +1,7 @@
+#gnu-screen-for-win.screenrc
+#[GNU Screen for the win!](http://blog.boreas.ro/2008/03/gnu-screen-for-win.html)
+
+log off
+hardstatus alwayslastline "%{-b ck} %?%-w%?%{+b}%n%f %t%{-b} %?%+w%? %= %l %D %d/%m/%Y %0c "
+hardstatus on
+escape ^Tt
