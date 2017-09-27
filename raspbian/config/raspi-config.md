@@ -69,12 +69,16 @@ raspbian 默认机器名称为 raspberrypi，该项可修改：
 
 ![4-Localisation_Options-Items](./raspi-config/4-Localisation_Options/4-Localisation_Options-Items.png)
 
-- [] en_GB.UTF-8 UTF-8  
-- [*] en_US.UTF-8 UTF-8  
-- [*] zh_CN.GBK GBK  
-- [*] zh_CN.UTF-8 UTF-8  
+- [] `en_GB.UTF-8 UTF-8`  
+- [*] `en_US.UTF-8 UTF-8`  
+- [*] `zh-CN GB2312`  
+- [*] `zh_CN.GB18030 GB18030`  
+- [*] `zh_CN.GBK GBK`  
+- [*] `zh_CN.UTF-8 UTF-8`  
 
-![4-Localisation_Options-Change_Locale](./raspi-config/4-Localisation_Options/4-Localisation_Options-Change_Locale.png)
+![4-Localisation_Options-Change_Locales-selected](./raspi-config/4-Localisation_Options/4-Localisation_Options-Change_Locales-selected.png)
+
+![4-Localisation_Options-Change_Locales-default](./raspi-config/4-Localisation_Options/4-Localisation_Options-Change_Locales-default.png)
 
 ## 5 Interfacing Options
 此项可配置一些接口选项，对应 GUI 图形界面的系统偏好菜单 `Preferences | Raspberry Pi Configuration | Interfaces`。
@@ -109,3 +113,11 @@ raspbian 默认分辨率为 720x480，可以将其调整到支持的最高分辨
 ![A5-Resolution](./raspi-config/7-Advanced_Options/A5-Resolution/A5-Resolution.png)
 
 ![A5-Resolution-Choose](./raspi-config/7-Advanced_Options/A5-Resolution/A5-Resolution-Choose.png)
+
+接显示器默认的分辨率太高，有可能会导致树莓派功率支持不住，屏幕闪或者出横线，建议折中设置成 1280x720p。
+
+# references
+[树莓派配置](http://wiki.jikexueyuan.com/project/raspberry-pi/rasp-config.html)  
+[树莓派综合配置](http://www.blogs8.cn/posts/bgce95)  
+[Raspberry Pi + XBMC 配置](http://scateu.me/2015/02/15/xbmc-raspberry-pi.html)  
+[Raspberry Pi安装配置和问题记录](http://tacy.github.io/blog/2013/02/10/raspberry-pi-notes/)  
