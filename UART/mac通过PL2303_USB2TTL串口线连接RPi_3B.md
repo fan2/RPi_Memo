@@ -61,6 +61,7 @@ pi@raspberrypi:~$ ls /dev/tty*
 
 > [Pi3-Serial_notes](https://github.com/DexterInd/Raspbian_For_Robots/blob/291f949eb40d329f62ca23b5299a51d66c743abb/pi3/Pi3-Serial_notes.txt)  
 > [Raspberry Pi 3 UART Boot Overlay Part Two](http://www.briandorey.com/post/Raspberry-Pi-3-UART-Boot-Overlay-Part-Two)  
+> [UART for Serial Console or HAT on Raspberry Pi 3](https://www.hackster.io/fvdbosch/uart-for-serial-console-or-hat-on-raspberry-pi-3-5be0c2)  
 > [树莓派3串口使用问题的解决](http://ukonline2000.com/?p=880)  
 > [树莓派3硬件串口的使用及编程](http://etrd.org/2017/01/29/%E6%A0%91%E8%8E%93%E6%B4%BE3%E7%A1%AC%E4%BB%B6%E4%B8%B2%E5%8F%A3%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8F%8A%E7%BC%96%E7%A8%8B/)  
 > [树莓派3B设置通用串口的方法](http://blog.csdn.net/berryfish/article/details/60147631)  
@@ -156,10 +157,6 @@ GNU Screen 目前最新版本为 [v.4.3.0](https://savannah.gnu.org/forum/forum.
 > [Using Screen on Mac OS X ](http://www.kinnetica.com/2011/05/29/using-screen-on-mac-os-x/)  
 > [Taking Command of the Terminal with GNU Screen](https://www.linux.com/learn/taking-command-terminal-gnu-screen)  
 > [Use 'screen' as a serial terminal emulator](http://hints.macworld.com/article.php?story=20061109133825654)  
-> [screen-session](https://github.com/skoneka/screen-session) - a collection of tools for GNU Screen  
-> [使用 GNU Screen 管理终端会话](https://meiriyitie.com/2015/07/15/using-gnu-screen-to-manage-persistent-terminal-sessions/)  
-> [使用 Screen 创建并管理多个 shell](https://www.ibm.com/developerworks/cn/aix/library/au-gnu_screen/index.html)  
-> [使用 Screen 指令操控 UNIX/Linux 終端機的教學與範例](https://blog.gtwang.org/linux/screen-command-examples-to-manage-linux-terminals/)  
 
 ### .screenrc
 启动 screen 时，默认加载配置文件 `~/.screenrc`（如果存在的话），`~/.screenrc` 是当前用户目录下的一个隐藏文件，类似 vim 的配置文件 `~/.vimrc`。
@@ -350,6 +347,9 @@ faner@THOMASFAN-MB0:~|⇒  kill 1439
 [1]    1438 terminated  screen /dev/tty.usbserial 115200
 ```
 
+尽管 GNU screen 是非常优秀的终端会话管理器，但是用作串口连接控制终端时不太合适，表现为经常出现僵死 screen 会话进程，无法 detach/kill 会话，也无法 (p)kill 结束进程。  
+为省心起见，建议还是使用 minicom 或 SecureCRT、PuTTY 作为串口连接控制终端。  
+
 ## [minicom](https://en.wikipedia.org/wiki/Minicom)
 [Minicom Project for debian](https://alioth.debian.org/projects/minicom/)  
 [minicom](https://linux.die.net/man/1/minicom) - friendly serial communication program  
@@ -485,8 +485,6 @@ minicom 连接上 RPi 之后，ls 列举中文目录或文件名显示乱码（s
 minicom configuration RPi.usbserial -c on -R utf8
 ```
 
-为简便起见，macOS 下建议还是使用自带的 GNU screen 作为串口连接控制终端。
-
 ### Capture Log
 minicom 默认的 History Buffer Size 为 2000，如果想记录回看所有的运行命令，则需要 screen log 那样的日志功能。
 
@@ -559,4 +557,6 @@ PuTTY is a free implementation of SSH and Telnet for Windows and Unix platforms,
 
 - [Download PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html): latest release (0.70)  
 
-> [What are SSH, Telnet and Rlogin?](https://the.earth.li/~sgtatham/putty/0.70/htmldoc/Chapter1.html#intro)
+> [What are SSH, Telnet and Rlogin?](https://the.earth.li/~sgtatham/putty/0.70/htmldoc/Chapter1.html#intro)  
+> [PUTTY FOR MAC OS X](https://www.ssh.com/ssh/putty/mac/)  
+> [How to Install PuTTY on OS X](http://www.dotresults.com/2009/10/28/how-to-install-putty-on-os-x/)  
