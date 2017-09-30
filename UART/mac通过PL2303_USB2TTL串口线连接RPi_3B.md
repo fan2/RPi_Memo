@@ -68,40 +68,8 @@ pi@raspberrypi:~$ ls -ls /dev
 > [树莓派3B设置通用串口的方法](http://blog.csdn.net/berryfish/article/details/60147631)  
 > [树莓派3B中串口设置成外接控制器](http://www.geek-workshop.com/archiver/tid-27060.html)  
 
-## 方式1：修改配置文件
-此时，我们还没有进入 raspbian 系统，没法直接配置。  
-实际上，我们可以将安装 raspbian 系统的 microSD 卡从 RPi 再次取出，放入读卡器插入 mac USB 口。此时，macOS 会自动加载 SD 卡，在 finder 中可进入 MS-DOS FAT32 格式的 boot 文件夹，修改对应的引导配置文件。
-
-根据 [How do I make serial work on the Raspberry Pi3](https://raspberrypi.stackexchange.com/questions/45570/how-do-i-make-serial-work-on-the-raspberry-pi3) 中 naseer mohamad 的回答：
-
-Add device tree to `/boot/config.txt` to disable the Raspberry Pi 3 bluetooth.
-
-```Shell
-sudo vi /boot/config.txt
-```
-
-Add at the end of the file 
-
-- if you want to change the blutooth to miniuart port(bad)
-
-```Shell
-dtoverlay=pi3‐miniuart‐bt
-```
-
-- if you want to disable the blutooth(good)
-
-```Shell
-dtoverlay=pi3‐disable‐bt
-```
-
-根据 Arnout 的回答，只需要在 `/boot/config.txt` 末尾增加一行禁用蓝牙：
-
-```Shell
-dtoverlay=pi3‐disable‐bt
-```
-
-## 方式2：进入GUI修改系统设置
-旧版的 RPi 需要一系列的配置命令才能启用串口，最新版在通过 USB 连接键盘鼠标、HDMI 接上显示屏后，进入系统界面即可设置。  
+## enable_uart
+旧版的 RPi 需要一系列的配置命令才能启用串口，最新版的 RPi 3B 在通过 USB 连接鼠标键盘、HDMI 连接显示屏后，进入系统界面即可设置使能串口。  
 进入操作系统的图形界面后，左侧第一个系统菜单 `System Menu | Raspberry Pi Configuration | Interfaces`，默认 Camera、SSH、VNC、SPI、I2C、Serial、1-Write、Remote GPIO 等设备均为禁用（Disabled）状态，可在此启用串口（Serial）。同时建议开启 SSH 和 VNC 服务。  
 
 > - **SSH**: Enable remote access to this Pi via SSH  
@@ -110,14 +78,20 @@ dtoverlay=pi3‐disable‐bt
 
 ![1-raspbian-Raspberry_Pi_Configuration-Interfaces-Enable_Serial_Connection](1-raspbian_configuration/1-raspbian-Raspberry_Pi_Configuration-Interfaces-Enable_Serial_Connection.JPG)
 
-将 Serial 设置为 **Enabled** 状态后，重启进入系统，`/boot/config.txt` 中会多出 `enable_uart=1` 项。  
-同时设备树下（`/dev/`）将会多出节点 `tty.usbserial` 和 `cu.usbserial`，此即表明  PL2303 串口板连接成功。  
+将 Serial 设置为 *Enabled* ，对应系统配置文件 `/boot/config.txt` 中将会增加一行 **`enable_uart=1`**。
+
+> `enable_uart`: Enable the primary/console UART (ttyS0 on a Pi 3, ttyAMA0 otherwise)
+
+重启 RPi 3B/raspbian，若 macOS 通过 PL2303 USB2TTL 串口板连接上 RPi 3B 之后，设备树下（`/dev/`）多出节点 `tty.usbserial` 和 `cu.usbserial`，则表明串口连接成功。  
 
 ![mac-dev-cu&tty](2-PL2303-USB2TTL/mac-dev-cu&tty.png)
 
 关于 TTY 和 Terminal 的相关概念可参考 [Console-TTY-Terminal.md](./Console-TTY-Terminal.md)。
 
-## tty vs cu
+> 如果没有现成的键鼠屏，我们可以将安装 raspbian 系统的 microSD 卡从 RPi 取出，重新放入读卡器插入 mac USB 口。
+> 此时，macOS 会自动加载 SD 卡，在 finder 中可进入 MS-DOS FAT32 格式的 boot 文件夹，为配置文件 config.txt 添加一行 `enable_uart=1`，重新将 SD 卡插入 Raspberry Pi 3B 上电重启即可启用串口。
+
+### tty vs cu
 > The difference between the two is that a **TTY** device is used to call into a device/system, and the **CU** device (call-up) is used to call out of a device/system. Thus, this allows for two-way communication at the same time (full-duplex). 
 > 
 > You might notice that each serial device shows up twice in `/dev`, once as a `tty.*` and once as a `cu.*`. So, what's the difference? Well, **TTY** devices are for <u>calling into</u> UNIX systems, whereas CU (Call Up) devices are for <u>calling out</u> from them (eg, modems). We want to *call out* from our Mac, so `/dev/cu.*` is the correct device to use.  
@@ -132,6 +106,64 @@ dtoverlay=pi3‐disable‐bt
 
 > [Linux 中 tty、pty、pts 的概念区别](http://7056824.blog.51cto.com/69854/276610)  
 > [Terminal，Shell，tty 和 console 的区别](https://www.zhihu.com/question/21711307)  
+
+## dtoverlay
+很多资料中都会提到，要配置 dtoverlay(device tree overlay) 才能使用串口。  
+实际我手头的 RPi 3B/raspbian 只需在 GUI/CUI 中配置使能 UART（enable_uart=1），串口即工作正常。  
+可以阅读 `/boot/overlays/README` 帮助文档，或执行 `dtoverlay -h ` 命令查看相应 [dtoverlay](https://techfantastic.wordpress.com/2013/11/15/beaglebone-black-device-tree-overlay/) 的作用。  
+
+在 RPi 3 之前，硬串口 PL011 默认分配给控制台输出( Linux console output)。到了 RPi 3 集成板载蓝牙，硬串口 PL011 默认分配给了板载蓝牙模块，采用迷你串口（mini UART）作为 Linux console output。  
+硬串口 PL011 UART 带有时钟源，可独立调整串口的速率和模式；mini UART 依赖内核提供的时钟参考，而内核的时钟频率本身是不稳定的，例如可能进入休眠导致导致 mini UART 无法正常使用。  
+
+在 `/boot/config.txt` 中设置 dtoverlay=pi3‐miniuart‐bt 或 pi3-disable-bt 都可恢复硬串口（UART0/ttyAMA0）用作控制台输出。
+
+- ***`pi3-miniuart-bt`***: **switches** the Raspberry Pi 3 and Raspberry Pi Zero W Bluetooth function to use the mini UART (ttyS0), and <u>restores UART0/ttyAMA0 to GPIOs 14 and 15</u>.  
+- ***`pi3-disable-bt`***: **disables** the Bluetooth device and <u>restores UART0/ttyAMA0 to GPIOs 14 and 15</u>.  
+
+### pi3‐miniuart‐bt
+
+```Shell
+pi@raspberrypi:~$ dtoverlay -h pi3-miniuart-bt
+Name:   pi3-miniuart-bt
+
+Info:   Switch Pi3 Bluetooth function to use the mini-UART (ttyS0) and restore
+        UART0/ttyAMA0 over GPIOs 14 & 15. Note that this may reduce the maximum
+        usable baudrate.
+        N.B. It is also necessary to edit /lib/systemd/system/hciuart.service
+        and replace ttyAMA0 with ttyS0, unless you have a system with udev rules
+        that create /dev/serial0 and /dev/serial1, in which case use
+        /dev/serial1 instead because it will always be correct. Furthermore,
+        you must also set core_freq=250 in config.txt or the miniuart will not
+        work.
+
+Usage:  dtoverlay=pi3-miniuart-bt
+
+Params: <None>
+```
+
+拆文解字顾名思义，`pi3-miniuart-bt` 意即将 pi3 上的 mini UART 口用作 BT(BlueTooth) 模块。
+
+根据说明信息，通过设置 `dtoverlay=pi3-miniuart-bt` 可将 RPi 3B/raspbian 的 Linux Console 从 miniUART(ttyS0) 切换为 PL011 UART(ttyAMA0)，恢复 PL011(UART0/ttyAMA0) 用作 Linux console output。  
+
+### pi3-disable-bt
+
+```Shell
+pi@raspberrypi:~$ dtoverlay -h pi3-disable-bt
+Name:   pi3-disable-bt
+
+Info:   Disable Pi3 Bluetooth and restore UART0/ttyAMA0 over GPIOs 14 & 15
+        N.B. To disable the systemd service that initialises the modem so it
+        doesn't use the UART, use 'sudo systemctl disable hciuart'.
+
+Usage:  dtoverlay=pi3-disable-bt
+
+Params: <None>
+```
+
+拆文解字顾名思义，`pi3-disable-bt` 意即将 pi3 上的 BT(BlueTooth) 模块禁用。
+
+根据说明信息，通过设置 `dtoverlay=pi3-disable-bt` 禁用蓝牙之后，将恢复 PL011(UART0/ttyAMA0) 用作 Linux console output。  
+如果关闭 BT 模块，建议在 systemd 服务中执行 `sudo systemctl disable hciuart` 禁用板载蓝牙。  
 
 # serial terminal
 ## [GNU Screen](https://www.gnu.org/software/screen/)

@@ -1,7 +1,6 @@
+到 raspberrypi 官网的 [DOWNLOADS](https://www.raspberrypi.org/downloads/) 页下载最新的 [RASPBIAN](https://www.raspberrypi.org/downloads/raspbian/) 系统镜像（RASPBIAN STRETCH WITH DESKTOP），参考官方指导文档《[INSTALLING OPERATING SYSTEM IMAGES](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)》《[INSTALLING OPERATING SYSTEM IMAGES ON MAC OS](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md)》 ，完成向 microSD 烧写镜像。
 
-参考官方《INSTALLING OPERATING SYSTEM IMAGES ON MAC OS》 和 《Mac下安装树莓派系统raspbian》。
-
-将 microSD 读卡器插入电脑 USB 口，默认为 “Untitiled”，重命名为 “RPi”。
+将 microSD 读卡器插入电脑 USB 口，默认为 “Untitiled”，为方便辨识，可重命名为 “RPi”。
 
 ## 查看 microSD 卡信息
 在终端运行 `df –h` 命令查看挂载的设备：
