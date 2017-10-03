@@ -23,11 +23,15 @@ PL2303 USB2TTL 转换串口板的四根线如下图：
 
 面对 RASPBERRY PI 3 MODEL B 的 USB 和网口的 GPIO 引脚顺序：
 
-- 第3根为 GND，接 PL2303 黑线（GND）；  
-- 第4根 GPIO14 为 TXD0，接 PL2303 白线（RXD）；  
-- 第5根 GPIO15 为 RXD0，接 PL2303 绿线（TXD）；  
+- 第6根为 GND，接 PL2303 黑线（GND）；  
+- 第8根 GPIO14（3B下为GPIO15） 为 TXD0，接 PL2303 白线（RXD）；  
+- 第10根 GPIO15（3B下为GPIO16）为 RXD0，接 PL2303 绿线（TXD）；  
 
 ![RPi-serial-connection](2-PL2303-USB2TTL/RPi-serial-connection.png)
+
+如果接上风扇，红线接第4根 DC Power 5V，黑线接第6根地脚(GND)，则可将 PL2303 的黑线（地线）调整接到第14号地脚(GND)。
+
+![RPi-crust-fans](2-PL2303-USB2TTL/RPi-crust-fans-1.JPG)
 
 > [Raspberry Pi：透過序列埠登入系統](http://yehnan.blogspot.com/2013/09/raspberry-pi.html)  
 > [Getting Started with PL2303 USB to UART Converter](https://electrosome.com/pl2303-usb-to-uart-converter/)  
@@ -164,6 +168,11 @@ Params: <None>
 
 根据说明信息，通过设置 `dtoverlay=pi3-disable-bt` 禁用蓝牙之后，将恢复 PL011(UART0/ttyAMA0) 用作 Linux console output。  
 如果关闭 BT 模块，建议在 systemd 服务中执行 `sudo systemctl disable hciuart` 禁用板载蓝牙。  
+```Shell
+pi@raspberrypi:~$ sudo systemctl is-enabled hciuart
+enabled
+```
+
 
 # serial terminal
 ## [GNU Screen](https://www.gnu.org/software/screen/)
@@ -379,6 +388,8 @@ Press Meta-Z for help on special keys
 
 ![5-minicom-[minicom]-connect-welcome](./3-serial_connection/minicom/5-minicom-[minicom]-connect-welcome.png)
 
+![RPi-serial-connection-endpoint](2-PL2303-USB2TTL/RPi-serial-connection-endpoint.jpg)
+
 按下 <kbd>enter</kbd> 键，将会出现引导登录信息：
 
 ```Shell
@@ -459,7 +470,7 @@ minicom 默认的 History Buffer Size 为 2000，如果想记录回看所有的�
 例如，以下 minicom 启动通过 PL2303 USB2TTL 串口板连接 Raspberry Pi 串口，捕获日志增加了[日期时间后缀](http://blog.csdn.net/vichie2008/article/details/48440535)，保存到类似名为 `minicom_rpi_log-2017-09-23_11/50/27.log` 。
 
 ```Shell
-minicom configuration RPi.usbserial -w -C minicom_rpi_log-$(date +%Y-%m-%d_%H:%M:%S).log
+minicom configuration RPi.usbserial -w -R utf8 -C minicom_rpi_log-$(date +%Y-%m-%d_%H:%M:%S).log
 ```
 
 其他启动可选项：
