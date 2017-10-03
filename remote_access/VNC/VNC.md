@@ -46,6 +46,11 @@ vncserver -geometry 800x600
 
 [macOS Sierra: Allow Remote Desktop to access your computer](https://support.apple.com/kb/PH25556?viewlocale=en_US&locale=en_US)  
 
+## [xrdp](http://www.xrdp.org/)
+[Why use VNC and not XRDP?](https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=74998&sid=d1a6e24579bf1bd05ec6f3bd489e1bbf)  
+[Enabling Remote Desktop Access with xrdp on a Raspberry Pi](https://www.maketecheasier.com/enabling-remote-desktop-access-on-raspberry-pi/)  
+[Raspberry Pi 的基礎 - 遠端遙控 X-Window 桌面環境 (XRDP 篇)](http://blog.itist.tw/2015/02/use-xrdp-service-to-remote-controll-x-window-for-raspberry-pi.html)  
+
 ## references
 [树莓派 raspbian 开启VNC](http://bbs.shumeipaiba.com/thread-12-1-1.html)  
 [VNC远程登录树莓派的图形界面](http://shumeipai.nxez.com/2013/09/04/login-rpi-with-vnc.html?variant=zh-cn)  
