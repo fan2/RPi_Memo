@@ -1,37 +1,11 @@
-wlan0 RF-kill - Soft blocked
-===
+# wlan0 RF-kill - Soft blocked
 
-[Operation not possible due to RF-kill](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=146198)  
-[Wifi on Raspberry Pi 3](http://osric.com/chris/accidental-developer/2017/09/wifi-on-raspberry-pi-3/)  
+> [Wifi on Raspberry Pi 3](http://osric.com/chris/accidental-developer/2017/09/wifi-on-raspberry-pi-3/)  
+> [Operation not possible due to RF-kill](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=146198)  
+> [Wireless network configuration](https://wiki.archlinux.org/index.php/Wireless_network_configuration_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)) | Rfkill 警告  
 
-```Shell
-pi@raspberrypi:~$ ifconfig
-eth0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
-        ether b8:27:eb:15:21:7c  txqueuelen 1000  (Ethernet)
-        RX packets 0  bytes 0 (0.0 B)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 0  bytes 0 (0.0 B)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-
-lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
-        inet 127.0.0.1  netmask 255.0.0.0
-        inet6 ::1  prefixlen 128  scopeid 0x10<host>
-        loop  txqueuelen 1  (Local Loopback)
-        RX packets 9  bytes 524 (524.0 B)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 9  bytes 524 (524.0 B)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-```
-
-```Shell
-pi@raspberrypi:~$ ifconfig wlan0
-wlan0: flags=4098<BROADCAST,MULTICAST>  mtu 1500
-        ether b8:27:eb:40:74:29  txqueuelen 1000  (Ethernet)
-        RX packets 0  bytes 0 (0.0 B)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 0  bytes 0 (0.0 B)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-```
+## iwconfig
+执行 `iwconfig` 命令，根据显示的信息可知无线网卡 `wlan0` 尚未连接：
 
 ```Shell
 pi@raspberrypi:~$ iwconfig
@@ -45,28 +19,27 @@ wlan0     IEEE 802.11  ESSID:off/any
           Power Management:on
 ```
 
+## iwlist scan
+1. 执行 `iwlist wlan0 scan` 命令，查看无线网卡 `wlan0` 扫描到的 WiFi Access Points：
+
 ```Shell
-pi@raspberrypi:~$ sudo iwlist wlan0 scan
+pi@raspberrypi:~$ iwlist wlan0 scan
 wlan0     Interface doesn't support scanning : Network is down
-
-pi@raspberrypi:~$ sudo cat /etc/wpa_supplicant/wpa_supplicant.conf
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-country=CN
-
-network={
-        ssid="HiWiFi"
-        psk="***"
-        key_mgmt=WPA-PSK
-}
 ```
 
-如何配置，如何连接指定 SSID？
+> 提示无法扫描，原因是 `Network is down`。
+
+2. 执行 `ifconfig wlan0 up` 命令，尝试重新 bring wlan0 up：
 
 ```Shell
 pi@raspberrypi:~$ sudo ifconfig wlan0 up
 SIOCSIFFLAGS: Operation not possible due to RF-kill
 ```
+
+> 提示操作无法执行，原因是 `RF-kill`。
+
+## rfkill unblock
+1. 执行 `sudo rfkill list` 命令，列举查看 available rfkill-using devices：
 
 ```Shell
 pi@raspberrypi:~$ sudo rfkill list
@@ -75,7 +48,9 @@ pi@raspberrypi:~$ sudo rfkill list
         Hard blocked: no
 ```
 
-解决：执行 `sudo rfkill unblock wifi` 命令解除软阻塞。
+> 根据提示可知，Soft blocked！
+
+2. 解决：执行 `sudo rfkill unblock wifi` 命令解除软阻塞。
 
 ```Shell
 pi@raspberrypi:~$ sudo rfkill unblock wifi
@@ -85,30 +60,6 @@ pi@raspberrypi:~$ sudo rfkill list
         Hard blocked: no
 ```
 
-```Shell
-pi@raspberrypi:~$ ifconfig
-eth0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
-        ether b8:27:eb:15:21:7c  txqueuelen 1000  (Ethernet)
-        RX packets 0  bytes 0 (0.0 B)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 0  bytes 0 (0.0 B)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+解除软阻塞后，过一会儿 wlan0 恢复正常，自动扫描连接上上次的 WiFi（ESSID:"HiWiFi"）。
 
-lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
-        inet 127.0.0.1  netmask 255.0.0.0
-        inet6 ::1  prefixlen 128  scopeid 0x10<host>
-        loop  txqueuelen 1  (Local Loopback)
-        RX packets 17  bytes 1004 (1004.0 B)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 17  bytes 1004 (1004.0 B)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-
-wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet 192.168.1.106  netmask 255.255.255.0  broadcast 192.168.1.255
-        inet6 fe80::2028:ac98:d786:60e7  prefixlen 64  scopeid 0x20<link>
-        ether b8:27:eb:40:74:29  txqueuelen 1000  (Ethernet)
-        RX packets 1173  bytes 111556 (108.9 KiB)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 1519  bytes 1013928 (990.1 KiB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-```
+重新执行 ifconfig，可以看到 wlan0 连接成功，网络恢复正常。
