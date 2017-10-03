@@ -1,6 +1,14 @@
 到 raspberrypi 官网的 [DOWNLOADS](https://www.raspberrypi.org/downloads/) 页下载最新的 [RASPBIAN](https://www.raspberrypi.org/downloads/raspbian/) 系统镜像（RASPBIAN STRETCH WITH DESKTOP），参考官方指导文档《[INSTALLING OPERATING SYSTEM IMAGES](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)》《[INSTALLING OPERATING SYSTEM IMAGES ON MAC OS](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md)》 ，完成向 microSD 烧写镜像。
 
+从 elinux 的 [RPi SD cards](https://elinux.org/RPi_SD_cards) 网站上可以查看 RPi 支持哪些 SD 卡，可选购 [Raspbian Preinstalled SD cards](http://thepihut.com/products/raspbian-preinstalled-sd-card)。
+
+@img ![SanDisk](https://cdn.shopify.com/s/files/1/0176/3274/products/100040_2_grande_359fbc73-0e36-49ee-8aa7-8454ffc1c2e2_1024x1024.jpg)
+
+本人选购的是 Samsung EVO microSDXC 64G 的 TF(Micro SD) 卡。
+
 将 microSD 读卡器插入电脑 USB 口，默认为 “Untitiled”，为方便辨识，可重命名为 “RPi”。
+
+可使用第三方工具 [SDFormatter](https://www.sdcard.org/downloads/formatter_4/) 或 [Etcher](https://etcher.io/) 对 microSD 卡进行擦写，本文将使用 macOS 自带的磁盘管理工具（Disk Utility）格式化  SD 卡然后写入 raspbian stretch 系统镜像。
 
 ## 查看 microSD 卡信息
 在终端运行 `df –h` 命令查看挂载的设备：
@@ -103,6 +111,7 @@ faner@THOMASFAN-MB0:~|⇒  diskutil list
 ## references
 [树莓派启动：for Mac](http://blog.csdn.net/selina013/article/details/51029900)  
 [树莓派Ｂ＋使用心得](http://www.cnblogs.com/uestc-mm/p/6290521.html)  
+[Raspberry Pi 3安装配置Raspbian过程](http://blog.csdn.net/yss28/article/details/51874104)  
 
 [Raspbian Stretch not 64bit?](https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=192321&sid=505b5ad936e7d4f9a69253b89ced4b3a)  
 [Raspberry Pi 3 has 64-bit CPU, but 32-bit Raspbian OS (for now)](http://linuxgizmos.com/raspberry-pi-3-has-a-64-bit-cpu-but-a-32-bit-raspbian-os/)  
