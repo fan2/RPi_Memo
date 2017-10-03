@@ -1,0 +1,38 @@
+pi@raspberrypi:~$ cat /etc/apt/sources.list
+# comment by thomasfan, 27Sept17.
+#deb http://mirrordirector.raspbian.org/raspbian/ stretch main contrib non-free rpi
+# Uncomment line below then 'apt-get update' to enable 'apt-get source'
+#deb-src http://archive.raspbian.org/raspbian/ stretch main contrib non-free rpi
+
+#中科大
+deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+deb-src http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+
+#阿里云
+#deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi
+#deb-src http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi
+
+#新加坡国立大学（旧）
+#deb http://mirror.nus.edu.sg/raspbian/raspbian stretch main contrib non-free rpi
+#deb-src http://mirror.nus.edu.sg/raspbian/raspbian stretch main contrib non-free rpi
+
+#清华大学（慢）
+#deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+#deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+
+#浙江大学（慢）
+#deb http://mirrors.zju.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+#deb-src http://mirrors.zju.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+
+
+
+pi@raspberrypi:~$ cat /etc/apt/sources.list.d/raspi.list
+# comment by homasfan, 03Oct17.
+#deb http://archive.raspberrypi.org/debian/ stretch main ui
+# Uncomment line below then 'apt-get update' to enable 'apt-get source'
+#deb-src http://archive.raspberrypi.org/debian/ stretch main ui
+
+#中科大
+deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/ stretch main ui
+deb-src http://mirrors.ustc.edu.cn/archive.raspberrypi.org/ stretch main ui
+
