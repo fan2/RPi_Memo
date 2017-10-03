@@ -1,5 +1,5 @@
 # [RPi U-Boot](http://elinux.org/RPi_U-Boot)  
-[zeldin/u-boot-rpi3](https://github.com/zeldin/u-boot-rpi3)  
+[zeldin/u-boot-rpi3](https://github.com/zeldin/u-boot-rpi3) - 64-bit U-Boot for the Raspberry Pi 3  
 [How to compile mainline u-boot for Raspberry Pi ?](http://www.embeddedforu.com/embedded-linux/raspberry-pi/how-to-compile-mainline-u-boot-for-raspberry-pi/)  
 [Building and Booting Upstream Linux and U-Boot for Raspberry Pi 2/3 ARM Boards](https://blog.christophersmart.com/2016/10/27/building-and-booting-upstream-linux-and-u-boot-for-raspberry-pi-23-arm-boards/)  
 
