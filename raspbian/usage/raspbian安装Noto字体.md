@@ -153,6 +153,8 @@ raspbian 默认系统字体为 12 号 Piboto Light 字体，无法显示中文�
 
 建议采用 PingFang SC | Regular | 12 替换 Noto Sans CJK SC | DemiLight | 12  作为 raspbian 系统字体。
 
+![Appearance_Settings-System-Font-PingFangSC](NotoCJK/Appearance_Settings-System-Font-PingFangSC.png)
+
 ### Terminal font
 LXTerminal | Edit | Preferences | Style | Terminal font 将字体从 Noto Mono 11 修改为 Noto Sans Mono CJK SC | Regular | 12。
 
