@@ -59,6 +59,8 @@ OpenType 标准定义了文件名称的后缀名：
 
 ![cjk-recommended-use](https://www.google.com/get/noto/images/cjk-recommended-use.png)
 
+根据上图，raspbian 应该下载安装 Subset OTF。
+
 这里下载包含 CJK 完整字体库的 All-in-one super OTC：无衬线字体库 `NotoSansCJK.ttc` 和 衬线字体库  `NotoSerifCJK.ttc`。当然也可选择下载 adobe 提供的更完备的 `SourceHanSans.ttc` 字体库。
 
 如果嫌 All-in-one super OTC 字体包太大下载较慢，可只下载简体中文（SC，Simple Chinese）单一版本的 ttf 字体包：
