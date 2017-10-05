@@ -2,6 +2,7 @@
 [树莓派初识](http://blog.csdn.net/iluzhiyong/article/details/77791646)  
 [树莓派折腾录 系列](http://blog.csdn.net/wangmi0354/article/details/50836398)  
 [树莓派 Learning 系列](http://blog.csdn.net/github_35160620/article/details/52038918)  
+[安装Debian后的基本配置](http://blog.csdn.net/shennongminblog/article/details/76158400)  
 
 ## 快捷键
 <kbd>control</kbd>+<kbd>D</kbd>：显示桌面。
@@ -105,3 +106,9 @@ inet 192.168.1.128  netmask 255.255.255.0  broadcast 192.168.1.255
 sudo apt-get remove vim-common
 sudo apt-get install vim
 ```
+
+## LXDE
+[配置树莓派自动登录 Raspbian 图形界面 LXDE](http://shumeipai.nxez.com/2015/02/27/raspberry-pi-configured-to-automatically-log-lxde.html)  
+[How To Properly Remove LXDE And Install XFCE On Raspbian](http://linuxg.net/how-to-properly-remove-lxde-and-install-xfce-on-raspbian-debian-for-raspberry-pi/)  
+[[GUIDE] Raspbian Lite with PIXEL/LXDE/XFCE/MATE/i3 GUI](https://www.raspberrypi.org/forums/viewtopic.php?f=66&t=133691&sid=a349228419d0b6936f88bd0d2c1aea7b)  
+raspbian-lite-安装-pixel-lxde-xfce-mate-openbox-界面：[上](https://wangmingg.tk/2017/04/15/raspbian-lite-%E5%AE%89%E8%A3%85-pixellxdexfcemateopenbox-%E7%95%8C%E9%9D%A2%EF%BC%88%E4%B8%8A%EF%BC%89/) [下](https://wangmingg.tk/2017/04/15/raspbian-lite-%E5%AE%89%E8%A3%85-pixellxdexfcemateopenbox-%E7%95%8C%E9%9D%A2%EF%BC%88%E4%B8%8B%EF%BC%89/)  
