@@ -36,8 +36,8 @@ Start by fully upgrade your current Raspbian system before you proceed with a St
 
 ## [Mirrors](https://www.raspbian.org/RaspbianMirrors)
 Asia | China
-
-1. 执行 `sudo vim /etc/apt/sources.list`，注释掉原来的 `deb http://... stretch main contrib non-free rpi`，添加中科大的 deb 和 deb-src。
+### 更新 sources.list
+执行 `sudo vim /etc/apt/sources.list` 启动编辑，注释掉原来的 `deb http://... stretch main contrib non-free rpi`，添加中科大的 deb 和 deb-src。
 
 ```Shell
 pi@raspberrypi:~$ cat /etc/apt/sources.list
@@ -52,11 +52,37 @@ deb-src http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-f
 
 ```
 
-2. 执行 `sudo vim /etc/apt/sources.list.d/raspi.list`，注释掉原来的 `deb http://... stretch main ui`，添加中科大的 deb 和 deb-src。
+1. deb：软件的位置；  
+2. deb-src：软件的源代码位置，一般放在同目录下的 `source/` 子文件夹下；   
+
+**url**：镜像源 - http://mirrors.ustc.edu.cn/raspbian/raspbian/  
+**dists**：发行版（distributions）；  
+**stretch**：为 raspbian 发行版本号  
+
+> http://mirrors.ustc.edu.cn/raspbian/raspbian/dists/stretch/
+
+- *main*：debian 里最基本及主要且符合自由软件规范的软件 (packages)；  
+
+	> http://mirrors.ustc.edu.cn/raspbian/raspbian/dists/stretch/main/
+
+- *contrib*：此类软件虽然可以在 debian 里运作，即使本身属于自由软件，但多半却是相依于非自由 (non-free) 软件；  
+
+	> http://mirrors.ustc.edu.cn/raspbian/raspbian/dists/stretch/contrib/
+
+- *non-free*：不属于自由软件范畴的软件；  
+
+	> http://mirrors.ustc.edu.cn/raspbian/raspbian/dists/stretch/non-free/
+
+- *rpi*：raspberry pi 特有软件包。  
+
+	> http://mirrors.ustc.edu.cn/raspbian/raspbian/dists/stretch/rpi/
+
+### 更新 sources.list.d/raspi.list
+执行 `sudo vim /etc/apt/sources.list.d/raspi.list` 启动编辑，注释掉原来的 `deb http://... stretch main ui`，添加中科大的 deb 和 deb-src。
 
 ```Shell
 pi@raspberrypi:~$ cat /etc/apt/sources.list.d/raspi.list
-# comment by homasfan, 03Oct17.
+# comment by thomasfan, 03Oct17.
 #deb http://archive.raspberrypi.org/debian/ stretch main ui
 # Uncomment line below then 'apt-get update' to enable 'apt-get source'
 #deb-src http://archive.raspberrypi.org/debian/ stretch main ui
@@ -66,6 +92,11 @@ deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/ stretch main ui
 deb-src http://mirrors.ustc.edu.cn/archive.raspberrypi.org/ stretch main ui
 
 ```
+
+`sources.list.d` 扩展目录下的 `raspi.list` 为 raspberry pi / raspbian 平台特有的软件源，由 raspberrypi.org 组织提供。
+
+- <http://mirrors.ustc.edu.cn/archive.raspberrypi.org/dists/stretch/main/>  
+- <http://mirrors.ustc.edu.cn/archive.raspberrypi.org/dists/stretch/ui/>  
 
 [中科大](http://mirrors.ustc.edu.cn/raspbian/raspbian/) / [帮助](https://lug.ustc.edu.cn/wiki/mirrors/help/raspbian) / [archive.raspberrypi.org](http://mirrors.ustc.edu.cn/archive.raspberrypi.org/)  
 [阿里云](http://mirrors.aliyun.com/raspbian/raspbian/) / [清华大学](http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/) / [浙江大学](http://mirrors.zju.edu.cn/raspbian/raspbian/) / [新加坡国立大学](http://mirror.nus.edu.sg/raspbian/raspbian)  
