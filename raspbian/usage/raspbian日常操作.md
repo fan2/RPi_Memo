@@ -11,7 +11,9 @@
 [自定义树莓派的显示分辨率](http://shumeipai.nxez.com/2013/08/31/custom-display-resolution-raspberry-pie.html)  
 [树莓派3B+ Raspbian桌面分辨率设置](http://www.jianshu.com/p/a65b295eb285)  
 
-接显示器默认的分辨率太高，有可能会导致树莓派功率支持不住，屏幕闪或者出横线，建议折中设置成 1280x720p。
+raspbian 默认分辨率为 720x480，可以将其调整到支持的最高分辨率 —— 1080P（DMT Mode 82 1920x1080 60Hz 16:9）。
+
+但是 1080P 分辨率太高，有可能会导致树莓派功率支持不住，屏幕闪或者出横线，建议折中设置成 720P（DMT Mode 85 1280x720 60Hz 16:9）。
 
 ## 耳机
 默认音频输出只有HDMI，如果需要用3.5mm耳机插头，需要到设置里设成 ”HDMI+Analog” 同时输出。

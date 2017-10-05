@@ -1,5 +1,8 @@
 [Raspberry Pi 3 Hardware and System Software Reference](http://www.codeguru.com/IoT/raspberry-pi-3-hardware-and-system-software-reference.html)
 
+> [Linux command to gathers up information about a Linux system](https://www.cyberciti.biz/tips/linux-command-to-gathers-up-information-about-a-linux-system.html)  
+> [Linux Command To Find the System Configuration And Hardware Information](https://www.cyberciti.biz/faq/linux-command-to-find-the-system-configuration-and-hardware-information/)  
+
 ## [cpuinfo](https://www.zybuluo.com/SiberiaBear/note/336984)
 
 ```Shell
@@ -51,6 +54,10 @@ pi@raspberrypi:/ $
 ```
 
 ### lscpu
+**lscpu** - display information about the CPU architecture
+
+lscpu  gathers  CPU  architecture information from sysfs, /proc/cpuinfo and any applicable architecture specific  libraries  (e.g.  librtas  on Powerpc).
+
 ```Shell
 pi@raspberrypi:~ $ lscpu 
 Architecture:          armv7l
@@ -74,9 +81,28 @@ pi@raspberrypi:~ $ vcgencmd get_config arm_freq
 arm_freq=1200
 ```
 
-## arch
+## uname
+uname - print system information
+
+```Shell
+pi@raspberrypi:~$ uname
+Linux
+
+pi@raspberrypi:~$ uname -mrs
+Linux 4.9.41-v7+ armv7l
+
+pi@raspberrypi:~ $ uname -a
+Linux raspberrypi 4.9.41-v7+ #1023 SMP Tue Aug 8 16:00:15 BST 2017 armv7l GNU/Linux
+```
+
+## arch & word
+arch - print machine hardware name (same as uname -m)
+
 ```Shell
 pi@raspberrypi:~ $ arch
+armv7l
+
+pi@raspberrypi:~$ uname -m
 armv7l
 
 pi@raspberrypi:~ $ getconf WORD_BIT
@@ -95,9 +121,6 @@ pi@raspberrypi:~$ more /boot/issue.txt
 Raspberry Pi reference 2017-09-07
 Generated using pi-gen, https://github.com/RPi-Distro/pi-gen, 496e41575eeb9fa13f
 394ffb407b7bc1d00b21c2, stage5
-
-pi@raspberrypi:~ $ uname -a
-Linux raspberrypi 4.9.41-v7+ #1023 SMP Tue Aug 8 16:00:15 BST 2017 armv7l GNU/Linux
 
 pi@raspberrypi:~ $ cat /etc/issue
 Raspbian GNU/Linux 9 \n \l
@@ -392,7 +415,10 @@ pi@raspberrypi: $ cpp -dD /dev/null | grep __SIZEOF_LONG__
 > [find out the sizes of data types on a system, without writing a C program?](https://unix.stackexchange.com/questions/115222/possible-to-find-out-the-sizes-of-data-types-int-float-double-on-a-syst)  
 
 ## misc.etc
-`cat /proc/meminfo`  
+`/sbin/sysctl -a`：Dump Linux kernel variables  
+`cat /proc/meminfo`：information about Linux Memory  
 `cat /proc/diskstats`  
 `cat /proc/filesystems`  
 **`man hier`** - description of the filesystem hierarchy  
+`dpkg --list`：Display list of all installed software on Debian / Ubuntu  
+

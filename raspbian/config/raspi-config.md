@@ -108,13 +108,13 @@ raspbian 默认机器名称为 raspberrypi，该项可修改：
 ![A3-Memory_Split-Edit](./raspi-config/7-Advanced_Options/A3-Memory_Split/A3-Memory_Split-Edit.png)
 
 ### A5 Resolution
-raspbian 默认分辨率为 720x480，可以将其调整到支持的最高分辨率 —— 1080P。
+raspbian 默认分辨率为 720x480，可以将其调整到支持的最高分辨率 —— 1080P（DMT Mode 82 1920x1080 60Hz 16:9）。
 
 ![A5-Resolution](./raspi-config/7-Advanced_Options/A5-Resolution/A5-Resolution.png)
 
 ![A5-Resolution-Choose](./raspi-config/7-Advanced_Options/A5-Resolution/A5-Resolution-Choose.png)
 
-接显示器默认的分辨率太高，有可能会导致树莓派功率支持不住，屏幕闪或者出横线，建议折中设置成 1280x720p。
+但是 1080P 分辨率太高，有可能会导致树莓派功率支持不住，屏幕闪或者出横线，建议折中设置成 720P（DMT Mode 85 1280x720 60Hz 16:9）。
 
 # references
 [树莓派配置](http://wiki.jikexueyuan.com/project/raspberry-pi/rasp-config.html)  

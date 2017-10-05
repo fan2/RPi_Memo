@@ -38,11 +38,14 @@ zh_CN.utf8
 
 ![4-Localisation_Options-Change_Locales-default](./4-Localisation_Options-Change_Locales-default.png)
 
-执行 `echo $LANG` 命令可查看当前选择的语言：
+执行 `echo $LANG` 或 `set | egrep '^(LANG|LC_)'` 命令可查看当前选择的语言：
 
 ```Shell
 pi@raspberrypi:~$ echo $LANG
 en_US.UTF-8
+
+pi@raspberrypi:~$ set | egrep '^(LANG|LC_)'
+LANG=en_US.UTF-8
 ```
 
 重启则 raspbian 能正常支持中文字库的渲染显示。
