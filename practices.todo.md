@@ -1,4 +1,4 @@
-## Shell.todo
+## practices.todo
 - [x] 查看系统硬件信息 @done  
 - [x] 查看磁盘信息 @done  
 - [x] 命令行查看网络连接信息 @done  
@@ -16,3 +16,7 @@
 - [ ] raspberry 基本 SoC 框架及 GPIO 编程演练。  
 - [ ] ARM 体系架构汇编实践。  
 - [ ] 练习熟悉 gcc 编译工具链。  
+
+## 树莓派玩法
+[简单几步把树莓派做成离线下载器](https://www.ithome.com/html/win10/312356.htm)  
+[起玩树莓派3+使用Gitlab搭建专业Git服务](http://bbs.eeworld.com.cn/thread-505256-1-1.html)  
