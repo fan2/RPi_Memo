@@ -93,10 +93,55 @@ pi@raspberrypi:/usr/share/fonts/Noto$ sudo fc-cache -fv
 - `sudo chmod 555`：修改每个字体文件的权限为 `-r-x`（可读可执行），使所有用户都能使用该字体。  
 - `sudo fc-cache -fv`：建立字体信息缓存。  
 
+最好将 `NotoSansCJK.ttc` 和 `NotoSerifCJK.ttc` 拷贝到既有目录 `/usr/share/fonts/truetype/noto/` 下！
+
 > [在樹莓派上安裝中文字型](http://studyraspberrypi.blogspot.com/2015/12/install-chinese-fonts.html)  
 > [**Ubuntu Linux 安装文泉驿微米黑教程**](http://babybandf.blog.163.com/blog/static/6199353201051210729446/)  
 > [Try Debian with Raspberry Pi Desktop](http://oppekepe.org/date/2017/08)  
 > [Debian下使用google的noto字体](http://mosir.org/html/y2014/201.html)  
+
+## install MSYaHei&PingFang
+一种最简单的方法是，在 Windows 或 macOS 中找到微软雅黑字体的 *.ttf 文件，将其拷贝到 `/usr/local/share/fonts` 目录下，然后运行 `sudo fc-cache` 即可安装。
+
+通过 scp 命令将 macOS 中部分 Microsoft 经典字体 仿宋、雅黑、中易黑体、中易宋体 拷贝到 raspbian 的 `~/Downloads/` 目录下：
+
+```Shell
+faner@THOMASFAN-MB0:~|⇒  scp Microsoft/SimSun.ttf Microsoft/Fangsong.ttf Microsoft/SimHei.ttf Microsoft/Microsoft\ Yahei.ttf pi@192.168.1.128:Downloads
+```
+
+通过 scp 命令将 macOS 中经典字体 PingFang、LucidaGrande、Gill Sans、Georgia、[SF-UI](https://www.free-fonts.com/sfui-text) 拷贝到 raspbian 的 `~/Downloads/` 目录下：
+
+```Shell
+faner@THOMASFAN-MB0:~|⇒  scp PingFang.ttc LucidaGrande.ttc GillSans.ttc Georgia*.ttf ~SF-UI-Display-*.otf ~SF-UI-Text-*.otf pi@192.168.1.128:Downloads
+```
+
+将 仿宋、雅黑、中易黑体、中易宋体 字体文件从 `~/Downloads/` 目录下移动到  `/usr/share/fonts/truetype/microsoft/` 目录下，并修改其下所有字体权限为 755（-rwxr-xr-x）：
+
+```Shell
+pi@raspberrypi:~$ sudo mkdir -p /usr/share/fonts/truetype/microsoft
+pi@raspberrypi:~/Downloads$ sudo mv SimSun.ttf Fangsong.ttf SimHei.ttf Microsoft\ Yahei.ttf /usr/share/fonts/truetype/microsoft
+pi@raspberrypi:~/Downloads$ sudo chmod 755 /usr/share/fonts/truetype/microsoft/*
+```
+
+将 PingFang、LucidaGrande、Gill Sans、Georgia、SF-UI 字体文件从 `~/Downloads/` 目录下移动到  `/usr/share/fonts/truetype/mac/` 目录下，并修改其下所有字体权限为 755（-rwxr-xr-x）：
+
+```
+pi@raspberrypi:~$ sudo mkdir -p /usr/share/fonts/truetype/mac
+pi@raspberrypi:~/Downloads$ sudo mv PingFang.ttc LucidaGrande.ttc GillSans.ttc Georgia*.ttf SF-UI-Display-*.otf SF-UI-Text-*.otf /usr/share/fonts/truetype/mac
+# 修改 mac/ 下所有字体权限为 -rwxr-xr-x
+pi@raspberrypi:~/Downloads$ sudo chmod 755 /usr/share/fonts/truetype/mac/*
+```
+
+重建字体索引信息，更新字体缓存：
+
+```Shell
+pi@raspberrypi:~/Downloads$ sudo mkfontscale
+pi@raspberrypi:~/Downloads$ sudo mkfontdir
+pi@raspberrypi:~/Downloads$ sudo fc-cache -fv
+```
+
+> [为Debian添加微软雅黑字体](http://www.linuxdiyf.com/viewarticle.php?id=103070)  
+> [Ubuntu安装微软雅黑](http://inewup.com/ubuntu-install-microsoft-yahei.html)  
 
 ## Change Fonts
 ### Appearance System Font
@@ -106,20 +151,26 @@ raspbian 默认系统字体为 12 号 Piboto Light 字体，无法显示中文�
 
 ![Appearance_Settings-System-Font](NotoCJK/Appearance_Settings-System-Font.png)
 
+建议采用 PingFang SC | Regular | 12 替换 Noto Sans CJK SC | DemiLight | 12  作为 raspbian 系统字体。
+
 ### Terminal font
 LXTerminal | Edit | Preferences | Style | Terminal font 将字体从 Noto Mono 11 修改为 Noto Sans Mono CJK SC | Regular | 12。
 
 ![LXTerminal-Edit-Preferences-Style-Terminal_font](NotoCJK/LXTerminal-Edit-Preferences-Style-Terminal_font.png)
+
+根据实际显示效果，建议采用 Noto Mono | Regular | 12 字体作为终端字体。
 
 ### Leafpad Font
 Leafpad | Options | Font 将 Leafpad 文本编辑器的字体从 Monospace | Regular | 12 调整为系统字体：Noto Sans CJK SC | DemiLight | 12。
 
 ![Leafpad-Options_Font](NotoCJK/Leafpad-Options_Font.png)
 
+可将 SF UI Text | Regular | 13 替换 Noto Sans CJK SC | DemiLight | 12  作为 Leafpad 的字体。
+
 ### Chrome Font
 Chrome 浏览器字体 font size 默认 16，调整最小为 12。
 
-- Standard font：WenQuanYi Micro Hei Mono -> Noto Sans CJK SC；  
+- Standard font：WenQuanYi Micro Hei Mono -> Noto Sans CJK SC，可修改为 PingFang SC；  
 - Serif font：DejaVu Serif -> Noto Serif CJK SC；  
 - Sans-serif font：Noto Mono →  Noto Sans CJK SC；  
 - Fixed-width font：Monospace → Noto Sans Mono CJK SC；  
