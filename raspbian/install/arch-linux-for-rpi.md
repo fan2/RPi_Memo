@@ -11,6 +11,7 @@
 [HCL: Raspberry Pi3](https://en.opensuse.org/HCL:Raspberry_Pi3)
 
 ## [raspbian](http://www.raspbian.org/)
+[在RaspberryPi 3B 上安装 Raspbian Jessie Lite](http://geek.csdn.net/news/detail/136948)  
 [升级你的Pi到Debian9-stretch](http://www.jianshu.com/p/ceb6640bcb3e)  
 [树莓派升级arm64 debian stretch小记](http://www.jianshu.com/p/7b962b038a6c)  
 
