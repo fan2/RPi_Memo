@@ -9,3 +9,6 @@
 
 > [Linux利用RS232串口进行通信并控制控制DTR及RTS引脚](http://yzgsir.blog.sohu.com/142371786.html)  
 > [Serial Programming Guide for POSIX Operating Systems](http://digilander.libero.it/robang/rubrica/serial.htm#CONTENTS)  
+
+## Python
+[树莓派Python编程入门与实战（第2版）](http://www.epubit.com.cn/book/details/4338)  
