@@ -4,6 +4,8 @@
 [How to take a screenshot on Raspberry Pi](https://www.imore.com/how-take-screenshot-raspberry-pi) Mar 14, 2016  
 [How to take a screenshot on the Raspberry Pi](https://www.cnet.com/how-to/how-to-take-a-screenshot-on-the-raspberry-pi/) MAY 26, 2016  
 
+[Scrot配合openbox使用快捷键](https://www.liyanfeng.com/post/61.html)  
+
 ## Step 2: Instal Scrot
 ```Shell
 pi@raspberrypi:~$ sudo apt-get install scrot
@@ -35,6 +37,12 @@ The image will now be called "example", rather than “2014-10-05-132309_1824x98
 This command will not work if you do not specify a file extension (for example ".png").  
 Change the output file format by changing the extension (for example ".jpeg", ".gif", etc).
 
+scrot 截图默认保存到家目录（~）下，可执行以下复合命令将截拍快照移动到 `~/Pictures/Scrot/` 目录下：
+
+```Shell
+scrot '%Y-%m-%d-%H%M%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Scrot/'
+```
+
 ## Step 4: Specify File Location
 Specify where screenshots are saved with the command
 
@@ -59,6 +67,12 @@ To display a countdown, add the `-c` option
 scrot -cd 10
 ```
 
+复合截屏及移动命令：
+
+```Shell
+scrot -cd 10 '%Y-%m-%d-%H%M%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Scrot/'
+```
+
 ## Step 6: Capture Only Part of the Screen
 Capture sections of the screen with the `-s` option, as can be seen in the image included, with the commands
 
@@ -81,3 +95,5 @@ Capture the current window with the `-u` option
 ```Shell
 scrot -u
 ```
+
+![scrot-cdu](scrot/scrot-cdu.png)
