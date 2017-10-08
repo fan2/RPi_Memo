@@ -3,6 +3,9 @@
 > [Linux command to gathers up information about a Linux system](https://www.cyberciti.biz/tips/linux-command-to-gathers-up-information-about-a-linux-system.html)  
 > [Linux Command To Find the System Configuration And Hardware Information](https://www.cyberciti.biz/faq/linux-command-to-find-the-system-configuration-and-hardware-information/)  
 
+- **SoC**：`Raspberry Pi 3 Model B v1.2`(2015)  
+- **OS**：`2017-09-07-raspbian-stretch.zip`
+
 ## [cpuinfo](https://www.zybuluo.com/SiberiaBear/note/336984)
 
 ```Shell
@@ -114,10 +117,10 @@ pi@raspberrypi:~ $ getconf LONG_BIT
 
 ## debian_version
 ```Shell
-pi@raspberrypi:~ $ cat /proc/version 
+pi@raspberrypi:~ $ cat /proc/version
 Linux version 4.9.41-v7+ (dc4@dc4-XPS13-9333) (gcc version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611) ) #1023 SMP Tue Aug 8 16:00:15 BST 2017
 
-pi@raspberrypi:~$ more /boot/issue.txt
+pi@raspberrypi:~$ cat /boot/issue.txt
 Raspberry Pi reference 2017-09-07
 Generated using pi-gen, https://github.com/RPi-Distro/pi-gen, 496e41575eeb9fa13f
 394ffb407b7bc1d00b21c2, stage5
@@ -127,7 +130,12 @@ Raspbian GNU/Linux 9 \n \l
 
 pi@raspberrypi:~ $ cat /etc/debian_version 
 9.1
+```
 
+### lsb_release
+lsb_release - print distribution-specific information
+
+```Shell
 pi@raspberrypi:~ $ lsb_release -a
 No LSB modules are available.
 Distributor ID:	Raspbian
