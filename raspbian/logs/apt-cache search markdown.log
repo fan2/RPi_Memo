@@ -1,0 +1,260 @@
+################################################################################
+# 搜索 markdown 相关的软件包：
+################################################################################
+pi@raspberrypi:~$ apt-cache search markdown
+blogliterately - Tool for posting Haskelly articles to blogs
+blogofile - static website compiler and blog engine
+carettah - presentation tool that renders Markdown
+cl-markdown - Common Lisp rewrite of Markdown
+cmark - CommonMark parsing and rendering program
+discount - implementation of the Markdown markup language in C
+doconce - document once, include anywhere
+elpa-markdown-mode - mode for editing Markdown-formatted text files in GNU Emacs.
+gambas3-gb-markdown - Gambas markdown convert component
+geany-plugin-markdown - markdown plugin for Geany
+gitit - Wiki engine backed by a git or darcs filestore
+go-md2man - utility to create manpages from markdown
+golang-github-cpuguy83-go-md2man-dev - utility to create manpages from markdown (source)
+golang-github-miekg-mmark-dev - Markdown processor in Go geared for the IETF (Go library)
+golang-github-russross-blackfriday-dev - Blackfriday: a markdown processor for Go
+grip - Preview GitHub Markdown files like Readme locally
+hugo - Fast and flexible Static Site Generator written in Go
+isso - lightweight web-based commenting system
+jekyll - Simple, blog aware, static site generator
+libdr-sundown-perl - perl bindings for sundown
+libghc-blogliterately-dev - Tool for posting articles to blogs (internals)
+libghc-blogliterately-doc - Tool for posting articles to blogs (internals); documentation
+libghc-blogliterately-prof - Tool for posting articles to blogs (internals); profiling libraries
+libghc-cmark-dev - fast, accurate CommonMark (Markdown) parser and renderer
+libghc-cmark-doc - fast, accurate CommonMark (Markdown) parser and renderer; documentation
+libghc-cmark-prof - fast, accurate CommonMark (Markdown) parser and renderer; profiling libraris
+libghc-gitit-data - Wiki engine backed by a git or darcs filestore - Data files
+libghc-gitit-dev - Wiki engine backed by a git or darcs filestore
+libghc-gitit-doc - Wiki engine backed by a git or darcs filestore; documentation
+libghc-gitit-prof - Wiki engine backed by a git or darcs filestore; profiling libraries
+libghc-hakyll-dev - static website compiler library
+libghc-hakyll-doc - static website compiler library; documentation
+libghc-hakyll-prof - static website compiler library; profiling libraries
+libghc-heist-dev - template system supporting both HTML5 and XML
+libghc-heist-doc - template system supporting both HTML5 and XML; documentation
+libghc-heist-prof - template system supporting both HTML5 and XML; profiling libraries
+libghc-markdown-dev - convert Markdown to HTML, with XSS protection
+libghc-markdown-doc - convert Markdown to HTML, with XSS protection; documentation
+libghc-markdown-prof - convert Markdown to HTML, with XSS protection; profiling libraries
+libghc-pandoc-dev - general markup converter - libraries
+libghc-pandoc-doc - general markup converter - library documentation
+libghc-pandoc-prof - general markup converter - profiling libraries
+libhtml-wikiconverter-markdown-perl - HTML to wiki markup converter - Markdown dialect
+libjifty-plugin-wikitoolbar-perl - Jifty plugin to add a wiki toolbar to textarea boxes
+libjs-markdown-it - javascript markdown parser
+libjs-markdown-it-sub - javascript markdown parser subscript plugin
+libjs-markdown-it-sup - javascript markdown parser superscript plugin
+libjs-marked - Full-featured markdown parser and compiler
+libjs-showdown - JavaScript port of Markdown
+libmarkdown-php - PHP library for rendering Markdown data
+libmarkdown2 - implementation of the Markdown markup language in C (library)
+libmarkdown2-dev - implementation of the Markdown markup language in C (dev files)
+libpegdown-java - Lightweight Markdown processing library
+libpegex-perl - Acmeist PEG Parser Framework
+libpod-markdown-perl - module to convert POD to the Markdown file format
+libsoldout-utils - Utils and examples based on libsoldout
+libsoldout1 - Natacha's flexible C library for John Gruber's markdown language
+libsoldout1-dev - Development files for libsoldout a parser for the markdown language
+libtext-markdown-discount-perl - Perl interface to Discount, an implementation of Markdown
+libtext-markdown-perl - module to convert Markdown syntax to (X)HTML
+libtext-markup-perl - Parse text markup into HTML
+libtext-multimarkdown-perl - module to convert MultiMarkdown syntax to (X)HTML
+lua-discount - Discount library for the Lua language
+lua-markdown - Pure Lua 5.1 implementation of the Markdown text-to-html markup
+lua-torch-sundown - Sundown Library (a Markdown implementation) for Torch Framework
+markdown - Text-to-HTML conversion tool
+mdpress - creation of Impress.js slideshows with Markdown
+mkdocs - Static site generator geared towards building project documentation
+mkdocs-bootstrap - bootstrap themes for MkDocs
+mkdocs-bootswatch - bootswatch themes for MkDocs
+mkdocs-doc - Static site generator (documentation)
+mmark - Markdown processor in Go geared for the IETF (executable)
+movabletype-plugin-core - Core Movable Type plugins
+nanoc - static site generator written in Ruby
+nanoc-doc - static site generator written in Ruby - documentation
+nikola - simple yet powerful and flexible static website and blog generator
+node-jade - high performance template engine - Node.js module
+node-marked - Full-featured markdown parser and compiler for NodeJS
+node-marked-man - Markdown to man page conversion - Node.js
+node-node-markdown - markdown syntax parser for node.js
+node-showdown - JavaScript port of Markdown - NodeJS module
+pandoc - general markup converter
+pandoc-data - general markup converter - data files
+pelican - blog aware, static website generator
+pelican-doc - blog aware, static website generator (documentation)
+php-markdown - PHP library for rendering Markdown data
+postgresql-hll - HyperLogLog extension for PostgreSQL
+python-commonmark-bkrs - Python parser for the CommonMark Markdown spec -- Python
+python-commonmark-bkrs-doc - Python parser for the CommonMark Markdown spec -- doc
+python-django-markupfield - custom Django field for easy use of markup in text fields
+python-html2text - Python module for converting HTML to Markdown text
+python-landslide - Lightweight markup language-based html5 slideshow generator
+python-markdown - text-to-HTML conversion library/tool (Python 2 version)
+python-markdown-doc - text-to-HTML conversion library/tool (documentation)
+python-misaka - binding for Sundown, a markdown parsing library - Python 2.x
+python-mistune - Markdown parser for Python 2
+python-pandocfilters - python bindings for Pandoc's filters
+python-steadymark - markdown-based test runner
+python3-commonmark-bkrs - Python parser for the CommonMark Markdown spec -- Python 3
+python3-django-markupfield - custom Django field for easy use of markup in text fields (Python3)
+python3-html2text - Python module for converting HTML to Markdown text (Python3 version)
+python3-markdown - text-to-HTML conversion library/tool (Python 3 version)
+python3-markups - Wrapper around various text markups, implemented in Python 3
+python3-misaka - binding for Sundown, a markdown parsing library - Python 3.x
+python3-mistune - Markdown parser for Python 3
+python3-pandocfilters - python3 bindings for Pandoc's filters
+r-cran-htmlwidgets - GNU R HTML Widgets
+r-cran-markdown - GNU R package providing R bindings to the Sundown Markdown rendering library
+redmine-plugin-markdown - Redmine plugin to add Markdown as a wiki format
+retext - Simple text editor for Markdown and reStructuredText
+ruby-activerecord-import - Bulk-loading extension for ActiveRecord
+ruby-bluefeather - Extend Markdown Converter written in Ruby
+ruby-github-markdown - Markdown parser for GitHub.com
+ruby-github-markup - GitHub Markup rendering
+ruby-haml-magic-translations - internationalization library for Haml templates
+ruby-kramdown - Fast, pure-Ruby Markdown-superset converter
+ruby-kramdown-rfc2629 - generate XML2RFC XML from Markdown
+ruby-literati - render literate Haskell with Ruby
+ruby-literati-doc - render literate Haskell with Ruby (documentation)
+ruby-markerb - multipart templates made easy with Markdown + ERb
+ruby-maruku - Markdown-superset interpreter written in Ruby
+ruby-naught - Naught is a toolkit for building Null Objects
+ruby-rails-assets-bootstrap-markdown - bootstrap-markdown for rails applications
+ruby-rails-assets-markdown-it - markdown parser as a rails asset
+ruby-rails-assets-markdown-it--markdown-it-for-inline - Inline tokens iterator for markdown-it r
+ruby-rails-assets-markdown-it-diaspora-mention - diaspora* mentions for markdown-it markdown par
+ruby-rails-assets-markdown-it-hashtag - hashtag for markdown-it markdown parser via rails pipele
+ruby-rails-assets-markdown-it-sanitizer - sanitizer for markdown-it markdown parser via rails pe
+ruby-rails-assets-markdown-it-sub - markdown parser subscript plugin as a rails asset
+ruby-rails-assets-markdown-it-sup - markdown parser superscript plugin as a rails asset
+ruby-rdiscount - Discount Markdown Processor for Ruby
+ruby-redcarpet - Fast, safe and extensible Markdown to (X)HTML parser for Ruby
+ruby-ronn - Builds manuals from Markdown
+ruby-slim - powerful (X)HTML templating engine with an elegant syntax
+ruby-task-list - GitHub-flavored-Markdown TaskList components
+serverspec-runner - simple execution framework for serverspec
+sonic-pi-server-doc - Documentation for Sonic Pi
+sputnik - Extensible wiki
+staticsite - Static site generator
+tcllib - Standard Tcl Library
+texlive-latex-extra - TeX Live: LaTeX additional packages
+vim-voom - Vim two-pane outliner
+whiteboard - simple collaborative text editor for the web
+
+
+
+################################################################################
+# 以下为过滤出的 markdown parser/converter/render 相关的工具包：
+################################################################################
+pi@raspberrypi:~/Projects/retext$ apt-cache search markdown
+...
+
+cmark - CommonMark parsing and rendering program
+discount - implementation of the Markdown markup language in C
+
+grip - Preview GitHub Markdown files like Readme locally
+
+libghc-cmark-dev - fast, accurate CommonMark (Markdown) parser and renderer
+libghc-pandoc-dev - general markup converter - libraries
+
+libmarkdown2 - implementation of the Markdown markup language in C (library)
+libmarkdown2-dev - implementation of the Markdown markup language in C (dev files)
+
+lua-discount - Discount library for the Lua language
+
+markdown - Text-to-HTML conversion tool
+mdpress - creation of Impress.js slideshows with Markdown
+mmark - Markdown processor in Go geared for the IETF (executable)
+
+pandoc - general markup converter
+pandoc-data - general markup converter - data files
+
+python-commonmark-bkrs - Python parser for the CommonMark Markdown spec -- Python
+python-html2text - Python module for converting HTML to Markdown text
+python-landslide - Lightweight markup language-based html5 slideshow generator
+python-markdown - text-to-HTML conversion library/tool (Python 2 version)
+python-mistune - Markdown parser for Python 2
+python-pandocfilters - python bindings for Pandoc's filters
+
+python3-commonmark-bkrs - Python parser for the CommonMark Markdown spec -- Python 3
+python3-html2text - Python module for converting HTML to Markdown text (Python3 version)
+python3-markdown - text-to-HTML conversion library/tool (Python 3 version)
+python3-mistune - Markdown parser for Python 3
+python3-pandocfilters - python3 bindings for Pandoc's filters
+
+retext - Simple text editor for Markdown and reStructuredText
+
+ruby-github-markdown - Markdown parser for GitHub.com
+ruby-github-markup - GitHub Markup rendering
+
+ruby-kramdown - Fast, pure-Ruby Markdown-superset converter
+ruby-maruku - Markdown-superset interpreter written in Ruby
+
+ruby-rdiscount - Discount Markdown Processor for Ruby
+ruby-redcarpet - Fast, safe and extensible Markdown to (X)HTML parser for Ruby
+
+ruby-task-list - GitHub-flavored-Markdown TaskList components
+
+
+
+################################################################################
+# 以下为过滤出的 staticsite blog 相关的工具包：
+################################################################################
+pi@raspberrypi:~/Projects/retext$ aptitude search markdown
+
+jekyll - Simple, blog aware, static site generator
+
+libghc-blogliterately-dev - Tool for posting articles to blogs (internals)
+libghc-hakyll-dev - static website compiler library
+
+libghc-markdown-dev - convert Markdown to HTML, with XSS protection
+libjs-markdown-it - javascript markdown parser
+libjs-markdown-it-sub - javascript markdown parser subscript plugin
+libjs-markdown-it-sup - javascript markdown parser superscript plugin
+libjs-marked - Full-featured markdown parser and compiler
+
+libjs-showdown - JavaScript port of Markdown
+libmarkdown-php - PHP library for rendering Markdown data
+
+libtext-markdown-discount-perl - Perl interface to Discount, an implementation of Markdown
+libtext-markdown-perl - module to convert Markdown syntax to (X)HTML
+libtext-markup-perl - Parse text markup into HTML
+libtext-multimarkdown-perl - module to convert MultiMarkdown syntax to (X)HTML
+
+lua-markdown - Pure Lua 5.1 implementation of the Markdown text-to-html markup
+
+mkdocs - Static site generator geared towards building project documentation
+mkdocs-bootstrap - bootstrap themes for MkDocs
+mkdocs-bootswatch - bootswatch themes for MkDocs
+mkdocs-doc - Static site generator (documentation)
+
+nanoc - static site generator written in Ruby
+
+nikola - simple yet powerful and flexible static website and blog generator
+node-jade - high performance template engine - Node.js module
+node-marked - Full-featured markdown parser and compiler for NodeJS
+node-marked-man - Markdown to man page conversion - Node.js
+node-node-markdown - markdown syntax parser for node.js
+node-showdown - JavaScript port of Markdown - NodeJS module
+
+pelican - blog aware, static website generator
+
+php-markdown - PHP library for rendering Markdown data
+
+ruby-rails-assets-bootstrap-markdown - bootstrap-markdown for rails applications
+ruby-rails-assets-markdown-it - markdown parser as a rails asset
+ruby-rails-assets-markdown-it--markdown-it-for-inline - Inline tokens iterator for markdown-it r
+ruby-rails-assets-markdown-it-diaspora-mention - diaspora* mentions for markdown-it markdown par
+ruby-rails-assets-markdown-it-hashtag - hashtag for markdown-it markdown parser via rails pipele
+ruby-rails-assets-markdown-it-sanitizer - sanitizer for markdown-it markdown parser via rails pe
+ruby-rails-assets-markdown-it-sub - markdown parser subscript plugin as a rails asset
+ruby-rails-assets-markdown-it-sup - markdown parser superscript plugin as a rails asset
+
+staticsite - Static site generator
+
+whiteboard - simple collaborative text editor for the web

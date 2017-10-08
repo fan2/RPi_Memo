@@ -1,0 +1,92 @@
+
+pi@raspberrypi:~$ apt-cache showpkg markdown
+Package: markdown
+Versions: 
+1.0.1-9 (/var/lib/apt/lists/mirrors.ustc.edu.cn_raspbian_raspbian_dists_stretch_main_binary-armhf_Packages)
+ Description Language: 
+                 File: /var/lib/apt/lists/mirrors.ustc.edu.cn_raspbian_raspbian_dists_stretch_main_binary-armhf_Packages
+                  MD5: 91cb49067bbada95ec2e46f260953f3a
+
+
+Reverse Depends: 
+  discount,markdown
+  w3m-el-snapshot,markdown
+  node-showdown,markdown
+  node-node-markdown,markdown
+  nanoblogger,markdown
+  libtext-markdown-perl,markdown
+  libjs-showdown,markdown
+  libhtml-wikiconverter-markdown-perl,markdown
+Dependencies: 
+1.0.1-9 - perl (2 5.6.0-0.1) 
+Provides: 
+1.0.1-9 - 
+Reverse Provides: 
+
+pi@raspberrypi:~$ apt-cache show markdown
+Package: markdown
+Version: 1.0.1-9
+Installed-Size: 56
+Maintainer: Matt Kraai <kraai@debian.org>
+Architecture: all
+Depends: perl (>= 5.6.0-0.1)
+Size: 17218
+SHA256: 4429e3c914209cfcf45d2b8c66695ad7ecfd4f183535be53a45fd364a25a75c8
+SHA1: 2a2eddd270c7c98ecf368925d680f797138484a7
+MD5sum: 042712f0dcc7dc6b0aa4ad826ee3e129
+Description: Text-to-HTML conversion tool
+ Markdown is a text-to-HTML conversion tool for web writers.  It
+ allows you to write using an easy-to-read, easy-to-write plain text
+ format, then convert it to structurally valid XHTML (or HTML).
+Description-md5: 91cb49067bbada95ec2e46f260953f3a
+Homepage: http://daringfireball.net/projects/markdown/
+Tag: implemented-in::perl, interface::commandline, role::program,
+ scope::utility, use::converting, works-with-format::html,
+ works-with-format::plaintext, works-with::text
+Section: web
+Priority: optional
+Filename: pool/main/m/markdown/markdown_1.0.1-9_all.deb
+
+pi@raspberrypi:~$ apt-cache showsrc markdown
+Package: markdown
+Binary: markdown
+Version: 1.0.1-9
+Maintainer: Matt Kraai <kraai@debian.org>
+Architecture: all
+Standards-Version: 3.7.2
+Format: 1.0
+Files: 
+ ff36a8b4523dddd3af479291f87f1602 1675 markdown_1.0.1-9.dsc
+ 1527354e53d68910ff9d637763931297 16510 markdown_1.0.1.orig.tar.gz
+ 843cf2bb556f7912af1d1d0d8faaa76a 3364 markdown_1.0.1-9.diff.gz
+Checksums-Sha1: 
+ ff1df30aa1bbc6a3f35ae7eaca42af07416f47af 1675 markdown_1.0.1-9.dsc
+ d80480a3911a7314fef26349a38f5c8a6b524c8a 16510 markdown_1.0.1.orig.tar.gz
+ 4d4a26db59e5a16977e632b35ca770f0110ccc8d 3364 markdown_1.0.1-9.diff.gz
+Checksums-Sha256: 
+ fe810383b2bbab52ff749acd62dc41b006ff8c61d60a8c230ad2c6af56036a16 1675 markdown_1.0.1-9.dsc
+ e98c6e727f2a442816e1adae28ae5cf6b725ed0fd7556c594e2bfd85adc5b538 16510 markdown_1.0.1.orig.tar.gz
+ 7b670eb133cb9b5ae57fc3d5bda11b67131348923bfa541e89e2e6d5b7eddcd6 3364 markdown_1.0.1-9.diff.gz
+Homepage: http://daringfireball.net/projects/markdown/
+Package-List: 
+ markdown deb web optional arch=all
+Directory: pool/main/m/markdown
+Priority: source
+Section: web
+
+pi@raspberrypi:~$ apt-cache depends markdown
+markdown
+  Depends: perl
+
+pi@raspberrypi:~$ apt-cache rdepends markdown
+markdown
+Reverse Depends:
+  discount
+  w3m-el-snapshot
+  node-showdown
+  node-node-markdown
+  nanoblogger
+  libtext-markdown-perl
+  libjs-showdown
+  libhtml-wikiconverter-markdown-perl
+pi@raspberrypi:~$ 

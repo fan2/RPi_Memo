@@ -1,0 +1,75 @@
+apt-cache search fcitx* 查询 fcitx 相关的软件安装包；再过滤出 pinyin 相关的安装包。
+
+---
+
+fcitx-googlepinyin - Fcitx wrapper for Google Pinyin IM engine
+fcitx-libpinyin - Fcitx wrapper for libpinyin
+fcitx-module-cloudpinyin - Flexible Input Method Framework - cloudpinyin module
+fcitx-pinyin - Flexible Input Method Framework - classic Pinyin engine
+fcitx-sunpinyin - fcitx wrapper for Sunpinyin IM engine
+fcitx-table-wbpy - Flexible Input Method Framework - WubiPinyin table
+sunpinyin-utils - Simplified Chinese Input Method from SUN (utilities)
+
+---
+
+安装 googlepinyin、cloudpinyin 和 sunpinyin：
+
+pi@raspberrypi:~$ sudo apt-get install fcitx-googlepinyin fcitx-module-cloudpinyin fcitx-sunpinyin
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  fcitx-libs fonts-arphic-bsmi00lp fonts-arphic-gbsn00lp libicu48 liblcms1
+  liblua5.1-0 libopencc1 libscim8v5 libtiff4 scim-im-agent scim-modules-socket
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  libgooglepinyin0 libsunpinyin3v5 sunpinyin-data
+The following NEW packages will be installed:
+  fcitx-googlepinyin fcitx-module-cloudpinyin fcitx-sunpinyin libgooglepinyin0
+  libsunpinyin3v5 sunpinyin-data
+0 upgraded, 6 newly installed, 0 to remove and 0 not upgraded.
+Need to get 18.1 MB of archives.
+After this operation, 45.0 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf libgooglepinyin0 armhf 0.1
+.2-4 [520 kB]
+Get:2 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf fcitx-googlepinyin armhf 0
+.1.6-3 [11.2 kB]
+Get:3 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf fcitx-module-cloudpinyin a
+rmhf 0.3.4-3 [17.0 kB]
+Get:4 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf libsunpinyin3v5 armhf 3.0.
+0~git20160910-1 [103 kB]
+Get:5 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf sunpinyin-data armhf 0.1.2
+2+20170109-1 [17.4 MB]
+Get:6 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf fcitx-sunpinyin armhf 0.4.
+1-1+b1 [46.1 kB]
+Fetched 18.1 MB in 1min 13s (246 kB/s)                                         
+Selecting previously unselected package libgooglepinyin0:armhf.
+(Reading database ... 125538 files and directories currently installed.)
+Preparing to unpack .../0-libgooglepinyin0_0.1.2-4_armhf.deb ...
+Unpacking libgooglepinyin0:armhf (0.1.2-4) ...
+Selecting previously unselected package fcitx-googlepinyin:armhf.
+Preparing to unpack .../1-fcitx-googlepinyin_0.1.6-3_armhf.deb ...
+Unpacking fcitx-googlepinyin:armhf (0.1.6-3) ...
+Selecting previously unselected package fcitx-module-cloudpinyin:armhf.
+Preparing to unpack .../2-fcitx-module-cloudpinyin_0.3.4-3_armhf.deb ...
+Unpacking fcitx-module-cloudpinyin:armhf (0.3.4-3) ...
+Selecting previously unselected package libsunpinyin3v5:armhf.
+Preparing to unpack .../3-libsunpinyin3v5_3.0.0~git20160910-1_armhf.deb ...
+Unpacking libsunpinyin3v5:armhf (3.0.0~git20160910-1) ...
+Selecting previously unselected package sunpinyin-data.
+Preparing to unpack .../4-sunpinyin-data_0.1.22+20170109-1_armhf.deb ...
+Unpacking sunpinyin-data (0.1.22+20170109-1) ...
+Selecting previously unselected package fcitx-sunpinyin.
+Preparing to unpack .../5-fcitx-sunpinyin_0.4.1-1+b1_armhf.deb ...
+Unpacking fcitx-sunpinyin (0.4.1-1+b1) ...
+Setting up libgooglepinyin0:armhf (0.1.2-4) ...
+Setting up fcitx-googlepinyin:armhf (0.1.6-3) ...
+Setting up fcitx-module-cloudpinyin:armhf (0.3.4-3) ...
+Setting up sunpinyin-data (0.1.22+20170109-1) ...
+Setting up libsunpinyin3v5:armhf (3.0.0~git20160910-1) ...
+Processing triggers for libc-bin (2.24-11+deb9u1) ...
+Setting up fcitx-sunpinyin (0.4.1-1+b1) ...
+Processing triggers for hicolor-icon-theme (0.15-1) ...
+pi@raspberrypi:~$ 
+Meta-Z for help | 115200 8N1 | NOR | Minicom 2.7.1 | VT102 | Offline | tty.usbserial           

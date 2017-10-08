@@ -1,0 +1,172 @@
+
+# 将 macOS 中部分 Microsoft 经典字体拷贝到 raspbian：
+faner@THOMASFAN-MB0:~|⇒  scp Microsoft/SimSun.ttf Microsoft/Fangsong.ttf Microsoft/SimHei.ttf Microsoft/Microsoft\ Yahei.ttf pi@192.168.1.128:Downloads
+The authenticity of host '192.168.1.128 (192.168.1.128)' can't be established.
+ECDSA key fingerprint is SHA256:*******************************************.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '192.168.1.128' (ECDSA) to the list of known hosts.
+pi@192.168.1.128's password: 
+SimSun.ttf                                                    100%   15MB 355.3KB/s   00:42    
+Fangsong.ttf                                                  100%   10MB 278.4KB/s   00:37    
+SimHei.ttf                                                    100% 9523KB 558.8KB/s   00:17    
+Microsoft Yahei.ttf                                           100%   21MB 424.0KB/s   00:50    
+
+# 将 macOS 中经典字体 PingFang、LucidaGrande、GillSans、Georgia、SF-UI 拷贝到 raspbian：
+faner@THOMASFAN-MB0:~|⇒  scp /System/Library/Fonts/PingFang.ttc /System/Library/Fonts/LucidaGrande.ttc /Library/Fonts/GillSans.ttc /Library/Fonts/Georgia*.ttf ~/Library/Fonts/SF-UI-Display-*.otf ~/Library/Fonts/SF-UI-Text-*.otf pi@192.168.1.128:Downloads
+pi@192.168.1.128's password: 
+PingFang.ttc                                                  100%   77MB 851.1KB/s   01:32    
+LucidaGrande.ttc                                              100% 3107KB   1.0MB/s   00:03    
+GillSans.ttc                                                  100% 1192KB   1.2MB/s   00:01    
+Georgia Bold Italic.ttf                                       100%  377KB 376.5KB/s   00:01    
+Georgia Bold.ttf                                              100%  355KB 118.0KB/s   00:03    
+Georgia Italic.ttf                                            100%  391KB 444.7KB/s   00:00    
+Georgia.ttf                                                   100%  371KB 455.6KB/s   00:00    
+SF-UI-Display-Black.otf                                       100%  296KB 373.6KB/s   00:00    
+SF-UI-Display-Bold.otf                                        100%  304KB 734.8KB/s   00:00    
+SF-UI-Display-Heavy.otf                                       100%  305KB 502.7KB/s   00:00    
+SF-UI-Display-Light.otf                                       100%  296KB 798.4KB/s   00:00    
+SF-UI-Display-Medium.otf                                      100%  302KB 865.7KB/s   00:00    
+SF-UI-Display-Regular.otf                                     100%  283KB 679.1KB/s   00:00    
+SF-UI-Display-Semibold.otf                                    100%  304KB   1.2MB/s   00:00    
+SF-UI-Display-Thin.otf                                        100%  288KB 995.4KB/s   00:00    
+SF-UI-Display-Ultralight.otf                                  100%  286KB 761.6KB/s   00:00    
+SF-UI-Text-Bold.otf                                           100%  321KB 927.6KB/s   00:00    
+SF-UI-Text-BoldItalic.otf                                     100%  232KB 690.8KB/s   00:00    
+SF-UI-Text-Heavy.otf                                          100%  322KB 898.7KB/s   00:00    
+SF-UI-Text-HeavyItalic.otf                                    100%  234KB 565.6KB/s   00:00    
+SF-UI-Text-Light.otf                                          100%  318KB 158.6KB/s   00:02    
+SF-UI-Text-LightItalic.otf                                    100%  230KB 267.9KB/s   00:00    
+SF-UI-Text-Medium.otf                                         100%  321KB 897.5KB/s   00:00    
+SF-UI-Text-MediumItalic.otf                                   100%  232KB 674.9KB/s   00:00    
+SF-UI-Text-Regular.otf                                        100%  310KB 737.4KB/s   00:00    
+SF-UI-Text-RegularItalic.otf                                  100%  223KB 991.1KB/s   00:00    
+SF-UI-Text-Semibold.otf                                       100%  320KB 674.9KB/s   00:00    
+SF-UI-Text-SemiboldItalic.otf                                 100%  232KB 771.9KB/s   00:00    
+
+# 将 仿宋、雅黑、中易黑体、中易宋体 字体文件拷贝到 /usr/share/fonts/truetype/microsoft 目录下
+pi@raspberrypi:~$ sudo mkdir -p /usr/share/fonts/truetype/microsoft
+pi@raspberrypi:~/Downloads$ sudo mv SimSun.ttf Fangsong.ttf SimHei.ttf Microsoft\ Yahei.ttf /usr/share/fonts/truetype/microsoft
+pi@raspberrypi:~/Downloads$ ls /usr/share/fonts/truetype/microsoft/
+Fangsong.ttf  Microsoft Yahei.ttf  SimHei.ttf  SimSun.ttf
+# 修改 microsoft/ 下所有字体权限为 -rwxr-xr-x
+pi@raspberrypi:~/Downloads$ sudo chmod 755 /usr/share/fonts/truetype/microsoft/*
+
+# 将 PingFang、LucidaGrande、GillSans、Georgia、SF-UI 字体文件拷贝到 /usr/share/fonts/truetype/mac 目录下
+pi@raspberrypi:~$ sudo mkdir -p /usr/share/fonts/truetype/mac
+pi@raspberrypi:~/Downloads$ sudo mv PingFang.ttc LucidaGrande.ttc GillSans.ttc Georgia*.ttf SF-UI-Display-*.otf SF-UI-Text-*.otf /usr/share/fonts/truetype/mac
+pi@raspberrypi:~/Downloads$ ls /usr/share/fonts/truetype/mac
+Georgia Bold Italic.ttf     SF-UI-Display-Thin.otf
+Georgia Bold.ttf            SF-UI-Display-Ultralight.otf
+Georgia Italic.ttf          SF-UI-Text-BoldItalic.otf
+Georgia.ttf                 SF-UI-Text-Bold.otf
+GillSans.ttc                SF-UI-Text-HeavyItalic.otf
+LucidaGrande.ttc            SF-UI-Text-Heavy.otf
+PingFang.ttc                SF-UI-Text-LightItalic.otf
+SF-UI-Display-Black.otf     SF-UI-Text-Light.otf
+SF-UI-Display-Bold.otf      SF-UI-Text-MediumItalic.otf
+SF-UI-Display-Heavy.otf     SF-UI-Text-Medium.otf
+SF-UI-Display-Light.otf     SF-UI-Text-RegularItalic.otf
+SF-UI-Display-Medium.otf    SF-UI-Text-Regular.otf
+SF-UI-Display-Regular.otf   SF-UI-Text-SemiboldItalic.otf
+SF-UI-Display-Semibold.otf  SF-UI-Text-Semibold.otf
+# 修改 mac/ 下所有字体权限为 -rwxr-xr-x
+pi@raspberrypi:~/Downloads$ sudo chmod 755 /usr/share/fonts/truetype/mac/*
+
+pi@raspberrypi:~/Downloads$ sudo mkfontscale
+pi@raspberrypi:~/Downloads$ sudo mkfontdir
+pi@raspberrypi:~/Downloads$ sudo fc-cache -fv
+/usr/share/fonts: caching, new cache contents: 0 fonts, 5 dirs
+/usr/share/fonts/Noto: caching, new cache contents: 64 fonts, 0 dirs
+/usr/share/fonts/X11: caching, new cache contents: 0 fonts, 4 dirs
+/usr/share/fonts/X11/100dpi: caching, new cache contents: 358 fonts, 0 dirs
+/usr/share/fonts/X11/Type1: caching, new cache contents: 35 fonts, 0 dirs
+/usr/share/fonts/X11/encodings: caching, new cache contents: 0 fonts, 1 dirs
+/usr/share/fonts/X11/encodings/large: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/X11/util: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap: caching, new cache contents: 0 fonts, 5 dirs
+/usr/share/fonts/cmap/adobe-cns1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-gb1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-japan1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-japan2: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-korea1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/truetype: caching, new cache contents: 0 fonts, 14 dirs
+/usr/share/fonts/truetype/arphic: caching, new cache contents: 8 fonts, 0 dirs
+/usr/share/fonts/truetype/arphic-bsmi00lp: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/arphic-gbsn00lp: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/dejavu: caching, new cache contents: 22 fonts, 0 dirs
+/usr/share/fonts/truetype/droid: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/freefont: caching, new cache contents: 12 fonts, 0 dirs
+/usr/share/fonts/truetype/lato: caching, new cache contents: 18 fonts, 0 dirs
+/usr/share/fonts/truetype/liberation2: caching, new cache contents: 12 fonts, 0 dirs
+/usr/share/fonts/truetype/mac: caching, new cache contents: 74 fonts, 0 dirs
+/usr/share/fonts/truetype/microsoft: caching, new cache contents: 4 fonts, 0 dirs
+/usr/share/fonts/truetype/noto: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/openoffice: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/piboto: caching, new cache contents: 12 fonts, 0 dirs
+/usr/share/fonts/truetype/wqy: caching, new cache contents: 5 fonts, 0 dirs
+/usr/share/fonts/type1: caching, new cache contents: 0 fonts, 1 dirs
+/usr/share/fonts/type1/gsfonts: caching, new cache contents: 35 fonts, 0 dirs
+/usr/X11R6/lib/X11/fonts: skipping, no such directory
+/usr/local/share/fonts: caching, new cache contents: 0 fonts, 0 dirs
+/root/.local/share/fonts: skipping, no such directory
+/root/.fonts: skipping, no such directory
+/usr/share/fonts: caching, new cache contents: 0 fonts, 5 dirs
+/usr/X11R6/lib/X11/fonts: skipping, no such directory
+/usr/local/share/fonts: caching, new cache contents: 0 fonts, 0 dirs
+/root/.local/share/fonts: skipping, no such directory
+/root/.fonts: skipping, no such directory
+/var/cache/fontconfig: cleaning cache directory
+/root/.cache/fontconfig: not cleaning non-existent cache directory
+/root/.fontconfig: not cleaning non-existent cache directory
+fc-cache: succeeded
+
+# Fri 6 Oct 17：移除 microsoft/FangSong 及 mac/SF-UI* 字体，新增 mac/Andale Mono 字体：
+
+pi@raspberrypi:/usr/share/fonts/truetype$ sudo mkfontscale
+pi@raspberrypi:/usr/share/fonts/truetype$ sudo mkfontdir
+pi@raspberrypi:/usr/share/fonts/truetype$ sudo fc-cache -fv
+/usr/share/fonts: caching, new cache contents: 0 fonts, 5 dirs
+/usr/share/fonts/Noto: caching, new cache contents: 64 fonts, 0 dirs
+/usr/share/fonts/X11: caching, new cache contents: 0 fonts, 4 dirs
+/usr/share/fonts/X11/100dpi: caching, new cache contents: 358 fonts, 0 dirs
+/usr/share/fonts/X11/Type1: caching, new cache contents: 35 fonts, 0 dirs
+/usr/share/fonts/X11/encodings: caching, new cache contents: 0 fonts, 1 dirs
+/usr/share/fonts/X11/encodings/large: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/X11/util: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap: caching, new cache contents: 0 fonts, 5 dirs
+/usr/share/fonts/cmap/adobe-cns1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-gb1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-japan1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-japan2: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-korea1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/truetype: caching, new cache contents: 0 fonts, 13 dirs
+/usr/share/fonts/truetype/arphic: caching, new cache contents: 8 fonts, 0 dirs
+/usr/share/fonts/truetype/arphic-bsmi00lp: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/arphic-gbsn00lp: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/dejavu: caching, new cache contents: 22 fonts, 0 dirs
+/usr/share/fonts/truetype/droid: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/freefont: caching, new cache contents: 12 fonts, 0 dirs
+/usr/share/fonts/truetype/lato: caching, new cache contents: 18 fonts, 0 dirs
+/usr/share/fonts/truetype/liberation2: caching, new cache contents: 12 fonts, 0 dirs
+/usr/share/fonts/truetype/mac: caching, new cache contents: 54 fonts, 0 dirs
+/usr/share/fonts/truetype/microsoft: caching, new cache contents: 3 fonts, 0 dirs
+/usr/share/fonts/truetype/noto: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/openoffice: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/piboto: caching, new cache contents: 12 fonts, 0 dirs
+/usr/share/fonts/type1: caching, new cache contents: 0 fonts, 1 dirs
+/usr/share/fonts/type1/gsfonts: caching, new cache contents: 35 fonts, 0 dirs
+/usr/X11R6/lib/X11/fonts: skipping, no such directory
+/usr/local/share/fonts: caching, new cache contents: 0 fonts, 0 dirs
+/root/.local/share/fonts: skipping, no such directory
+/root/.fonts: skipping, no such directory
+/usr/share/fonts: caching, new cache contents: 0 fonts, 5 dirs
+/usr/X11R6/lib/X11/fonts: skipping, no such directory
+/usr/local/share/fonts: caching, new cache contents: 0 fonts, 0 dirs
+/root/.local/share/fonts: skipping, no such directory
+/root/.fonts: skipping, no such directory
+/var/cache/fontconfig: cleaning cache directory
+/var/cache/fontconfig: invalid cache file: 99e8ed0e538f840c565b6ed5dad60d56-le32d8.cache-4
+/root/.cache/fontconfig: not cleaning non-existent cache directory
+/root/.fontconfig: not cleaning non-existent cache directory
+fc-cache: succeeded
+

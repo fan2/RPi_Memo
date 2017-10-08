@@ -1,0 +1,439 @@
+pi@raspberrypi:~$ perl -v
+
+This is perl 5, version 24, subversion 1 (v5.24.1) built for arm-linux-gnueabihf-thread-multi-64t
+(with 75 registered patches, see perl -V for more detail)
+
+Copyright 1987-2017, Larry Wall
+
+Perl may be copied only under the terms of either the Artistic License or the
+GNU General Public License, which may be found in the Perl 5 source kit.
+
+Complete documentation for Perl, including FAQ lists, should be found on
+this system using "man perl" or "perldoc perl".  If you have access to the
+Internet, point your browser at http://www.perl.org/, the Perl Home Page.
+
+pi@raspberrypi:~$ python2 --version
+Python 2.7.13
+
+pi@raspberrypi:~$ python3 --version
+Python 3.5.3
+
+####################################################################################################
+# 1. install markdown
+####################################################################################################
+
+pi@raspberrypi:~$ sudo apt-get install markdown
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... 93%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following NEW packages will be installed:
+  markdown
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 17.2 kB of archives.
+After this operation, 57.3 kB of additional disk space will be used.
+0% [Working]0% [Working]0% [Working]0% [Working]0% [Working]0% [Working]            Get:1 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf markdown all 1.0.1-9 [17.2 kB]
+0% [1 markdown 0 B/17.2 kB 0%]13% [1 markdown 2,856 B/17.2 kB 17%]                                    100% [Working]              Fetched 17.2 kB in 3s (5,026 B/s)
+Selecting previously unselected package markdown.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 125517 files and directories currently installed.)
+Preparing to unpack .../markdown_1.0.1-9_all.deb ...
+Unpacking markdown (1.0.1-9) ...
+Setting up markdown (1.0.1-9) ...
+Processing triggers for man-db (2.7.6.1-2) ...
+pi@raspberrypi:~$ markdown -v
+
+This is Markdown, version 1.0.1.
+Copyright 2004 John Gruber
+http://daringfireball.net/projects/markdown/
+
+
+####################################################################################################
+# 2. install pandoc
+####################################################################################################
+pi@raspberrypi:~$ sudo apt-get install pandoc
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... 92%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following additional packages will be installed:
+  liblua5.1-0 libluajit-5.1-2 pandoc-data
+Suggested packages:
+  texlive-latex-recommended texlive-xetex texlive-luatex pandoc-citeproc
+  texlive-latex-extra wkhtmltopdf
+The following NEW packages will be installed:
+  liblua5.1-0 libluajit-5.1-2 pandoc pandoc-data
+0 upgraded, 4 newly installed, 0 to remove and 0 not upgraded.
+Need to get 9,237 kB/9,321 kB of archives.
+After this operation, 65.2 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+6% [Working]            Get:1 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf libluajit-5.1-2 armhf 2.0.4+dfsg-1 [171 kB]
+6% [1 libluajit-5.1-2 0 B/171 kB 0%]                                    12% [Working]             Get:2 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf pandoc-data all 1.17.2~dfsg-3 [265 kB]
+12% [2 pandoc-data 0 B/265 kB 0%]14% [2 pandoc-data 174 kB/265 kB 66%]14% [2 pandoc-data 221 kB/265 kB 84%]14% [2 pandoc-data 221 kB/265 kB 84%]14% [2 pandoc-data 221 kB/265 kB 84%]                                     19% [Working]             Get:3 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf pandoc armhf 1.17.2~dfsg-3 [8,802 kB]
+20% [3 pandoc 10.6 kB/8,802 kB 0%]20% [3 pandoc 65.7 kB/8,802 kB 1%]20% [3 pandoc 65.7 kB/8,802 kB 1%]20% [3 pandoc 65.7 kB/8,802 kB 1%]20% [3 pandoc 65.7 kB/8,802 kB 1%]                                  23% [3 pandoc 374 kB/8,802 kB 4%]23% [3 pandoc 406 kB/8,802 kB 5%]                                  147 kB/s 57s23% [3 pandoc 406 kB/8,802 kB 5%]                                  147 kB/s 57s23% [3 pandoc 406 kB/8,802 kB 5%]                                  147 kB/s 57s24% [3 pandoc 526 kB/8,802 kB 6%]                                  147 kB/s 56s27% [3 pandoc 928 kB/8,802 kB 11%]                                 147 kB/s 53s27% [3 pandoc 928 kB/8,802 kB 11%]                                 147 kB/s 53s27% [3 pandoc 928 kB/8,802 kB 11%]                                 147 kB/s 53s27% [3 pandoc 930 kB/8,802 kB 11%]                                 147 kB/s 53s33% [3 pandoc 1,562 kB/8,802 kB 18%]                               147 kB/s 49s36% [3 pandoc 1,946 kB/8,802 kB 22%]                               147 kB/s 46s37% [3 pandoc 2,078 kB/8,802 kB 24%]                               147 kB/s 45s40% [3 pandoc 2,409 kB/8,802 kB 27%]                               147 kB/s 43s41% [3 pandoc 2,530 kB/8,802 kB 29%]                               353 kB/s 17s41% [3 pandoc 2,530 kB/8,802 kB 29%]                               353 kB/s 17s41% [3 pandoc 2,530 kB/8,802 kB 29%]                               353 kB/s 17s41% [3 pandoc 2,530 kB/8,802 kB 29%]                               353 kB/s 17s45% [3 pandoc 2,923 kB/8,802 kB 33%]                               353 kB/s 16s45% [3 pandoc 2,923 kB/8,802 kB 33%]                               353 kB/s 16s45% [3 pandoc 2,940 kB/8,802 kB 33%]                               353 kB/s 16s46% [3 pandoc 3,102 kB/8,802 kB 35%]                               353 kB/s 16s49% [3 pandoc 3,414 kB/8,802 kB 39%]                               353 kB/s 15s49% [3 pandoc 3,414 kB/8,802 kB 39%]                               353 kB/s 15s53% [3 pandoc 3,930 kB/8,802 kB 45%]                               353 kB/s 13s53% [3 pandoc 3,930 kB/8,802 kB 45%]                               353 kB/s 13s54% [3 pandoc 4,040 kB/8,802 kB 46%]                               251 kB/s 18s54% [3 pandoc 4,040 kB/8,802 kB 46%]                               251 kB/s 18s54% [3 pandoc 4,040 kB/8,802 kB 46%]                               251 kB/s 18s54% [3 pandoc 4,040 kB/8,802 kB 46%]                               251 kB/s 18s54% [3 pandoc 4,040 kB/8,802 kB 46%]                               251 kB/s 18s54% [3 pandoc 4,040 kB/8,802 kB 46%]                               251 kB/s 18s56% [3 pandoc 4,225 kB/8,802 kB 48%]                               251 kB/s 18s58% [3 pandoc 4,454 kB/8,802 kB 51%]                               251 kB/s 17s58% [3 pandoc 4,514 kB/8,802 kB 51%]                               251 kB/s 17s58% [3 pandoc 4,514 kB/8,802 kB 51%]                               251 kB/s 17s59% [3 pandoc 4,567 kB/8,802 kB 52%]                               251 kB/s 16s59% [3 pandoc 4,567 kB/8,802 kB 52%]                               251 kB/s 16s59% [3 pandoc 4,567 kB/8,802 kB 52%]                              87.7 kB/s 48s59% [3 pandoc 4,572 kB/8,802 kB 52%]                              87.7 kB/s 48s60% [3 pandoc 4,717 kB/8,802 kB 54%]                              87.7 kB/s 46s61% [3 pandoc 4,810 kB/8,802 kB 55%]                              87.7 kB/s 45s63% [3 pandoc 5,101 kB/8,802 kB 58%]                              87.7 kB/s 42s66% [3 pandoc 5,396 kB/8,802 kB 61%]                              87.7 kB/s 38s66% [3 pandoc 5,396 kB/8,802 kB 61%]                              87.7 kB/s 38s67% [3 pandoc 5,489 kB/8,802 kB 62%]                              87.7 kB/s 37s67% [3 pandoc 5,501 kB/8,802 kB 62%]                              87.7 kB/s 37s70% [3 pandoc 5,883 kB/8,802 kB 67%]                              87.7 kB/s 33s70% [3 pandoc 5,883 kB/8,802 kB 67%]                              87.7 kB/s 33s71% [3 pandoc 5,949 kB/8,802 kB 68%]                              87.7 kB/s 32s71% [3 pandoc 5,966 kB/8,802 kB 68%]                               233 kB/s 12s71% [3 pandoc 5,966 kB/8,802 kB 68%]                               233 kB/s 12s71% [3 pandoc 5,966 kB/8,802 kB 68%]                               233 kB/s 12s72% [3 pandoc 6,075 kB/8,802 kB 69%]                               233 kB/s 11s75% [3 pandoc 6,466 kB/8,802 kB 73%]                               233 kB/s 10s79% [3 pandoc 6,894 kB/8,802 kB 78%]                                233 kB/s 8s79% [3 pandoc 6,972 kB/8,802 kB 79%]                                233 kB/s 7s80% [3 pandoc 7,096 kB/8,802 kB 81%]                                233 kB/s 7s83% [3 pandoc 7,346 kB/8,802 kB 83%]                                233 kB/s 6s83% [3 pandoc 7,377 kB/8,802 kB 84%]                                233 kB/s 6s83% [3 pandoc 7,437 kB/8,802 kB 84%]                                233 kB/s 5s89% [3 pandoc 8,048 kB/8,802 kB 91%]                                233 kB/s 3s89% [3 pandoc 8,071 kB/8,802 kB 92%]                                350 kB/s 2s89% [3 pandoc 8,071 kB/8,802 kB 92%]                                350 kB/s 2s89% [3 pandoc 8,071 kB/8,802 kB 92%]                                350 kB/s 2s91% [3 pandoc 8,390 kB/8,802 kB 95%]                                350 kB/s 1s91% [3 pandoc 8,390 kB/8,802 kB 95%]                                350 kB/s 1s91% [3 pandoc 8,390 kB/8,802 kB 95%]                                350 kB/s 1s91% [3 pandoc 8,390 kB/8,802 kB 95%]                                350 kB/s 1s91% [3 pandoc 8,390 kB/8,802 kB 95%]                                350 kB/s 1s91% [3 pandoc 8,390 kB/8,802 kB 95%]                                350 kB/s 1s91% [3 pandoc 8,390 kB/8,802 kB 95%]                                350 kB/s 1s91% [3 pandoc 8,390 kB/8,802 kB 95%]                                350 kB/s 1s91% [3 pandoc 8,390 kB/8,802 kB 95%]                                350 kB/s 1s91% [3 pandoc 8,390 kB/8,802 kB 95%]                               53.0 kB/s 7s91% [3 pandoc 8,390 kB/8,802 kB 95%]                               53.0 kB/s 7s91% [3 pandoc 8,390 kB/8,802 kB 95%]                               53.0 kB/s 7s91% [3 pandoc 8,390 kB/8,802 kB 95%]                               53.0 kB/s 7s91% [3 pandoc 8,390 kB/8,802 kB 95%]                               53.0 kB/s 7s91% [3 pandoc 8,390 kB/8,802 kB 95%]                               53.0 kB/s 7s91% [3 pandoc 8,390 kB/8,802 kB 95%]                               53.0 kB/s 7s91% [3 pandoc 8,390 kB/8,802 kB 95%]                               53.0 kB/s 7s91% [3 pandoc 8,390 kB/8,802 kB 95%]                               53.0 kB/s 7s91% [3 pandoc 8,390 kB/8,802 kB 95%]                               53.0 kB/s 7s91% [3 pandoc 8,390 kB/8,802 kB 95%]                               53.0 kB/s 7s91% [3 pandoc 8,390 kB/8,802 kB 95%]                               53.0 kB/s 7s                                                                               91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]91% [3 pandoc 8,390 kB/8,802 kB 95%]                                    Get:3 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf pandoc armhf 1.17.2~dfsg-3 [8,802 kB]
+92% [3 pandoc 8,401 kB/8,802 kB 95%]93% [3 pandoc 8,512 kB/8,802 kB 97%]95% [3 pandoc 8,777 kB/8,802 kB 100%]                                     100% [Working]              Fetched 848 kB in 2min 39s (5,307 B/s)
+Selecting previously unselected package liblua5.1-0:armhf.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 125524 files and directories currently installed.)
+Preparing to unpack .../liblua5.1-0_5.1.5-8.1_armhf.deb ...
+Unpacking liblua5.1-0:armhf (5.1.5-8.1) ...
+Selecting previously unselected package libluajit-5.1-2:armhf.
+Preparing to unpack .../libluajit-5.1-2_2.0.4+dfsg-1_armhf.deb ...
+Unpacking libluajit-5.1-2:armhf (2.0.4+dfsg-1) ...
+Selecting previously unselected package pandoc-data.
+Preparing to unpack .../pandoc-data_1.17.2~dfsg-3_all.deb ...
+Unpacking pandoc-data (1.17.2~dfsg-3) ...
+Selecting previously unselected package pandoc.
+Preparing to unpack .../pandoc_1.17.2~dfsg-3_armhf.deb ...
+Unpacking pandoc (1.17.2~dfsg-3) ...
+Setting up pandoc-data (1.17.2~dfsg-3) ...
+Processing triggers for libc-bin (2.24-11+deb9u1) ...
+Setting up libluajit-5.1-2:armhf (2.0.4+dfsg-1) ...
+Processing triggers for man-db (2.7.6.1-2) ...
+Setting up liblua5.1-0:armhf (5.1.5-8.1) ...
+Setting up pandoc (1.17.2~dfsg-3) ...
+Processing triggers for libc-bin (2.24-11+deb9u1) ...
+
+pi@raspberrypi:~$ pandoc -v
+pandoc 1.17.2
+Compiled with texmath 0.8.6.7, highlighting-kate 0.6.3.
+Syntax highlighting is supported for the following languages:
+    abc, actionscript, ada, agda, apache, asn1, asp, awk, bash, bibtex, boo, c,
+    changelog, clojure, cmake, coffee, coldfusion, commonlisp, cpp, cs, css,
+    curry, d, diff, djangotemplate, dockerfile, dot, doxygen, doxygenlua, dtd,
+    eiffel, elixir, email, erlang, fasm, fortran, fsharp, gcc, glsl,
+    gnuassembler, go, hamlet, haskell, haxe, html, idris, ini, isocpp, java,
+    javadoc, javascript, json, jsp, julia, kotlin, latex, lex, lilypond,
+    literatecurry, literatehaskell, llvm, lua, m4, makefile, mandoc, markdown,
+    mathematica, matlab, maxima, mediawiki, metafont, mips, modelines, modula2,
+    modula3, monobasic, nasm, noweb, objectivec, objectivecpp, ocaml, octave,
+    opencl, pascal, perl, php, pike, postscript, prolog, pure, python, r,
+    relaxng, relaxngcompact, rest, rhtml, roff, ruby, rust, scala, scheme, sci,
+    sed, sgml, sql, sqlmysql, sqlpostgresql, tcl, tcsh, texinfo, verilog, vhdl,
+    xml, xorg, xslt, xul, yacc, yaml, zsh
+Default user data directory: /home/pi/.pandoc
+Copyright (C) 2006-2016 John MacFarlane
+Web:  http://pandoc.org
+This is free software; see the source for copying conditions.
+There is no warranty, not even for merchantability or fitness
+for a particular purpose.
+
+####################################################################################################
+# 3. install python3-pandocfilters for pandoc
+####################################################################################################
+pi@raspberrypi:~$ sudo apt-get install python3-pandocfilters
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... 93%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following NEW packages will be installed:
+  python3-pandocfilters
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 14.1 kB of archives.
+After this operation, 54.3 kB of additional disk space will be used.
+0% [Working]0% [Working]0% [Working]0% [Waiting for headers]                        Get:1 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python3-pandocfilters all 1.3.0-1 [14.1 kB]
+0% [1 python3-pandocfilters 0 B/14.1 kB 0%]                                           100% [Working]              Fetched 14.1 kB in 1s (8,060 B/s)
+Selecting previously unselected package python3-pandocfilters.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 125634 files and directories currently installed.)
+Preparing to unpack .../python3-pandocfilters_1.3.0-1_all.deb ...
+Unpacking python3-pandocfilters (1.3.0-1) ...
+Setting up python3-pandocfilters (1.3.0-1) ...
+
+####################################################################################################
+# 4. install python3-markdown
+####################################################################################################
+pi@raspberrypi:~$ sudo apt-get install python3-markdown
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... 92%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following additional packages will be installed:
+  python3-pygments python3-yaml
+Suggested packages:
+  python-markdown-doc ttf-bitstream-vera
+The following NEW packages will be installed:
+  python3-markdown python3-pygments python3-yaml
+0 upgraded, 3 newly installed, 0 to remove and 0 not upgraded.
+Need to get 738 kB of archives.
+After this operation, 3,906 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+0% [Working]0% [Working]0% [Working]0% [Working]0% [Working]0% [Working]            Get:1 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python3-markdown all 2.6.8-1 [56.6 kB]
+0% [1 python3-markdown 0 B/56.6 kB 0%]                                      13% [Working]             Get:2 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python3-pygments all 2.2.0+dfsg-1 [588 kB]
+13% [2 python3-pygments 0 B/588 kB 0%]32% [2 python3-pygments 180 kB/588 kB 31%]32% [2 python3-pygments 180 kB/588 kB 31%]43% [2 python3-pygments 278 kB/588 kB 47%]43% [2 python3-pygments 278 kB/588 kB 47%]43% [2 python3-pygments 278 kB/588 kB 47%]43% [2 python3-pygments 278 kB/588 kB 47%]                         53.8 kB/s 7s60% [2 python3-pygments 435 kB/588 kB 74%]                         53.8 kB/s 4s83% [Working]                                                      53.8 kB/s 1s                                                                               Get:3 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python3-yaml armhf 3.12-1 [93.3 kB]
+84% [3 python3-yaml 10.2 kB/93.3 kB 11%]                           53.8 kB/s 1s100% [Working]                                                     53.8 kB/s 0s                                                                               Fetched 738 kB in 6s (106 kB/s)
+Selecting previously unselected package python3-markdown.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 125653 files and directories currently installed.)
+Preparing to unpack .../python3-markdown_2.6.8-1_all.deb ...
+Unpacking python3-markdown (2.6.8-1) ...
+Selecting previously unselected package python3-pygments.
+Preparing to unpack .../python3-pygments_2.2.0+dfsg-1_all.deb ...
+Unpacking python3-pygments (2.2.0+dfsg-1) ...
+Selecting previously unselected package python3-yaml.
+Preparing to unpack .../python3-yaml_3.12-1_armhf.deb ...
+Unpacking python3-yaml (3.12-1) ...
+Setting up python3-yaml (3.12-1) ...
+Setting up python3-markdown (2.6.8-1) ...
+Setting up python3-pygments (2.2.0+dfsg-1) ...
+
+# 已自动安装 python3-pygments
+pi@raspberrypi:~$ sudo apt-get install python3-pygments
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... 92%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+python3-pygments is already the newest version (2.2.0+dfsg-1).
+python3-pygments set to manually installed.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+# 已自动安装 python3-yaml
+pi@raspberrypi:~$ sudo apt-get install python3-yaml
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... 93%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+python3-yaml is already the newest version (3.12-1).
+python3-yaml set to manually installed.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+####################################################################################################
+# 5. install python-markdown-doc for python3-markdown
+####################################################################################################
+pi@raspberrypi:~$ sudo apt-get install python-markdown-doc
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... 92%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following NEW packages will be installed:
+  python-markdown-doc
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 78.1 kB of archives.
+After this operation, 561 kB of additional disk space will be used.
+0% [Working]0% [Working]0% [Working]0% [Connecting to mirrors.ustc.edu.cn]0% [Connecting to mirrors.ustc.edu.cn (218.104.71.170)]0% [Connecting to mirrors.ustc.edu.cn (218.104.71.170)]0% [Connecting to mirrors.ustc.edu.cn (218.104.71.170)]0% [Connecting to mirrors.ustc.edu.cn (218.104.71.170)]0% [Connecting to mirrors.ustc.edu.cn (218.104.71.170)]0% [Connecting to mirrors.ustc.edu.cn (218.104.71.170)]                                                       Get:1 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python-markdown-doc all 2.6.8-1 [78.1 kB]
+                                                       0% [1 python-markdown-doc 0 B/78.1 kB 0%]                                         100% [Working]              Fetched 78.1 kB in 5s (14.5 kB/s)
+Selecting previously unselected package python-markdown-doc.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 125931 files and directories currently installed.)
+Preparing to unpack .../python-markdown-doc_2.6.8-1_all.deb ...
+Unpacking python-markdown-doc (2.6.8-1) ...
+Setting up python-markdown-doc (2.6.8-1) ...
+
+####################################################################################################
+# 6. install grip
+####################################################################################################
+pi@raspberrypi:~$ sudo apt-get install grip
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  python3-docopt python3-path-and-address
+The following NEW packages will be installed:
+  grip python3-docopt python3-path-and-address
+0 upgraded, 3 newly installed, 0 to remove and 0 not upgraded.
+Need to get 51.6 kB of archives.
+After this operation, 251 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python3-docopt all 0.6.2-1]
+Get:2 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python3-path-and-address a]
+Get:3 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf grip all 4.2.0-3 [27.2 kB]
+Fetched 51.6 kB in 3s (14.3 kB/s)
+Selecting previously unselected package python3-docopt.
+(Reading database ... 130721 files and directories currently installed.)
+Preparing to unpack .../python3-docopt_0.6.2-1_all.deb ...
+Unpacking python3-docopt (0.6.2-1) ...
+Selecting previously unselected package python3-path-and-address.
+Preparing to unpack .../python3-path-and-address_2.0.1-1_all.deb ...
+Unpacking python3-path-and-address (2.0.1-1) ...
+Selecting previously unselected package grip.
+Preparing to unpack .../archives/grip_4.2.0-3_all.deb ...
+Unpacking grip (4.2.0-3) ...
+Setting up python3-path-and-address (2.0.1-1) ...
+Setting up python3-docopt (0.6.2-1) ...
+Setting up grip (4.2.0-3) ...
+Processing triggers for man-db (2.7.6.1-2) ...
+
+pi@raspberrypi:~$ grip -V
+Grip 4.2.0
+
+####################################################################################################
+# 7. install retext
+####################################################################################################
+pi@raspberrypi:~$ sudo apt-get install retext
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... 92%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following additional packages will be installed:
+  docutils-common libpaper-utils libpaper1 libqt5clucene5 libqt5designer5
+  libqt5help5 libqt5qml5 libqt5quick5 libqt5sql5 libqt5sql5-sqlite libqt5test5
+  libqt5webkit5 python3-docutils python3-enchant python3-markups python3-pyqt5
+  python3-pyqt5.qtwebkit python3-roman python3-sip python3-textile
+Suggested packages:
+  qt5-qmltooling-plugins docutils-doc fonts-linuxlibertine
+  | ttf-linux-libertine texlive-lang-french texlive-latex-base
+  texlive-latex-recommended libjs-mathjax python3-pyqt5-dbg python3-html5lib
+  python3-regex
+The following NEW packages will be installed:
+  docutils-common libpaper-utils libpaper1 libqt5clucene5 libqt5designer5
+  libqt5help5 libqt5qml5 libqt5quick5 libqt5sql5 libqt5sql5-sqlite libqt5test5
+  libqt5webkit5 python3-docutils python3-enchant python3-markups python3-pyqt5
+  python3-pyqt5.qtwebkit python3-roman python3-sip python3-textile retext
+0 upgraded, 21 newly installed, 0 to remove and 0 not upgraded.
+Need to get 15.4 MB of archives.
+After this operation, 63.9 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+0% [Working]            Get:1 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf libqt5qml5 armhf 5.7.1-2+rpi1 [970 kB]
+0% [1 libqt5qml5 0 B/970 kB 0%]0% [1 libqt5qml5 91.4 kB/970 kB 9%]1% [1 libqt5qml5 280 kB/970 kB 29%]1% [1 libqt5qml5 280 kB/970 kB 29%]2% [1 libqt5qml5 317 kB/970 kB 33%]2% [1 libqt5qml5 382 kB/970 kB 39%]3% [1 libqt5qml5 492 kB/970 kB 51%]3% [1 libqt5qml5 492 kB/970 kB 51%]3% [1 libqt5qml5 551 kB/970 kB 57%]4% [1 libqt5qml5 678 kB/970 kB 70%]4% [1 libqt5qml5 728 kB/970 kB 75%]4% [1 libqt5qml5 728 kB/970 kB 75%]4% [1 libqt5qml5 728 kB/970 kB 75%]                            117 kB/s 2min 5s4% [1 libqt5qml5 829 kB/970 kB 86%]                            117 kB/s 2min 4s4% [1 libqt5qml5 829 kB/970 kB 86%]                            117 kB/s 2min 4s4% [1 libqt5qml5 829 kB/970 kB 86%]                            117 kB/s 2min 4s4% [1 libqt5qml5 829 kB/970 kB 86%]                            117 kB/s 2min 4s4% [1 libqt5qml5 829 kB/970 kB 86%]                            117 kB/s 2min 4s4% [1 libqt5qml5 829 kB/970 kB 86%]                            117 kB/s 2min 4s4% [1 libqt5qml5 829 kB/970 kB 86%]                            117 kB/s 2min 4s4% [1 libqt5qml5 829 kB/970 kB 86%]                            117 kB/s 2min 4s4% [1 libqt5qml5 829 kB/970 kB 86%]                            117 kB/s 2min 4s4% [1 libqt5qml5 829 kB/970 kB 86%]                            117 kB/s 2min 4s4% [1 libqt5qml5 829 kB/970 kB 86%]                            117 kB/s 2min 4s4% [1 libqt5qml5 829 kB/970 kB 86%]                         16.9 kB/s 14min 26s4% [1 libqt5qml5 829 kB/970 kB 86%]                         16.9 kB/s 14min 26s4% [1 libqt5qml5 829 kB/970 kB 86%]                         16.9 kB/s 14min 26s4% [1 libqt5qml5 829 kB/970 kB 86%]                         16.9 kB/s 14min 26s4% [1 libqt5qml5 829 kB/970 kB 86%]                         16.9 kB/s 14min 26s4% [1 libqt5qml5 829 kB/970 kB 86%]                         16.9 kB/s 14min 26s4% [1 libqt5qml5 829 kB/970 kB 86%]                         16.9 kB/s 14min 26s4% [1 libqt5qml5 829 kB/970 kB 86%]                         16.9 kB/s 14min 26s4% [1 libqt5qml5 829 kB/970 kB 86%]                         16.9 kB/s 14min 26s4% [1 libqt5qml5 829 kB/970 kB 86%]                         16.9 kB/s 14min 26s4% [1 libqt5qml5 829 kB/970 kB 86%]                         16.9 kB/s 14min 26s4% [1 libqt5qml5 829 kB/970 kB 86%]                         16.9 kB/s 14min 26s                                                                               4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]4% [1 libqt5qml5 829 kB/970 kB 86%]                                   Get:1 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf libqt5qml5 armhf 5.7.1-2+rpi1 [970 kB]
+4% [1 libqt5qml5 831 kB/970 kB 86%]4% [1 libqt5qml5 841 kB/970 kB 87%]4% [1 libqt5qml5 848 kB/970 kB 87%]4% [1 libqt5qml5 866 kB/970 kB 89%]5% [1 libqt5qml5 894 kB/970 kB 92%]5% [1 libqt5qml5 904 kB/970 kB 93%]5% [1 libqt5qml5 938 kB/970 kB 97%]5% [1 libqt5qml5 938 kB/970 kB 97%]                                   6% [Working]            Get:2 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf libqt5quick5 armhf 5.7.1-2+rpi1 [896 kB]
+6% [2 libqt5quick5 13.6 kB/896 kB 2%]6% [2 libqt5quick5 64.6 kB/896 kB 7%]7% [2 libqt5quick5 185 kB/896 kB 21%]8% [2 libqt5quick5 422 kB/896 kB 47%]                        93.6 kB/s 2min 30s9% [2 libqt5quick5 573 kB/896 kB 64%]                        93.6 kB/s 2min 28s10% [2 libqt5quick5 791 kB/896 kB 88%]                       93.6 kB/s 2min 26s12% [Working]                                                93.6 kB/s 2min 25s                                                                               Get:3 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf libqt5sql5 armhf 5.7.1+dfsg-3+rpi1 [120 kB]
+12% [3 libqt5sql5 11.5 kB/120 kB 10%]                        93.6 kB/s 2min 24s13% [Working]                                                93.6 kB/s 2min 23s                                                                               Get:4 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf libqt5webkit5 armhf 5.7.1+dfsg-1+rpi1 [7,683 kB]
+13% [4 libqt5webkit5 17.6 kB/7,683 kB 0%]                    93.6 kB/s 2min 23s14% [4 libqt5webkit5 200 kB/7,683 kB 3%]                     93.6 kB/s 2min 21s15% [4 libqt5webkit5 333 kB/7,683 kB 4%]                     93.6 kB/s 2min 20s15% [4 libqt5webkit5 376 kB/7,683 kB 5%]                     93.6 kB/s 2min 19s18% [4 libqt5webkit5 890 kB/7,683 kB 12%]                    93.6 kB/s 2min 14s18% [4 libqt5webkit5 975 kB/7,683 kB 13%]                    93.6 kB/s 2min 13s18% [4 libqt5webkit5 975 kB/7,683 kB 13%]                    93.6 kB/s 2min 13s18% [4 libqt5webkit5 975 kB/7,683 kB 13%]                    93.6 kB/s 2min 13s18% [4 libqt5webkit5 975 kB/7,683 kB 13%]                    93.6 kB/s 2min 13s18% [4 libqt5webkit5 975 kB/7,683 kB 13%]                    93.6 kB/s 2min 13s18% [4 libqt5webkit5 975 kB/7,683 kB 13%]                          250 kB/s 49s18% [4 libqt5webkit5 975 kB/7,683 kB 13%]                          250 kB/s 49s18% [4 libqt5webkit5 975 kB/7,683 kB 13%]                          250 kB/s 49s18% [4 libqt5webkit5 975 kB/7,683 kB 13%]                          250 kB/s 49s19% [4 libqt5webkit5 1,168 kB/7,683 kB 15%]                        250 kB/s 49s19% [4 libqt5webkit5 1,168 kB/7,683 kB 15%]                        250 kB/s 49s19% [4 libqt5webkit5 1,168 kB/7,683 kB 15%]                        250 kB/s 49s19% [4 libqt5webkit5 1,168 kB/7,683 kB 15%]                        250 kB/s 49s19% [4 libqt5webkit5 1,168 kB/7,683 kB 15%]                        250 kB/s 49s19% [4 libqt5webkit5 1,168 kB/7,683 kB 15%]                        250 kB/s 49s19% [4 libqt5webkit5 1,178 kB/7,683 kB 15%]                        250 kB/s 49s20% [4 libqt5webkit5 1,248 kB/7,683 kB 16%]                        250 kB/s 48s20% [4 libqt5webkit5 1,380 kB/7,683 kB 18%]                  67.2 kB/s 2min 59s20% [4 libqt5webkit5 1,380 kB/7,683 kB 18%]                  67.2 kB/s 2min 59s20% [4 libqt5webkit5 1,380 kB/7,683 kB 18%]                  67.2 kB/s 2min 59s20% [4 libqt5webkit5 1,380 kB/7,683 kB 18%]                  67.2 kB/s 2min 59s20% [4 libqt5webkit5 1,380 kB/7,683 kB 18%]                  67.2 kB/s 2min 59s20% [4 libqt5webkit5 1,420 kB/7,683 kB 18%]                  67.2 kB/s 2min 59s21% [4 libqt5webkit5 1,427 kB/7,683 kB 19%]                  67.2 kB/s 2min 58s21% [4 libqt5webkit5 1,427 kB/7,683 kB 19%]                  67.2 kB/s 2min 58s22% [4 libqt5webkit5 1,619 kB/7,683 kB 21%]                  67.2 kB/s 2min 56s22% [4 libqt5webkit5 1,745 kB/7,683 kB 23%]                  67.2 kB/s 2min 54s22% [4 libqt5webkit5 1,789 kB/7,683 kB 23%]                  67.2 kB/s 2min 53s22% [4 libqt5webkit5 1,789 kB/7,683 kB 23%]                  67.2 kB/s 2min 53s23% [4 libqt5webkit5 1,817 kB/7,683 kB 24%]                  72.7 kB/s 2min 40s25% [4 libqt5webkit5 2,275 kB/7,683 kB 30%]                  72.7 kB/s 2min 33s26% [4 libqt5webkit5 2,579 kB/7,683 kB 34%]                  72.7 kB/s 2min 29s28% [4 libqt5webkit5 2,899 kB/7,683 kB 38%]                  72.7 kB/s 2min 25s31% [4 libqt5webkit5 3,363 kB/7,683 kB 44%]                  72.7 kB/s 2min 18s31% [4 libqt5webkit5 3,480 kB/7,683 kB 45%]                  72.7 kB/s 2min 17s31% [4 libqt5webkit5 3,480 kB/7,683 kB 45%]                  72.7 kB/s 2min 17s31% [4 libqt5webkit5 3,480 kB/7,683 kB 45%]                  72.7 kB/s 2min 17s32% [4 libqt5webkit5 3,559 kB/7,683 kB 46%]                  72.7 kB/s 2min 16s33% [4 libqt5webkit5 3,740 kB/7,683 kB 49%]                  72.7 kB/s 2min 13s35% [4 libqt5webkit5 4,238 kB/7,683 kB 55%]                   72.7 kB/s 2min 6s37% [4 libqt5webkit5 4,595 kB/7,683 kB 60%]                   72.7 kB/s 2min 1s38% [4 libqt5webkit5 4,780 kB/7,683 kB 62%]                        493 kB/s 17s40% [4 libqt5webkit5 5,232 kB/7,683 kB 68%]                        493 kB/s 16s41% [4 libqt5webkit5 5,468 kB/7,683 kB 71%]                        493 kB/s 16s44% [4 libqt5webkit5 5,921 kB/7,683 kB 77%]                        493 kB/s 15s45% [4 libqt5webkit5 6,085 kB/7,683 kB 79%]                        493 kB/s 14s46% [4 libqt5webkit5 6,293 kB/7,683 kB 82%]                        493 kB/s 14s49% [4 libqt5webkit5 6,892 kB/7,683 kB 90%]                        493 kB/s 13s51% [4 libqt5webkit5 7,346 kB/7,683 kB 96%]                        493 kB/s 12s54% [Working]                                                      493 kB/s 11s                                                                               Get:5 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf docutils-common all 0.13.1+dfsg-2 [200 kB]
+54% [5 docutils-common 7,083 B/200 kB 4%]                          493 kB/s 11s56% [Working]                                                      493 kB/s 11s                                                                               Get:6 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf libpaper1 armhf 1.1.24+nmu5 [20.8 kB]
+56% [6 libpaper1 20.8 kB/20.8 kB 100%]                             493 kB/s 11s57% [Working]                                                      493 kB/s 11s                                                                               Get:7 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf libpaper-utils armhf 1.1.24+nmu5 [17.2 kB]
+57% [7 libpaper-utils 0 B/17.2 kB 0%]                              493 kB/s 11s58% [Working]                                                      493 kB/s 11s                                                                               Get:8 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf libqt5clucene5 armhf 5.7.1-1 [217 kB]
+58% [8 libqt5clucene5 1,911 B/217 kB 1%]                           493 kB/s 11s60% [Working]                                                      493 kB/s 10s                                                                               Get:9 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf libqt5designer5 armhf 5.7.1-1 [2,639 kB]
+60% [9 libqt5designer5 9,937 B/2,639 kB 0%]                        493 kB/s 10s62% [9 libqt5designer5 410 kB/2,639 kB 16%]                         493 kB/s 9s65% [9 libqt5designer5 971 kB/2,639 kB 37%]                         493 kB/s 8s67% [9 libqt5designer5 1,247 kB/2,639 kB 47%]                       493 kB/s 8s67% [9 libqt5designer5 1,247 kB/2,639 kB 47%]                       746 kB/s 5s67% [9 libqt5designer5 1,247 kB/2,639 kB 47%]                       746 kB/s 5s67% [9 libqt5designer5 1,285 kB/2,639 kB 49%]                       746 kB/s 5s67% [9 libqt5designer5 1,285 kB/2,639 kB 49%]                       746 kB/s 5s67% [9 libqt5designer5 1,285 kB/2,639 kB 49%]                       746 kB/s 5s67% [9 libqt5designer5 1,285 kB/2,639 kB 49%]                       746 kB/s 5s67% [9 libqt5designer5 1,285 kB/2,639 kB 49%]                       746 kB/s 5s67% [9 libqt5designer5 1,285 kB/2,639 kB 49%]                       746 kB/s 5s67% [9 libqt5designer5 1,285 kB/2,639 kB 49%]                       746 kB/s 5s69% [9 libqt5designer5 1,646 kB/2,639 kB 62%]                       746 kB/s 4s70% [9 libqt5designer5 1,992 kB/2,639 kB 75%]                       746 kB/s 4s71% [9 libqt5designer5 2,062 kB/2,639 kB 78%]                       746 kB/s 4s71% [9 libqt5designer5 2,062 kB/2,639 kB 78%]                      136 kB/s 24s71% [9 libqt5designer5 2,062 kB/2,639 kB 78%]                      136 kB/s 24s72% [9 libqt5designer5 2,259 kB/2,639 kB 86%]                      136 kB/s 22s72% [9 libqt5designer5 2,306 kB/2,639 kB 87%]                      136 kB/s 22s72% [9 libqt5designer5 2,306 kB/2,639 kB 87%]                      136 kB/s 22s72% [9 libqt5designer5 2,306 kB/2,639 kB 87%]                      136 kB/s 22s72% [9 libqt5designer5 2,306 kB/2,639 kB 87%]                      136 kB/s 22s72% [9 libqt5designer5 2,306 kB/2,639 kB 87%]                      136 kB/s 22s75% [Working]                                                      136 kB/s 19s                                                                               Get:10 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf libqt5help5 armhf 5.7.1-1 [168 kB]
+75% [10 libqt5help5 53.2 kB/168 kB 32%]                            136 kB/s 19s76% [Working]                                                      136 kB/s 18s                                                                               Get:11 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf libqt5sql5-sqlite armhf 5.7.1+dfsg-3+rpi1 [57.9 kB]
+77% [11 libqt5sql5-sqlite 20.2 kB/57.9 kB 35%]                     136 kB/s 18s78% [Working]                                                      136 kB/s 18s                                                                               Get:12 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf libqt5test5 armhf 5.7.1+dfsg-3+rpi1 [109 kB]
+78% [12 libqt5test5 0 B/109 kB 0%]                                 136 kB/s 18s79% [Working]                                                      136 kB/s 17s                                                                               Get:13 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python3-roman all 2.0.0-2 [8,226 B]
+79% [13 python3-roman 8,226 B/8,226 B 100%]                        136 kB/s 17s80% [Working]                                                      136 kB/s 17s                                                                               Get:14 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python3-docutils all 0.13.1+dfsg-2 [371 kB]
+80% [14 python3-docutils 41.0 kB/371 kB 11%]                       136 kB/s 16s83% [Working]                                                      136 kB/s 14s                                                                               Get:15 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python3-enchant all 1.6.7-1 [42.8 kB]
+83% [15 python3-enchant 1,375 B/42.8 kB 3%]                        136 kB/s 14s84% [Working]                                                      136 kB/s 14s                                                                               Get:16 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python3-markups all 2.0.0-1 [10.7 kB]
+84% [16 python3-markups 10.7 kB/10.7 kB 100%]                      136 kB/s 14s85% [Working]                                                      136 kB/s 14s                                                                               Get:17 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python3-sip armhf 4.18.1+dfsg-2 [77.6 kB]
+85% [17 python3-sip 7,159 B/77.6 kB 9%]                            136 kB/s 14s85% [17 python3-sip 7,159 B/77.6 kB 9%]                            136 kB/s 14s85% [17 python3-sip 7,159 B/77.6 kB 9%]                            136 kB/s 14s85% [17 python3-sip 7,159 B/77.6 kB 9%]                            136 kB/s 14s85% [17 python3-sip 7,159 B/77.6 kB 9%]                             211 kB/s 9s85% [17 python3-sip 7,159 B/77.6 kB 9%]                             211 kB/s 9s87% [Working]                                                       211 kB/s 8s                                                                               Get:18 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python3-pyqt5 armhf 5.7+dfsg-5 [1,622 kB]
+87% [18 python3-pyqt5 61.4 kB/1,622 kB 4%]                          211 kB/s 8s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                          211 kB/s 6s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                          211 kB/s 6s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                          211 kB/s 6s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                          211 kB/s 6s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                          211 kB/s 6s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                          211 kB/s 6s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                          211 kB/s 6s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                          211 kB/s 6s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                          211 kB/s 6s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                          211 kB/s 6s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                        84.9 kB/s 16s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                        84.9 kB/s 16s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                        84.9 kB/s 16s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                        84.9 kB/s 16s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                        84.9 kB/s 16s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                        84.9 kB/s 16s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                        84.9 kB/s 16s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                        84.9 kB/s 16s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                        84.9 kB/s 16s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                        84.9 kB/s 16s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                        84.9 kB/s 16s89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                        84.9 kB/s 16s                                                                               89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]89% [18 python3-pyqt5 461 kB/1,622 kB 28%]                                          Get:18 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python3-pyqt5 armhf 5.7+dfsg-5 [1,622 kB]
+89% [18 python3-pyqt5 463 kB/1,622 kB 29%]89% [18 python3-pyqt5 494 kB/1,622 kB 30%]90% [18 python3-pyqt5 711 kB/1,622 kB 44%]91% [18 python3-pyqt5 920 kB/1,622 kB 57%]92% [18 python3-pyqt5 1,017 kB/1,622 kB 63%]93% [18 python3-pyqt5 1,249 kB/1,622 kB 77%]93% [18 python3-pyqt5 1,249 kB/1,622 kB 77%]93% [18 python3-pyqt5 1,261 kB/1,622 kB 78%]94% [18 python3-pyqt5 1,483 kB/1,622 kB 91%]95% [18 python3-pyqt5 1,584 kB/1,622 kB 98%]                                            96% [Working]             Get:19 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python3-pyqt5.qtwebkit armhf 5.7+dfsg-5 [82.0 kB]
+96% [19 python3-pyqt5.qtwebkit 18.2 kB/82.0 kB 22%]                                                   97% [Working]             Get:20 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python3-textile all 1:2.3.5-1 [27.8 kB]
+98% [20 python3-textile 27.8 kB/27.8 kB 100%]                                             99% [Working]             Get:21 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf retext all 6.0.2-2+deb9u1 [105 kB]
+99% [21 retext 4,061 B/105 kB 4%]100% [Working]                                                      224 kB/s 0s                                                                               Fetched 14.2 MB in 5min 1s (46.9 kB/s)
+Preconfiguring packages ...
+Selecting previously unselected package libqt5qml5:armhf.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 126016 files and directories currently installed.)
+Preparing to unpack .../00-libqt5qml5_5.7.1-2+rpi1_armhf.deb ...
+Unpacking libqt5qml5:armhf (5.7.1-2+rpi1) ...
+Selecting previously unselected package libqt5quick5:armhf.
+Preparing to unpack .../01-libqt5quick5_5.7.1-2+rpi1_armhf.deb ...
+Unpacking libqt5quick5:armhf (5.7.1-2+rpi1) ...
+Selecting previously unselected package libqt5sql5:armhf.
+Preparing to unpack .../02-libqt5sql5_5.7.1+dfsg-3+rpi1_armhf.deb ...
+Unpacking libqt5sql5:armhf (5.7.1+dfsg-3+rpi1) ...
+Selecting previously unselected package libqt5webkit5:armhf.
+Preparing to unpack .../03-libqt5webkit5_5.7.1+dfsg-1+rpi1_armhf.deb ...
+Unpacking libqt5webkit5:armhf (5.7.1+dfsg-1+rpi1) ...
+Selecting previously unselected package docutils-common.
+Preparing to unpack .../04-docutils-common_0.13.1+dfsg-2_all.deb ...
+Unpacking docutils-common (0.13.1+dfsg-2) ...
+Selecting previously unselected package libpaper1:armhf.
+Preparing to unpack .../05-libpaper1_1.1.24+nmu5_armhf.deb ...
+Unpacking libpaper1:armhf (1.1.24+nmu5) ...
+Selecting previously unselected package libpaper-utils.
+Preparing to unpack .../06-libpaper-utils_1.1.24+nmu5_armhf.deb ...
+Unpacking libpaper-utils (1.1.24+nmu5) ...
+Selecting previously unselected package libqt5clucene5:armhf.
+Preparing to unpack .../07-libqt5clucene5_5.7.1-1_armhf.deb ...
+Unpacking libqt5clucene5:armhf (5.7.1-1) ...
+Selecting previously unselected package libqt5designer5:armhf.
+Preparing to unpack .../08-libqt5designer5_5.7.1-1_armhf.deb ...
+Unpacking libqt5designer5:armhf (5.7.1-1) ...
+Selecting previously unselected package libqt5help5:armhf.
+Preparing to unpack .../09-libqt5help5_5.7.1-1_armhf.deb ...
+Unpacking libqt5help5:armhf (5.7.1-1) ...
+Selecting previously unselected package libqt5sql5-sqlite:armhf.
+Preparing to unpack .../10-libqt5sql5-sqlite_5.7.1+dfsg-3+rpi1_armhf.deb ...
+Unpacking libqt5sql5-sqlite:armhf (5.7.1+dfsg-3+rpi1) ...
+Selecting previously unselected package libqt5test5:armhf.
+Preparing to unpack .../11-libqt5test5_5.7.1+dfsg-3+rpi1_armhf.deb ...
+Unpacking libqt5test5:armhf (5.7.1+dfsg-3+rpi1) ...
+Selecting previously unselected package python3-roman.
+Preparing to unpack .../12-python3-roman_2.0.0-2_all.deb ...
+Unpacking python3-roman (2.0.0-2) ...
+Selecting previously unselected package python3-docutils.
+Preparing to unpack .../13-python3-docutils_0.13.1+dfsg-2_all.deb ...
+Unpacking python3-docutils (0.13.1+dfsg-2) ...
+Selecting previously unselected package python3-enchant.
+Preparing to unpack .../14-python3-enchant_1.6.7-1_all.deb ...
+Unpacking python3-enchant (1.6.7-1) ...
+Selecting previously unselected package python3-markups.
+Preparing to unpack .../15-python3-markups_2.0.0-1_all.deb ...
+Unpacking python3-markups (2.0.0-1) ...
+Selecting previously unselected package python3-sip.
+Preparing to unpack .../16-python3-sip_4.18.1+dfsg-2_armhf.deb ...
+Unpacking python3-sip (4.18.1+dfsg-2) ...
+Selecting previously unselected package python3-pyqt5.
+Preparing to unpack .../17-python3-pyqt5_5.7+dfsg-5_armhf.deb ...
+Unpacking python3-pyqt5 (5.7+dfsg-5) ...
+Selecting previously unselected package python3-pyqt5.qtwebkit.
+Preparing to unpack .../18-python3-pyqt5.qtwebkit_5.7+dfsg-5_armhf.deb ...
+Unpacking python3-pyqt5.qtwebkit (5.7+dfsg-5) ...
+Selecting previously unselected package python3-textile.
+Preparing to unpack .../19-python3-textile_1%3a2.3.5-1_all.deb ...
+Unpacking python3-textile (1:2.3.5-1) ...
+Selecting previously unselected package retext.
+Preparing to unpack .../20-retext_6.0.2-2+deb9u1_all.deb ...
+Unpacking retext (6.0.2-2+deb9u1) ...
+Setting up libqt5qml5:armhf (5.7.1-2+rpi1) ...
+Setting up libpaper1:armhf (1.1.24+nmu5) ...
+
+Creating config file /etc/papersize with new version
+Setting up libqt5quick5:armhf (5.7.1-2+rpi1) ...
+Setting up libpaper-utils (1.1.24+nmu5) ...
+Setting up python3-roman (2.0.0-2) ...
+Setting up docutils-common (0.13.1+dfsg-2) ...
+Processing triggers for mime-support (3.60) ...
+Processing triggers for desktop-file-utils (0.23-1) ...
+Setting up libqt5test5:armhf (5.7.1+dfsg-3+rpi1) ...
+Processing triggers for sgml-base (1.29) ...
+Setting up python3-enchant (1.6.7-1) ...
+Setting up libqt5clucene5:armhf (5.7.1-1) ...
+Processing triggers for libc-bin (2.24-11+deb9u1) ...
+Setting up libqt5sql5:armhf (5.7.1+dfsg-3+rpi1) ...
+Setting up python3-sip (4.18.1+dfsg-2) ...
+Processing triggers for man-db (2.7.6.1-2) ...
+Processing triggers for shared-mime-info (1.8-1) ...
+Processing triggers for gnome-menus (3.13.3-9) ...
+Setting up libqt5designer5:armhf (5.7.1-1) ...
+Setting up python3-markups (2.0.0-1) ...
+Processing triggers for hicolor-icon-theme (0.15-1) ...
+Setting up python3-textile (1:2.3.5-1) ...
+Setting up libqt5webkit5:armhf (5.7.1+dfsg-1+rpi1) ...
+Setting up libqt5help5:armhf (5.7.1-1) ...
+Setting up libqt5sql5-sqlite:armhf (5.7.1+dfsg-3+rpi1) ...
+Setting up python3-docutils (0.13.1+dfsg-2) ...
+update-alternatives: using /usr/share/docutils/scripts/python3/rst-buildhtml to provide /usr/bin/rst-buildhtml (rst-buildhtml) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python3/rst2html to provide /usr/bin/rst2html (rst2html) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python3/rst2html4 to provide /usr/bin/rst2html4 (rst2html4) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python3/rst2html5 to provide /usr/bin/rst2html5 (rst2html5) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python3/rst2latex to provide /usr/bin/rst2latex (rst2latex) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python3/rst2man to provide /usr/bin/rst2man (rst2man) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python3/rst2odt to provide /usr/bin/rst2odt (rst2odt) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python3/rst2odt_prepstyles to provide /usr/bin/rst2odt_prepstyles (rst2odt_prepstyles) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python3/rst2pseudoxml to provide /usr/bin/rst2pseudoxml (rst2pseudoxml) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python3/rst2s5 to provide /usr/bin/rst2s5 (rst2s5) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python3/rst2xetex to provide /usr/bin/rst2xetex (rst2xetex) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python3/rst2xml to provide /usr/bin/rst2xml (rst2xml) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python3/rstpep2html to provide /usr/bin/rstpep2html (rstpep2html) in auto mode
+Setting up python3-pyqt5 (5.7+dfsg-5) ...
+Setting up python3-pyqt5.qtwebkit (5.7+dfsg-5) ...
+Setting up retext (6.0.2-2+deb9u1) ...
+Processing triggers for libc-bin (2.24-11+deb9u1) ...
+
+####################################################################################################
+# 8. install libjs-mathjax for retext
+####################################################################################################
+pi@raspberrypi:~$ sudo apt-get install libjs-mathjax
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  fonts-mathjax
+Suggested packages:
+  fonts-mathjax-extras fonts-stix libjs-mathjax-doc
+The following NEW packages will be installed:
+  fonts-mathjax libjs-mathjax
+0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+Need to get 6,563 kB of archives.
+After this operation, 43.7 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf fonts-mathjax all 2.7.0-2 ]
+Get:2 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf libjs-mathjax all 2.7.0-2 ]
+Fetched 6,563 kB in 10s (646 kB/s)                                             
+Selecting previously unselected package fonts-mathjax.
+(Reading database ... 126595 files and directories currently installed.)
+Preparing to unpack .../fonts-mathjax_2.7.0-2_all.deb ...
+Unpacking fonts-mathjax (2.7.0-2) ...
+Selecting previously unselected package libjs-mathjax.
+Preparing to unpack .../libjs-mathjax_2.7.0-2_all.deb ...
+Unpacking libjs-mathjax (2.7.0-2) ...
+Setting up fonts-mathjax (2.7.0-2) ...
+Setting up libjs-mathjax (2.7.0-2) ...
+Processing triggers for fontconfig (2.11.0-6.7) ...
+pi@raspberrypi:~$ 
+Meta-Z for help | 115200 8N1 | NOR | Minicom 2.7.1 | VT102 | Offline | tty.usbserial            

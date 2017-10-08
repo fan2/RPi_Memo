@@ -1,0 +1,109 @@
+> [在樹莓派上安裝中文字型](http://studyraspberrypi.blogspot.com/2015/12/install-chinese-fonts.html)  
+
+pi@raspberrypi:~/Downloads$ ls *.ttc
+NotoSansCJK.ttc  NotoSerifCJK.ttc
+
+pi@raspberrypi:~/Downloads$ sudo cp *.ttc ~/.fonts                                              
+
+pi@raspberrypi:~/Downloads$ cd 
+pi@raspberrypi:~$ ls .fonts/
+NotoSansCJK.ttc  NotoSerifCJK.ttc
+
+pi@raspberrypi:~$ sudo fc-cache -fv
+/usr/share/fonts: caching, new cache contents: 0 fonts, 4 dirs
+/usr/share/fonts/X11: caching, new cache contents: 0 fonts, 4 dirs
+/usr/share/fonts/X11/100dpi: caching, new cache contents: 358 fonts, 0 dirs
+/usr/share/fonts/X11/Type1: caching, new cache contents: 35 fonts, 0 dirs
+/usr/share/fonts/X11/encodings: caching, new cache contents: 0 fonts, 1 dirs
+/usr/share/fonts/X11/encodings/large: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/X11/util: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap: caching, new cache contents: 0 fonts, 5 dirs
+/usr/share/fonts/cmap/adobe-cns1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-gb1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-japan1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-japan2: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-korea1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/truetype: caching, new cache contents: 0 fonts, 12 dirs
+/usr/share/fonts/truetype/arphic: caching, new cache contents: 8 fonts, 0 dirs
+/usr/share/fonts/truetype/arphic-bsmi00lp: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/arphic-gbsn00lp: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/dejavu: caching, new cache contents: 22 fonts, 0 dirs
+/usr/share/fonts/truetype/droid: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/freefont: caching, new cache contents: 12 fonts, 0 dirs
+/usr/share/fonts/truetype/lato: caching, new cache contents: 18 fonts, 0 dirs
+/usr/share/fonts/truetype/liberation2: caching, new cache contents: 12 fonts, 0 dirs
+/usr/share/fonts/truetype/noto: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/openoffice: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/piboto: caching, new cache contents: 12 fonts, 0 dirs
+/usr/share/fonts/truetype/wqy: caching, new cache contents: 5 fonts, 0 dirs
+/usr/share/fonts/type1: caching, new cache contents: 0 fonts, 1 dirs
+/usr/share/fonts/type1/gsfonts: caching, new cache contents: 35 fonts, 0 dirs
+/usr/X11R6/lib/X11/fonts: skipping, no such directory
+/usr/local/share/fonts: caching, new cache contents: 0 fonts, 0 dirs
+/root/.local/share/fonts: skipping, no such directory
+/root/.fonts: skipping, no such directory
+/usr/share/fonts: caching, new cache contents: 0 fonts, 4 dirs
+/usr/X11R6/lib/X11/fonts: skipping, no such directory
+/usr/local/share/fonts: caching, new cache contents: 0 fonts, 0 dirs
+/root/.local/share/fonts: skipping, no such directory
+/root/.fonts: skipping, no such directory
+/var/cache/fontconfig: cleaning cache directory
+/root/.cache/fontconfig: not cleaning non-existent cache directory
+/root/.fontconfig: not cleaning non-existent cache directory
+fc-cache: succeeded
+pi@raspberrypi:~$ 
+
+> [Ubuntu Linux 安装文泉驿微米黑教程](http://babybandf.blog.163.com/blog/static/6199353201051210729446/)  
+
+pi@raspberrypi:~$ cd /usr/share/fonts
+pi@raspberrypi:/usr/share/fonts$ sudo mkdir Noto
+pi@raspberrypi:/usr/share/fonts$ sudo cp ~/Downloads/*.ttc ./Noto/
+pi@raspberrypi:/usr/share/fonts$ ls Noto/
+NotoSansCJK.ttc  NotoSerifCJK.ttc
+pi@raspberrypi:/usr/share/fonts$ cd Noto/
+pi@raspberrypi:/usr/share/fonts/Noto$ sudo chmod 555 ./*
+pi@raspberrypi:/usr/share/fonts/Noto$ sudo mkfontscale
+pi@raspberrypi:/usr/share/fonts/Noto$ sudo mkfontdir
+pi@raspberrypi:/usr/share/fonts/Noto$ sudo fc-cache -fv
+/usr/share/fonts/Noto: caching, new cache contents: 0 fonts, 5 dirs
+/usr/share/fonts/Noto: caching, new cache contents: 64 fonts, 0 dirs
+/usr/share/fonts/X11: caching, new cache contents: 0 fonts, 4 dirs
+/usr/share/fonts/X11/100dpi: caching, new cache contents: 358 fonts, 0 dirs
+/usr/share/fonts/X11/Type1: caching, new cache contents: 35 fonts, 0 dirs
+/usr/share/fonts/X11/encodings: caching, new cache contents: 0 fonts, 1 dirs
+/usr/share/fonts/X11/encodings/large: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/X11/util: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap: caching, new cache contents: 0 fonts, 5 dirs
+/usr/share/fonts/cmap/adobe-cns1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-gb1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-japan1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-japan2: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-korea1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/truetype: caching, new cache contents: 0 fonts, 12 dirs
+/usr/share/fonts/truetype/arphic: caching, new cache contents: 8 fonts, 0 dirs
+/usr/share/fonts/truetype/arphic-bsmi00lp: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/arphic-gbsn00lp: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/dejavu: caching, new cache contents: 22 fonts, 0 dirs
+/usr/share/fonts/truetype/droid: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/freefont: caching, new cache contents: 12 fonts, 0 dirs
+/usr/share/fonts/truetype/lato: caching, new cache contents: 18 fonts, 0 dirs
+/usr/share/fonts/truetype/liberation2: caching, new cache contents: 12 fonts, 0 dirs
+/usr/share/fonts/truetype/noto: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/openoffice: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/piboto: caching, new cache contents: 12 fonts, 0 dirs
+/usr/share/fonts/truetype/wqy: caching, new cache contents: 5 fonts, 0 dirs
+/usr/share/fonts/type1: caching, new cache contents: 0 fonts, 1 dirs
+/usr/share/fonts/type1/gsfonts: caching, new cache contents: 35 fonts, 0 dirs
+/usr/X11R6/lib/X11/fonts: skipping, no such directory
+/usr/local/share/fonts: caching, new cache contents: 0 fonts, 0 dirs
+/root/.local/share/fonts: skipping, no such directory
+/root/.fonts: skipping, no such directory
+/usr/share/fonts: caching, new cache contents: 0 fonts, 5 dirs
+/usr/X11R6/lib/X11/fonts: skipping, no such directory
+/usr/local/share/fonts: caching, new cache contents: 0 fonts, 0 dirs
+/root/.local/share/fonts: skipping, no such directory
+/root/.fonts: skipping, no such directory
+/var/cache/fontconfig: cleaning cache directory
+/root/.cache/fontconfig: not cleaning non-existent cache directory
+/root/.fontconfig: not cleaning non-existent cache directory
+fc-cache: succeeded
