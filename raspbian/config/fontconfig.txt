@@ -1,0 +1,94 @@
+# /etc/fonts/
+
+```Shell
+pi@raspberrypi:~$ ls /etc/fonts/
+conf.avail  conf.d  fonts.conf  infinality
+
+pi@raspberrypi:/usr/share/fonts/truetype$ tree -d /etc/fonts/
+/etc/fonts/
+├── conf.avail
+├── conf.d
+└── infinality
+    ├── conf.d -> styles.conf.avail/win7
+    ├── conf.src
+    │   └── generate60
+    └── styles.conf.avail
+        ├── debug
+        ├── infinality
+        ├── linux
+        ├── osx
+        ├── osx2
+        ├── win7
+        ├── win98
+        └── winxp
+```
+
+## fonts.conf
+
+> [fonts.conf 中文手册](http://www.jinbuguo.com/gui/fonts.conf.html)  
+
+```Shell
+pi@raspberrypi:~$ cat /etc/fonts/fonts.conf 
+
+<!-- Font directory list -->
+
+        <dir>/usr/share/fonts</dir>
+        <dir>/usr/X11R6/lib/X11/fonts</dir> <dir>/usr/local/share/fonts</dir>
+        <dir prefix="xdg">fonts</dir>
+        <!-- the following element will be removed in the future -->
+        <dir>~/.fonts</dir>
+
+<!--
+  Load local system customization file
+-->
+        <include ignore_missing="yes">conf.d</include>
+
+<!-- Font cache directory list -->
+
+        <cachedir>/var/cache/fontconfig</cachedir>
+        <cachedir prefix="xdg">fontconfig</cachedir>
+        <!-- the following element will be removed in the future -->
+        <cachedir>~/.fontconfig</cachedir>
+
+```
+
+## conf.d/
+
+```Shell
+pi@raspberrypi:/etc/fonts$ cat conf.d/51-local.conf 
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+        <!-- Load local system customization file -->
+        <include ignore_missing="yes">local.conf</include>
+</fontconfig>
+```
+
+# /usr/share/fontconfig/
+
+```Shell
+pi@raspberrypi:~$ ls  /usr/share/fontconfig/
+conf.avail
+
+pi@raspberrypi:~$ ls /usr/share/fontconfig/conf.avail
+10-autohint.conf            11-lcdfilter-light.conf    60-latin.conf
+10-no-sub-pixel.conf        20-unhint-small-vera.conf  65-fonts-persian.conf
+10-scale-bitmap-fonts.conf  25-unhint-nonlatin.conf    65-khmer.conf
+10-sub-pixel-bgr.conf       30-metric-aliases.conf     65-nonlatin.conf
+10-sub-pixel-rgb.conf       30-urw-aliases.conf        69-unifont.conf
+10-sub-pixel-vbgr.conf      40-nonlatin.conf           70-force-bitmaps.conf
+10-sub-pixel-vrgb.conf      45-latin.conf              70-no-bitmaps.conf
+10-unhinted.conf            49-sansserif.conf          70-yes-bitmaps.conf
+11-lcdfilter-default.conf   50-user.conf               80-delicious.conf
+11-lcdfilter-legacy.conf    51-local.conf              90-synthetic.conf
+```
+
+```Shell
+pi@raspberrypi:~$ cat /usr/share/fontconfig/conf.avail/51-local.conf 
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+        <!-- Load local system customization file -->
+        <include ignore_missing="yes">local.conf</include>
+</fontconfig>
+```

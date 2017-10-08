@@ -73,6 +73,13 @@ ttf-wqy-zenhei - transitional dummy package
 sudo apt-get install ttf-wqy-zenhei ttf-wqy-microhei
 ```
 
+安装完毕，`/usr/share/fonts/truetype/` 下将新增 `wqy/` 子目录：
+
+```Shell
+pi@raspberrypi:/usr/share/fonts$ ls truetype/wqy/
+wqy-microhei.ttc  wqy-zenhei.ttc
+```
+
 > [在樹莓派上安裝中文字型](http://studyraspberrypi.blogspot.com/2015/12/install-chinese-fonts.html)  
 
 ### Appearance System Font

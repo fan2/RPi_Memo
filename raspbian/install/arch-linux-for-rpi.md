@@ -12,6 +12,8 @@
 
 ## [raspbian](http://www.raspbian.org/)
 [在RaspberryPi 3B 上安装 Raspbian Jessie Lite](http://geek.csdn.net/news/detail/136948)  
+[Raspbian GNU/Linux upgrade from Jessie to Raspbian Stretch 9](https://linuxconfig.org/raspbian-gnu-linux-upgrade-from-jessie-to-raspbian-stretch-9)  
+
 [升级你的Pi到Debian9-stretch](http://www.jianshu.com/p/ceb6640bcb3e)  
 [树莓派升级arm64 debian stretch小记](http://www.jianshu.com/p/7b962b038a6c)  
 

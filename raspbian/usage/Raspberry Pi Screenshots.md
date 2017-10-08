@@ -6,6 +6,23 @@
 
 [Scrot配合openbox使用快捷键](https://www.liyanfeng.com/post/61.html)  
 
+## SoC & OS
+
+- **SoC**：`Raspberry Pi 3 Model B v1.2`(2015)  
+- **OS**：`2017-09-07-raspbian-stretch.zip`
+
+```Shell
+pi@raspberrypi:~ $ cat /proc/version
+Linux version 4.9.41-v7+ (dc4@dc4-XPS13-9333) (gcc version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611) ) #1023 SMP Tue Aug 8 16:00:15 BST 2017
+
+pi@raspberrypi:~ $ lsb_release -a
+No LSB modules are available.
+Distributor ID:	Raspbian
+Description:	Raspbian GNU/Linux 9.1 (stretch)
+Release:	9.1
+Codename:	stretch
+```
+
 ## Step 2: Instal Scrot
 ```Shell
 pi@raspberrypi:~$ sudo apt-get install scrot

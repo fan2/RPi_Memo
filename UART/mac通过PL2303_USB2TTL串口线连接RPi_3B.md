@@ -6,6 +6,24 @@
 [RPi Serial Connection](http://elinux.org/RPi_Serial_Connection)  
 [THE RASPBERRY PI UARTS](https://www.raspberrypi.org/documentation/configuration/uart.md)  
 
+# SoC & OS
+- **Host**：MacBookPro11,3/macOS 10.12.6 (16G1023)/Darwin 16.7.0  
+
+- **SoC**：`Raspberry Pi 3 Model B v1.2`(2015)  
+- **OS**：`2017-09-07-raspbian-stretch.zip`  
+
+```Shell
+pi@raspberrypi:~ $ cat /proc/version
+Linux version 4.9.41-v7+ (dc4@dc4-XPS13-9333) (gcc version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611) ) #1023 SMP Tue Aug 8 16:00:15 BST 2017
+
+pi@raspberrypi:~ $ lsb_release -a
+No LSB modules are available.
+Distributor ID:	Raspbian
+Description:	Raspbian GNU/Linux 9.1 (stretch)
+Release:	9.1
+Codename:	stretch
+```
+
 # mac 安装 PL2303 USB2TTL 驱动
 下载安装 [PL2303 Mac OS X Driver](http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=229&pcid=41)，安装完成要求重启。  
 macOS 安装好 PL2303 USB2TTL 驱动后，网络偏好设置中将会多出一项名为 `USB-Serial Controller` 的服务配置项。  

@@ -1,7 +1,25 @@
+## SoC & OS
+
+- **SoC**：`Raspberry Pi 3 Model B v1.2`(2015)  
+- **OS**：`2017-09-07-raspbian-stretch.zip`
+
+```Shell
+pi@raspberrypi:~ $ cat /proc/version
+Linux version 4.9.41-v7+ (dc4@dc4-XPS13-9333) (gcc version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611) ) #1023 SMP Tue Aug 8 16:00:15 BST 2017
+
+pi@raspberrypi:~ $ lsb_release -a
+No LSB modules are available.
+Distributor ID:	Raspbian
+Description:	Raspbian GNU/Linux 9.1 (stretch)
+Release:	9.1
+Codename:	stretch
+```
+
 ## 入门
 [树莓派初识](http://blog.csdn.net/iluzhiyong/article/details/77791646)  
 [树莓派折腾录 系列](http://blog.csdn.net/wangmi0354/article/details/50836398)  
 [树莓派 Learning 系列](http://blog.csdn.net/github_35160620/article/details/52038918)  
+[树莓派应用实践系列](http://blog.csdn.net/huayucong/article/category/5662059/)  
 [安装Debian后的基本配置](http://blog.csdn.net/shennongminblog/article/details/76158400)  
 
 ## 快捷键
@@ -18,89 +36,6 @@ raspbian 默认分辨率为 720x480，可以将其调整到支持的最高分辨
 ## 耳机
 默认音频输出只有HDMI，如果需要用3.5mm耳机插头，需要到设置里设成 ”HDMI+Analog” 同时输出。
 
-## 设置静态 IP
-旧的 raspbian 系统配置静态IP都是修改配置文件 [`/etc/network/interfaces`](http://blog.csdn.net/github_35160620/article/details/52107766)，最新的 raspbian stretch 系统配置静态 IP 需要修改的是 `/etc/dhcpcd.conf` 文件，如下 [`/etc/network/interfaces`](http://blog.csdn.net/shaopengf/article/details/52412429) 所示。
-
-```Shell
-pi@raspberrypi:~$ cat /etc/network/interfaces
-# interfaces(5) file used by ifup(8) and ifdown(8)
-
-# Please note that this file is written to be used with dhcpcd
-# For static IP, consult /etc/dhcpcd.conf and 'man dhcpcd.conf'
-
-# Include files from /etc/network/interfaces.d:
-source-directory /etc/network/interfaces.d
-```
-
-执行 `cat /etc/dhcpcd.conf` 查看配置文件 `/etc/dhcpcd.conf` 内容：
-
-```Shell
-pi@raspberrypi:~$ cat /etc/dhcpcd.conf
-
-# Example static IP configuration:
-#interface eth0
-#static ip_address=192.168.0.10/24
-#static ip6_address=fd51:42f8:caae:d92e::ff/64
-#static routers=192.168.0.1
-#static domain_name_servers=192.168.0.1 8.8.8.8 fd51:42f8:caae:d92e::1
-
-# It is possible to fall back to a static IP if DHCP fails:
-# define static profile
-#profile static_eth0
-#static ip_address=192.168.1.23/24
-#static routers=192.168.1.1
-#static domain_name_servers=192.168.1.1
-
-# fallback to static profile on eth0
-#interface eth0
-#fallback static_eth0
-
-```
-
-参考 Example static IP configuration，将有线网卡 eth0 和无线网卡 wlan0  都设置为静态IP：
-
-```Shell
-
-# add by thomasfan, 02Oct17
-interface eth0
-static routers=192.168.1.1
-#inform 192.168.1.128/24
-static ip_address=192.168.1.128/24
-static domain_search=192.168.1.1
-static domain_name_servers=192.168.1.1 8.8.8.8 114.114.114.114
-
-# add by thomasfan, 02Oct17
-interface wlan0
-static routers=192.168.1.1
-#inform 192.168.1.128/24
-static ip_address=192.168.1.128/24
-static domain_search=192.168.1.1
-static domain_name_servers=192.168.1.1 8.8.8.8 114.114.114.114
-
-```
-
-先 down 再 up 无线网卡 wlan0，如果指定IP尚在路由器DHCP地址池且仍未被占用，将可配得该静态 IP。
-
-```Shell
-sudo ifconfig wlan0 down # 禁用无线网卡wlan0
-sudo ifconfig wlan0 up # 启用无线网卡wlan0
-```
-
-正常情况下，执行 `ifconfig` 将可以看到无线网卡 wlan0 分配得到 IP：192.168.1.128。
-
-```Shell
-pi@raspberrypi:~$ ifconfig
-
-wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-
-...
-inet 192.168.1.128  netmask 255.255.255.0  broadcast 192.168.1.255
-...
-```
-
-> [Raspberry Pi 3安装配置Raspbian过程 - 8. 设置静态IP](http://blog.csdn.net/yss28/article/details/51874104)  
-> [Raspberry PI 3静态IP配置](http://blog.csdn.net/u011973222/article/details/72843127)  
-
 ## vi
 使用vi的时候，按方向键会出现字母，而不是移动光标，是因为vi不是完整版，先卸载vi，再安装vim：
 
@@ -109,8 +44,24 @@ sudo apt-get remove vim-common
 sudo apt-get install vim
 ```
 
-## LXDE
-[配置树莓派自动登录 Raspbian 图形界面 LXDE](http://shumeipai.nxez.com/2015/02/27/raspberry-pi-configured-to-automatically-log-lxde.html)  
-[How To Properly Remove LXDE And Install XFCE On Raspbian](http://linuxg.net/how-to-properly-remove-lxde-and-install-xfce-on-raspbian-debian-for-raspberry-pi/)  
-[[GUIDE] Raspbian Lite with PIXEL/LXDE/XFCE/MATE/i3 GUI](https://www.raspberrypi.org/forums/viewtopic.php?f=66&t=133691&sid=a349228419d0b6936f88bd0d2c1aea7b)  
-raspbian-lite-安装-pixel-lxde-xfce-mate-openbox-界面：[上](https://wangmingg.tk/2017/04/15/raspbian-lite-%E5%AE%89%E8%A3%85-pixellxdexfcemateopenbox-%E7%95%8C%E9%9D%A2%EF%BC%88%E4%B8%8A%EF%BC%89/) [下](https://wangmingg.tk/2017/04/15/raspbian-lite-%E5%AE%89%E8%A3%85-pixellxdexfcemateopenbox-%E7%95%8C%E9%9D%A2%EF%BC%88%E4%B8%8B%EF%BC%89/)  
+### [VOoM]([https://github.com/vim-voom/VOoM](https://github.com/vim-voom/VOoM))
+**vim-voom** - Vim two-pane outliner
+
+```Shell
+pi@raspberrypi:~$ apt-cache search vimoutliner
+vim-vimoutliner - script for building an outline editor on top of Vim
+vim-voom - Vim two-pane outliner
+```
+
+执行 `apt-cache show vim-voom` 命令查看 vim-voom 软件包信息
+
+- Homepage: http://www.vim.org/scripts/script.php?script_id=2657  
+- Filename: pool/main/v/vim-voom/vim-voom_5.2-1_all.deb  
+
+按下 <kbd>Q</kbd> 进入 Ex 命令模式，输入 :Voom markdown 开启 markdown TOC outline。
+
+> [VOoM(原VOOF)：vim实现带折叠双栏树状文本管理](http://xbeta.info/vim-voof.htm)  
+
+### vim-pandoc
+[vim-pandoc](https://github.com/vim-pandoc/vim-pandoc) - pandoc integration and utilities for vim
+

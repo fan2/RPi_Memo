@@ -1,5 +1,11 @@
+## 操作平台信息
+
+- **SoC**：`Raspberry Pi 3 Model B v1.2`(2015)  
+- **OS**：`2017-09-07-raspbian-stretch.zip`  
+
 到 raspberrypi 官网的 [DOWNLOADS](https://www.raspberrypi.org/downloads/) 页下载最新的 [RASPBIAN](https://www.raspberrypi.org/downloads/raspbian/) 系统镜像（RASPBIAN STRETCH WITH DESKTOP），参考官方指导文档《[INSTALLING OPERATING SYSTEM IMAGES](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)》《[INSTALLING OPERATING SYSTEM IMAGES ON MAC OS](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md)》 ，完成向 microSD 烧写镜像。
 
+## 选购 TF(Micro SD) 卡
 从 elinux 的 [RPi SD cards](https://elinux.org/RPi_SD_cards) 网站上可以查看 RPi 支持哪些 SD 卡，可选购 [Raspbian Preinstalled SD cards](http://thepihut.com/products/raspbian-preinstalled-sd-card)。
 
 @img ![SanDisk](https://cdn.shopify.com/s/files/1/0176/3274/products/100040_2_grande_359fbc73-0e36-49ee-8aa7-8454ffc1c2e2_1024x1024.jpg)

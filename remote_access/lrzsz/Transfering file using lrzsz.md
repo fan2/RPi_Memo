@@ -1,3 +1,21 @@
+# SoC & OS
+- **Host**：MacBookPro11,3/macOS 10.12.6 (16G1023)/Darwin 16.7.0  
+
+- **SoC**：`Raspberry Pi 3 Model B v1.2`(2015)  
+- **OS**：`2017-09-07-raspbian-stretch.zip`  
+
+```Shell
+pi@raspberrypi:~ $ cat /proc/version
+Linux version 4.9.41-v7+ (dc4@dc4-XPS13-9333) (gcc version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611) ) #1023 SMP Tue Aug 8 16:00:15 BST 2017
+
+pi@raspberrypi:~ $ lsb_release -a
+No LSB modules are available.
+Distributor ID:	Raspbian
+Description:	Raspbian GNU/Linux 9.1 (stretch)
+Release:	9.1
+Codename:	stretch
+```
+
 # about lrzsz
 [lrzsz](http://freecode.com/projects/lrzsz/) is a portable and fast implementation of the X/Y/Zmodem protocols.  
 *lrzsz* is a unix communication package providing the [XMODEM, YMODEM](ftp://ftp.std.com/obi/Standards/FileTransfer/YMODEM8.DOC.1.Z) [ZMODEM](http://www.easysw.com/~mike/serial/zmodem.html) file transfer protocols  
@@ -274,7 +292,7 @@ rx waiting to receive.
 ![RPi-rz_minicom-sz](./RPi-rz_minicom-sz.gif)
 
 ## Receive Files(rz)
-在 macOS/minicom 上通过 rz 接收文件，在 raspbian 中执行 sz 发送文件。
+在 macOS/minicom 上通过 lrz 接收文件，在 raspbian 中执行 sz 发送文件。
 
 在 Host macOS 上的 minicom 终端窗口中，按 <kbd>esc</kbd><kbd>R</kbd> 组合键可打开接收文件（Download）对话框。
 
@@ -285,6 +303,21 @@ rx waiting to receive.
 | xmodem      |
 | kermit      |
 +-------------+
+```
+
+在 raspbian 中执行 `sz file` 发送文件，macOS/minicom 将会自动弹出 Download directory 确认对话框。  
+点击 Okay，将弹出 `zmodem download` Receiving 进度对话框。  
+
+```Shell
+┌──────────[zmodem download - Press CTRL-C to quit]───────────┐
+│                                                             │
+│Receiving: 2017-10-07-224533_1920x1080_scrot.png             │
+│                                                             │
+│                                                             │
+│                                                             │
+│                                                             │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 # references
