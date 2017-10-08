@@ -5,7 +5,8 @@ pi@raspberrypi:~ $ date
 Wed Sep 27 00:44:42 CST 2017
 ```
 
-1. 执行 `sudo apt-get install vim` 命令安装 vim：
+# 安装 vim
+执行 `sudo apt-get install vim` 命令安装 vim：
 
 ```Shell
 pi@raspberrypi:~ $ sudo apt-get install vim
@@ -62,7 +63,8 @@ update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/ex (ex) in aut
 pi@raspberrypi:~ $ vim -v
 ```
 
-2. 执行 `vim --version` 命令查看安装的 vim 版本信息：
+# 查看 vim 版本信息
+执行 `vim --version` 命令查看安装的 vim 版本信息：
 
 ```Shell
 pi@raspberrypi:~ $ vim --version
@@ -93,4 +95,57 @@ Huge version without GUI.  Features included (+) or not (-):
       user exrc file: "$HOME/.exrc"
   fall-back for $VIM: "/usr/share/vim"
 Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H     -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1      
-Linking: gcc   -Wl,-z,relro -Wl,--as-needed -o vim       -lm -ltinfo -lnsl  -lselinux -lacl -lattr -lgpm     ```
+Linking: gcc   -Wl,-z,relro -Wl,--as-needed -o vim       -lm -ltinfo -lnsl  -lselinux -lacl -lattr -lgpm     
+```
+
+# 安装 vim-voom
+
+```Shell
+pi@raspberrypi:~$ sudo apt-get install vim-voom
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  fcitx-libs fonts-arphic-bsmi00lp fonts-arphic-gbsn00lp fonts-wqy-microhei
+  fonts-wqy-zenhei libicu48 liblcms1 liblua5.1-0 libopencc1 libscim8v5
+  libtiff4 scim-im-agent scim-modules-socket
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  vim-addon-manager vim-nox
+Suggested packages:
+  cscope vim-doc
+The following NEW packages will be installed:
+  vim-addon-manager vim-nox vim-voom
+0 upgraded, 3 newly installed, 0 to remove and 0 not upgraded.
+Need to get 1,012 kB of archives.
+After this operation, 2,815 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf vim-addon-manager all 0.5.6
+ [19.5 kB]
+Get:2 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf vim-nox armhf 2:8.0.0197-4 
+[894 kB]
+Get:3 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf vim-voom all 5.2-1 [98.5 kB
+]
+Fetched 1,012 kB in 5s (176 kB/s)  
+Selecting previously unselected package vim-addon-manager.
+(Reading database ... 125599 files and directories currently installed.)
+Preparing to unpack .../vim-addon-manager_0.5.6_all.deb ...
+Unpacking vim-addon-manager (0.5.6) ...
+Selecting previously unselected package vim-nox.
+Preparing to unpack .../vim-nox_2%3a8.0.0197-4_armhf.deb ...
+Unpacking vim-nox (2:8.0.0197-4) ...
+Selecting previously unselected package vim-voom.
+Preparing to unpack .../vim-voom_5.2-1_all.deb ...
+Unpacking vim-voom (5.2-1) ...
+Setting up vim-nox (2:8.0.0197-4) ...
+update-alternatives: using /usr/bin/vim.nox to provide /usr/bin/vim (vim) in auto mode
+update-alternatives: using /usr/bin/vim.nox to provide /usr/bin/vimdiff (vimdiff) in auto mode
+update-alternatives: using /usr/bin/vim.nox to provide /usr/bin/rvim (rvim) in auto mode
+update-alternatives: using /usr/bin/vim.nox to provide /usr/bin/rview (rview) in auto mode
+update-alternatives: using /usr/bin/vim.nox to provide /usr/bin/vi (vi) in auto mode
+update-alternatives: using /usr/bin/vim.nox to provide /usr/bin/view (view) in auto mode
+update-alternatives: using /usr/bin/vim.nox to provide /usr/bin/ex (ex) in auto mode
+Setting up vim-voom (5.2-1) ...
+Processing triggers for man-db (2.7.6.1-2) ...
+Setting up vim-addon-manager (0.5.6) ...
+```

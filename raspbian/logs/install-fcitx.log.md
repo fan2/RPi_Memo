@@ -1,7 +1,7 @@
 [搜狗输入法 for Linux](http://pinyin.sogou.com/linux/)  
 [Debian下安装搜狗拼音输入法](http://www.jianshu.com/p/424fe8e7109e)  
 
-```
+```Shell
 pi@raspberrypi:~ $ sudo apt-get install fcitx
 Reading package lists... Done
 Building dependency tree       
@@ -215,7 +215,30 @@ Setting up fcitx-frontend-qt4:armhf (1:4.2.4.1-7) ...
 pi@raspberrypi:~ $ 
 ```
 
-```
+```Shell
 pi@raspberrypi:~ $ fcitx -v
 fcitx version: 4.2.4.1
+```
+
+卸载文泉驿字体：
+
+```Shell
+pi@raspberrypi:~$ sudo apt-get purge ttf-wqy-zenhei ttf-wqy-microhei                            
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  fcitx-libs fonts-arphic-bsmi00lp fonts-arphic-gbsn00lp fonts-wqy-microhei
+  fonts-wqy-zenhei libicu48 liblcms1 liblua5.1-0 libopencc1 libscim8v5
+  libtiff4 scim-im-agent scim-modules-socket
+Use 'sudo apt autoremove' to remove them.
+The following packages will be REMOVED:
+  ttf-wqy-microhei* ttf-wqy-zenhei*
+0 upgraded, 0 newly installed, 2 to remove and 0 not upgraded.
+After this operation, 66.6 kB disk space will be freed.
+Do you want to continue? [Y/n] Y
+(Reading database ... 125607 files and directories currently installed.)
+Removing ttf-wqy-microhei (0.2.0-beta-2) ...
+Removing ttf-wqy-zenhei (0.9.45-6) ...
+
 ```
