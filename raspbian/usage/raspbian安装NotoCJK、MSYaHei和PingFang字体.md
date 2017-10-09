@@ -271,9 +271,9 @@ Leafpad | Options | Font 将 Leafpad 文本编辑器的字体从 Monospace | Reg
 ## Chrome Font
 Chrome 浏览器字体 font size 默认 16，调整最小为 12。
 
-- Standard font：WenQuanYi Micro Hei Mono -> Noto Sans CJK SC，可修改为 PingFang SC；  
-- Serif font：DejaVu Serif -> Noto Serif CJK SC；  
-- Sans-serif font：Noto Mono →  Noto Sans CJK SC；  
-- Fixed-width font：Monospace → Noto Sans Mono CJK SC；  
+- Standard font：PingFang SC；  
+- Serif font：DejaVu Serif；  
+- Sans-serif font：Noto Mono →  Andale Mono；  
+- Fixed-width font：Monospace → DejaVu Sans Mono；  
 
-![Chrome-Settings-Font](NotoCJK/Chrome-Settings-Font.png)
+![Chrome-Settings-Font](NotoCJK/Chrome-Settings-Font-1.png)
