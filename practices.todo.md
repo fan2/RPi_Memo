@@ -4,7 +4,7 @@
 - [x] 命令行查看网络连接信息 @done  
 	> 设置 wifi configuration profile，命令行选择连接指定 wifi?  
 - [x] 设置静态 IP 地址。 @done  
-- [ ] GUI偏好设置|接口配置 等效的 命令行  
+- [x] GUI偏好设置|接口配置 等效的 命令行  
 	> 命令行读取各项配置值?    
 - [x] screen/minicom/ssh 如何断开连接? @done  
 - [x] 更新raspbian系统软件源为中科大。 @done  
