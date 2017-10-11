@@ -107,3 +107,77 @@ pi@raspberrypi:/usr/share/fonts/Noto$ sudo fc-cache -fv
 /root/.cache/fontconfig: not cleaning non-existent cache directory
 /root/.fontconfig: not cleaning non-existent cache directory
 fc-cache: succeeded
+
+> 默认自带 NotoMono-Regular.ttf
+>> NotoSans-unhinted（NotoSans & NotoSansUI）: Bold、BoldItalic、Italic、Regular
+>> NotoSerif-unhinted:                         Bold、BoldItalic、Italic、Regular
+>> NotoSansSC:  Black、Bold、ExtraLight、Light、Medium、Regular、SemiBold
+>> NotoSerifSC: Black、Bold、ExtraLight、Light、Medium、Regular、SemiBold
+> 都是 tofu！！！
+pi@raspberrypi:/usr/share/fonts/truetype/noto$ ls
+fonts.dir                 NotoSansSC-Light.otf       NotoSerif-Italic.ttf
+fonts.scale               NotoSansSC-Medium.otf      NotoSerif-Regular.ttf
+NotoMono-Regular.ttf      NotoSansSC-Regular.otf     NotoSerifSC-Black.otf
+NotoSans-BoldItalic.ttf   NotoSansSC-Thin.otf        NotoSerifSC-Bold.otf
+NotoSans-Bold.ttf         NotoSansUI-BoldItalic.ttf  NotoSerifSC-ExtraLight.otf
+NotoSans-Italic.ttf       NotoSansUI-Bold.ttf        NotoSerifSC-Light.otf
+NotoSans-Regular.ttf      NotoSansUI-Italic.ttf      NotoSerifSC-Medium.otf
+NotoSansSC-Black.otf      NotoSansUI-Regular.ttf     NotoSerifSC-Regular.otf
+NotoSansSC-Bold.otf       NotoSerif-BoldItalic.ttf   NotoSerifSC-SemiBold.otf
+NotoSansSC-DemiLight.otf  NotoSerif-Bold.ttf
+pi@raspberrypi:/usr/share/fonts/truetype/noto$ sudo fc-cache -fv .
+/usr/share/fonts/truetype/noto: caching, new cache contents: 27 fonts, 0 dirs
+/usr/share/fonts/truetype/noto: caching, new cache contents: 27 fonts, 0 dirs
+/var/cache/fontconfig: cleaning cache directory
+/root/.cache/fontconfig: not cleaning non-existent cache directory
+/root/.fontconfig: not cleaning non-existent cache directory
+fc-cache: succeeded
+
+> 移除 NotoSans NotoSerif NotoSansSC NotoSerifSC
+> 拷贝 NotoSerifCJKsc-hinted
+faner@THOMASFAN-MB0:~|⇒  sudo scp -r /Users/faner/Downloads/09Oct17/NotoSansCJKsc-hinted pi@192.168.1.128:Downloads  
+pi@192.168.1.128's password: 
+LICENSE_OFL.txt                                               100% 4301   102.5KB/s   00:00    
+NotoSansCJKsc-Black.otf                                       100%   17MB 422.0KB/s   00:40    
+NotoSansCJKsc-Bold.otf                                        100%   16MB 306.5KB/s   00:54    
+NotoSansCJKsc-DemiLight.otf                                   100%   16MB 332.0KB/s   00:48    
+NotoSansCJKsc-Light.otf                                       100%   15MB 718.7KB/s   00:22    
+NotoSansCJKsc-Medium.otf                                      100%   16MB 765.1KB/s   00:21    
+NotoSansCJKsc-Regular.otf                                     100%   16MB 592.4KB/s   00:27    
+NotoSansCJKsc-Thin.otf                                        100%   14MB 614.8KB/s   00:24    
+NotoSansMonoCJKsc-Bold.otf                                    100%   16MB 517.2KB/s   00:32    
+NotoSansMonoCJKsc-Regular.otf                                 100%   16MB 666.8KB/s   00:24    
+README                                                        100%  339     5.8KB/s   00:00
+
+> 拷贝 NotoSerifCJKsc-hinted
+faner@THOMASFAN-MB0:~|⇒  sudo scp -r /Users/faner/Downloads/09Oct17/NotoSerifCJKsc-hinted pi@192.168.1.128:Downloads
+pi@192.168.1.128's password: 
+LICENSE_OFL.txt                                               100% 4301    21.7KB/s   00:00    
+NotoSerifCJKsc-Black.otf                                      100%   22MB 310.1KB/s   01:12    
+NotoSerifCJKsc-Bold.otf                                       100%   24MB 546.3KB/s   00:44    
+NotoSerifCJKsc-ExtraLight.otf                                 100%   20MB 715.0KB/s   00:29    
+NotoSerifCJKsc-Light.otf                                      100%   22MB 815.9KB/s   00:28    
+NotoSerifCJKsc-Medium.otf                                     100%   23MB 727.3KB/s   00:32    
+NotoSerifCJKsc-Regular.otf                                    100%   23MB 657.2KB/s   00:35    
+NotoSerifCJKsc-SemiBold.otf                                   100%   23MB   1.1MB/s   00:21    
+README                                                        100%  308    66.4KB/s   00:00    
+
+pi@raspberrypi:/usr/share/fonts/truetype/noto$ ls
+NotoMono-Regular.ttf         NotoSansMonoCJKsc-Regular.otf
+NotoSansCJKsc-Black.otf      NotoSerifCJKsc-Black.otf
+NotoSansCJKsc-Bold.otf       NotoSerifCJKsc-Bold.otf
+NotoSansCJKsc-DemiLight.otf  NotoSerifCJKsc-ExtraLight.otf
+NotoSansCJKsc-Light.otf      NotoSerifCJKsc-Light.otf
+NotoSansCJKsc-Medium.otf     NotoSerifCJKsc-Medium.otf
+NotoSansCJKsc-Regular.otf    NotoSerifCJKsc-Regular.otf
+NotoSansCJKsc-Thin.otf       NotoSerifCJKsc-SemiBold.otf
+NotoSansMonoCJKsc-Bold.otf
+pi@raspberrypi:/usr/share/fonts/truetype/noto$ sudo mkfontscale
+pi@raspberrypi:/usr/share/fonts/truetype/noto$ sudo mkfontdir
+pi@raspberrypi:/usr/share/fonts/truetype/noto$ sudo fc-cache -fv .
+/usr/share/fonts/truetype/noto: caching, new cache contents: 17 fonts, 0 dirs
+/usr/share/fonts/truetype/noto: caching, new cache contents: 17 fonts, 0 dirs
+/var/cache/fontconfig: cleaning cache directory
+/root/.cache/fontconfig: not cleaning non-existent cache directory
+/root/.fontconfig: not cleaning non-existent cache directory
+fc-cache: succeeded

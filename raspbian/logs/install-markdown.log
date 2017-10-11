@@ -437,3 +437,16 @@ Setting up libjs-mathjax (2.7.0-2) ...
 Processing triggers for fontconfig (2.11.0-6.7) ...
 pi@raspberrypi:~$ 
 Meta-Z for help | 115200 8N1 | NOR | Minicom 2.7.1 | VT102 | Offline | tty.usbserial            
+
+pi@raspberrypi:/usr/share/fonts$ ls opentype/mathjax
+MathJax_AMS-Regular.otf          MathJax_SansSerif-Bold.otf
+MathJax_Caligraphic-Bold.otf     MathJax_SansSerif-Italic.otf
+MathJax_Caligraphic-Regular.otf  MathJax_SansSerif-Regular.otf
+MathJax_Fraktur-Bold.otf         MathJax_Script-Regular.otf
+MathJax_Fraktur-Regular.otf      MathJax_Size1-Regular.otf
+MathJax_Main-Bold.otf            MathJax_Size2-Regular.otf
+MathJax_Main-Italic.otf          MathJax_Size3-Regular.otf
+MathJax_Main-Regular.otf         MathJax_Size4-Regular.otf
+MathJax_Math-BoldItalic.otf      MathJax_Typewriter-Regular.otf
+MathJax_Math-Italic.otf          MathJax_WinChrome-Regular.otf
+MathJax_Math-Regular.otf         MathJax_WinIE6-Regular.otf
