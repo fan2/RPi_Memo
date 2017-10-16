@@ -76,7 +76,7 @@ Google Noto Serif 和 Adobe Source Han Serif 字体中的西文部分采用的�
 > [Source Han Sans 与 Noto Sans 的区别](https://qdan.me/list/VLPe5sfsxkFWYMmX)  
 
 ### [Noto CJK](https://www.google.com/get/noto/help/cjk/)
-Google 方面的需求是制作一款覆盖四个 CJK locale 的 pan-CJK 字体，与其 Roboto 和 [Noto](https://www.google.com/get/noto/) 字体家族完美配合，用于 Web 网页端 和 Chrome OS 等场合。  
+Google 方面的需求是制作一款覆盖四个 CJK locale 的 pan-CJK 字体，与其 [Roboto](https://github.com/google/fonts/tree/master/apache/roboto) 和 [Noto](https://www.google.com/get/noto/) 字体家族完美配合，用于 Web 网页端 和 Chrome OS 等场合。  
 
 Google 推出了这一字体的自有版本，取名为 [Noto CJK](https://www.google.com/get/noto/help/cjk/)，并将其归入他们的 Noto pan-Unicode 字体家族。
 
