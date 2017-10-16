@@ -163,6 +163,17 @@ pi@raspberrypi:~$ cat /etc/apt/sources.list
 deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
 deb-src http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
 
+#阿里云
+#deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free  
+rpi
+#deb-src http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-ff
+ree rpi
+
+#清华大学 
+#deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contribb
+ non-free rpi
+#deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main conn
+trib non-free rpi
 ```
 
 1. deb：软件的位置；  
