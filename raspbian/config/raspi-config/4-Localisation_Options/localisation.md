@@ -12,6 +12,15 @@
 - 用空格键选中：[*] `zh_CN.GBK GBK`  
 - 用空格键选中：[*] `zh_CN.UTF-8 UTF-8`  
 
+locale 语系相关的配置文件在 `/usr/share/i18n` 目录下的 locales/ 子目录下；可选支持的语系参考 SUPPORTED 文件。
+
+```Shell
+pi@raspberrypi:~$ whereis i18n
+i18n: /usr/share/i18n
+pi@raspberrypi:~$ ls /usr/share/i18n
+charmaps  locales  SUPPORTED
+```
+
 执行 `locale -a` 命令可查看当前支持的语系：
 
 ```Shell
@@ -27,6 +36,27 @@ zh_CN.gbk
 zh_CN.utf8
 ```
 
+执行 `locale` 命令可查看语系相关的环境变量：
+
+```Shell
+pi@raspberrypi:~$ locale
+LANG=en_US.UTF-8
+LANGUAGE=
+LC_CTYPE="en_US.UTF-8"
+LC_NUMERIC="en_US.UTF-8"
+LC_TIME="en_US.UTF-8"
+LC_COLLATE="en_US.UTF-8"
+LC_MONETARY="en_US.UTF-8"
+LC_MESSAGES="en_US.UTF-8"
+LC_PAPER="en_US.UTF-8"
+LC_NAME="en_US.UTF-8"
+LC_ADDRESS="en_US.UTF-8"
+LC_TELEPHONE="en_US.UTF-8"
+LC_MEASUREMENT="en_US.UTF-8"
+LC_IDENTIFICATION="en_US.UTF-8"
+LC_ALL=
+```
+
 ![4-Localisation_Options-Change_Locales-selected](./4-Localisation_Options-Change_Locales-selected.png)
 
 依次用空格键选中5项后，tab键移到Ok确认，返回根据需要选择默认语言：
@@ -38,14 +68,17 @@ zh_CN.utf8
 
 ![4-Localisation_Options-Change_Locales-default](./4-Localisation_Options-Change_Locales-default.png)
 
-执行 `echo $LANG` 或 `set | egrep '^(LANG|LC_)'` 命令可查看当前选择的语言：
+执行 `env | grep 'LANG'`、`set | egrep '^(LANG|LC_)'` 或  `echo $LANG` 命令可查看当前选择的语言：
 
 ```Shell
-pi@raspberrypi:~$ echo $LANG
-en_US.UTF-8
+pi@raspberrypi:~$ env | grep 'LANG'
+LANG=en_US.UTF-8
 
 pi@raspberrypi:~$ set | egrep '^(LANG|LC_)'
 LANG=en_US.UTF-8
+
+pi@raspberrypi:~$ echo $LANG
+en_US.UTF-8
 ```
 
 重启则 raspbian 能正常支持中文字库的渲染显示。
