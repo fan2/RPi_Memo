@@ -101,6 +101,15 @@ Linking: gcc   -Wl,-z,relro -Wl,--as-needed -o vim       -lm -ltinfo -lnsl  -lse
 # 安装 vim-voom
 
 ```Shell
+pi@raspberrypi:~$ apt-cache depends vim-voom
+vim-voom
+ |Depends: vim-nox
+ |Depends: vim-gtk
+  Depends: vim-gnome
+  Recommends: vim-addon-manager
+```
+
+```Shell
 pi@raspberrypi:~$ sudo apt-get install vim-voom
 Reading package lists... Done
 Building dependency tree       
@@ -149,3 +158,4 @@ Setting up vim-voom (5.2-1) ...
 Processing triggers for man-db (2.7.6.1-2) ...
 Setting up vim-addon-manager (0.5.6) ...
 ```
+

@@ -97,11 +97,11 @@ ruby-github-markup - GitHub Markup rendering
 ...
 ```
 
-- 执行 `apt-cache showpkg markdown` 可查看 markdown 软件源信息；  
-- 执行 `apt-cache show markdown` 可查看 markdown 安装包信息；  
-- 执行 `apt-cache showsrc markdown` 可查看 markdown 源代码信息；  
-- 执行 `apt-cache depends markdown` 命令可查看 markdown 软件包依赖关系；  
-- 执行 `apt-cache rdepends markdown` 命令可查看 markdown 软件包被依赖关系；  
+- 执行 `apt-cache showpkg markdown` 可查看 markdown 软件源信息，例如 **Dependencies**、Reverse Depends；  
+- 执行 `apt-cache show markdown` 可查看 markdown 安装包信息，例如 **Description**、Homepage、Section（所属分类）；  
+- 执行 `apt-cache showsrc markdown` 可查看 markdown 源代码信息，例如 **Homepage**、Maintainer、*Architecture*、Version、Section（所属分类）；  
+- 执行 `apt-cache depends markdown` 命令可查看 markdown 软件包**依赖**关系；  
+- 执行 `apt-cache rdepends markdown` 命令可查看 markdown 软件包**被依赖**关系；  
 
 ## apt-get
 **apt-get** - APT package handling utility

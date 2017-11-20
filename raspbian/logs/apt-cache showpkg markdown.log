@@ -1,4 +1,6 @@
-
+################################################################################
+# apt-cache showpkg markdown
+################################################################################
 pi@raspberrypi:~$ apt-cache showpkg markdown
 Package: markdown
 Versions: 
@@ -23,6 +25,9 @@ Provides:
 1.0.1-9 - 
 Reverse Provides: 
 
+################################################################################
+# apt-cache show markdown
+################################################################################
 pi@raspberrypi:~$ apt-cache show markdown
 Package: markdown
 Version: 1.0.1-9
@@ -47,6 +52,9 @@ Section: web
 Priority: optional
 Filename: pool/main/m/markdown/markdown_1.0.1-9_all.deb
 
+################################################################################
+# apt-cache showsrc markdown
+################################################################################
 pi@raspberrypi:~$ apt-cache showsrc markdown
 Package: markdown
 Binary: markdown
@@ -74,10 +82,16 @@ Directory: pool/main/m/markdown
 Priority: source
 Section: web
 
+################################################################################
+# apt-cache depends markdown
+################################################################################
 pi@raspberrypi:~$ apt-cache depends markdown
 markdown
   Depends: perl
 
+################################################################################
+# apt-cache rdepends markdown
+################################################################################
 pi@raspberrypi:~$ apt-cache rdepends markdown
 markdown
 Reverse Depends:
