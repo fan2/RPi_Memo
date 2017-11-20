@@ -106,6 +106,11 @@ pi@raspberrypi:~$ ls -ls /dev
 
 重启 RPi 3B/raspbian，若 macOS 通过 PL2303 USB2TTL 串口板连接上 RPi 3B 之后，设备树下（`/dev/`）多出节点 `tty.usbserial` 和 `cu.usbserial`，则表明串口连接成功。  
 
+```Shell
+⇒  ls /dev/*.usbserial
+/dev/cu.usbserial  /dev/tty.usbserial
+```
+
 ![mac-dev-cu&tty](2-PL2303-USB2TTL/mac-dev-cu&tty.png)
 
 关于 TTY 和 Terminal 的相关概念可参考 [Console-TTY-Terminal.md](./Console-TTY-Terminal.md)。
@@ -549,6 +554,20 @@ SecureCRT client for Windows, Mac, and Linux provides rock-solid terminal emulat
 
 [SecureCRT 8.1.4 一款终端仿真程序](http://xclient.info/s/securecrt.html?_=baf317d2a9932afca9b32c327f8a34c9)  
 [mac 安装 SecureCRT 连接串口调试](http://blog.csdn.net/XieYupeng520/article/details/47285371)  
+[在windows本地用SecureCRT+SecureFX连接远程linux](http://blog.csdn.net/funboy11/article/details/52498145)  
+
+![3-SecureCRT-Quick_Connect](3-serial_connection/SecureCRT/3-SecureCRT-Quick_Connect.png)
+
+![4-SecureCRT-Quick_Connect-Serial2Raspbian](3-serial_connection/SecureCRT/4-SecureCRT-Quick_Connect-Serial2Raspbian.png)
+
+![5-SecureCRT-Session-Manager](3-serial_connection/SecureCRT/5-SecureCRT-Session-Manager.png)
+
+![6-SecureCRT-Sessions-serial](3-serial_connection/SecureCRT/6-SecureCRT-Sessions-serial.png)
+
+## ZOC
+[ZOC • SSH Client and Terminal Emulator](https://www.emtec.com/zoc/) for macOS and Windows
+
+ZOC is a professional ssh client and terminal emulator. With its impressive list of emulations and features, it is a reliable and elegant tool that connects you to hosts and mainframes via secure shell, telnet, serial cable and other methods of communication.
 
 ## [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/)
 PuTTY is a free implementation of SSH and Telnet for Windows and Unix platforms, along with an `xterm` terminal emulator.
