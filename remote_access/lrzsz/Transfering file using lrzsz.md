@@ -330,3 +330,4 @@ rx waiting to receive.
 > [Linux下几种文件传输命令 sz rz sftp scp](http://blog.163.com/fjm_520/blog/static/18904914820119284847660/)  
 > [lrzsz串口工具移植到ARM Linux教程](http://www.veryarm.com/879.html)  
 > [Linux系统上传下载命令rz和sz](http://oldboy.blog.51cto.com/2561410/588592)  
+> [在 SecureCRT 中使用 sz/rz 命令上传、下载文件](http://blog.csdn.net/lioncode/article/details/7921525)  

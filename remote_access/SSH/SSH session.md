@@ -138,3 +138,6 @@ scp –r local_folder remote_user@host:remote_folder
 ```
 
 以上命令反过来写就是从远程复制（下载）到本地。
+
+### references
+[使用 secureCRT](http://blog.csdn.net/u011299686/article/details/52687747) [在 Linux 与 Windows 之间传输文件](http://blog.csdn.net/rangf/article/details/6096365)  
