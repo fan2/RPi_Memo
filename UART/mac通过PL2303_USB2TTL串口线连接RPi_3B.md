@@ -47,9 +47,9 @@ PL2303 USB2TTL 转换串口板的四根线如下图：
 
 ![RPi-serial-connection](2-PL2303-USB2TTL/RPi-serial-connection.png)
 
-如果接上风扇，红线接第4根 DC Power 5V，黑线接第6根地脚(GND)，则可将 PL2303 的黑线（地线）调整接到第14号地脚(GND)。
+如果接上风扇，红线接第4根 DC Power 5V，黑线接第6根地脚(GND)，则可将 PL2303 的黑线（地线）调整到与绿线间隔一个引脚的第14号地脚(GND)。
 
-![RPi-crust-fans](2-PL2303-USB2TTL/RPi-crust-fans-1.JPG)
+![RPi-crust-fans](2-PL2303-USB2TTL/RPi-serial-connection-fans.png)
 
 > [Raspberry Pi：透過序列埠登入系統](http://yehnan.blogspot.com/2013/09/raspberry-pi.html)  
 > [Getting Started with PL2303 USB to UART Converter](https://electrosome.com/pl2303-usb-to-uart-converter/)  
@@ -548,32 +548,3 @@ minicom configuration RPi.usbserial -w -R utf8 -C minicom_rpi_log-$(date +%Y-%m-
 ```
 
 点选 Yes 确认断开 minicom 串口连接；或通过 tab 键控点选 No 放弃退出。  
-
-## [SecureCRT®](https://www.vandyke.com/products/securecrt/)
-SecureCRT client for Windows, Mac, and Linux provides rock-solid terminal emulation for computing professionals.
-
-[SecureCRT 8.1.4 一款终端仿真程序](http://xclient.info/s/securecrt.html?_=baf317d2a9932afca9b32c327f8a34c9)  
-[mac 安装 SecureCRT 连接串口调试](http://blog.csdn.net/XieYupeng520/article/details/47285371)  
-[在windows本地用SecureCRT+SecureFX连接远程linux](http://blog.csdn.net/funboy11/article/details/52498145)  
-
-![3-SecureCRT-Quick_Connect](3-serial_connection/SecureCRT/3-SecureCRT-Quick_Connect.png)
-
-![4-SecureCRT-Quick_Connect-Serial2Raspbian](3-serial_connection/SecureCRT/4-SecureCRT-Quick_Connect-Serial2Raspbian.png)
-
-![5-SecureCRT-Session-Manager](3-serial_connection/SecureCRT/5-SecureCRT-Session-Manager.png)
-
-![6-SecureCRT-Sessions-serial](3-serial_connection/SecureCRT/6-SecureCRT-Sessions-serial.png)
-
-## ZOC
-[ZOC • SSH Client and Terminal Emulator](https://www.emtec.com/zoc/) for macOS and Windows
-
-ZOC is a professional ssh client and terminal emulator. With its impressive list of emulations and features, it is a reliable and elegant tool that connects you to hosts and mainframes via secure shell, telnet, serial cable and other methods of communication.
-
-## [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/)
-PuTTY is a free implementation of SSH and Telnet for Windows and Unix platforms, along with an `xterm` terminal emulator.
-
-- [Download PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html): latest release (0.70)  
-
-> [What are SSH, Telnet and Rlogin?](https://the.earth.li/~sgtatham/putty/0.70/htmldoc/Chapter1.html#intro)  
-> [PUTTY FOR MAC OS X](https://www.ssh.com/ssh/putty/mac/)  
-> [How to Install PuTTY on OS X](http://www.dotresults.com/2009/10/28/how-to-install-putty-on-os-x/)  
