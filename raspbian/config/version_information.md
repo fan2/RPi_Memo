@@ -84,6 +84,28 @@ pi@raspberrypi:~ $ vcgencmd get_config arm_freq
 arm_freq=1200
 ```
 
+## OSTYPE & MACHTYPE
+
+```shell
+# macOS
+faner@THOMASFAN-MB0:~|⇒  echo $OSTYPE   
+darwin17.0
+faner@THOMASFAN-MB0:~|⇒  echo $HOSTTYPE
+
+faner@THOMASFAN-MB0:~|⇒  echo $MACHTYPE
+x86_64
+```
+
+```shell
+# raspbian
+pi@raspberrypi:~ $ echo $OSTYPE
+linux-gnueabihf
+pi@raspberrypi:~ $ echo $HOSTTYPE
+arm
+pi@raspberrypi:~ $ echo $MACHTYPE
+arm-unknown-linux-gnueabihf
+```
+
 ## uname
 uname - print system information
 
