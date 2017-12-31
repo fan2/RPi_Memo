@@ -15,4 +15,5 @@ memos and notes for Raspberry Pi/raspbian
 
 ![raspbian-desktop-scrot](./raspbian/3-raspbian-desktop-scrot.png)
 
-![Raspberry_Pi_Configuration](./raspbian/config/Raspberry_Pi_Configuration.png)
+![Raspberry_Pi_Configuration](./raspbian/config/Raspberry_Pi_Configuration/Raspberry_Pi_Configuration.png)
+

@@ -76,6 +76,8 @@ raspbian 默认账户为 pi，默认密码为 raspberry。
 
 ![1-Change_User_Password](./raspi-config/1-Change_User_Password/1-Change_User_Password.png)
 
+> [树莓派 - 修改pi账号密码,开启root账号](http://blog.csdn.net/yoie01/article/details/45115067)  
+
 ## 2 Hostname
 raspbian 默认机器名称为 raspberrypi，该项可修改：
 
