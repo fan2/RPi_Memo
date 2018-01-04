@@ -83,6 +83,16 @@ raspbian 默认机器名称为 raspberrypi，该项可修改：
 
 ![2-Hostname-Edit](./raspi-config/2-Hostname/2-Hostname-Edit.png)
 
+[Raspberry/Debian 修改主机名](http://blog.csdn.net/little_bobo/article/details/78341482)  
+
+1. 临时修改主机名：`sudo hostname newHostName`；  
+2. 永久修改主机名：主机名存储在两个地方，两个地方都有修改：  
+
+	- sudo nano `/etc/hostname`，将原本的名称改为新的主机名  
+	- sudo nano `/etc/hosts`，将 127.0.1.1 条目的设备名称改为新的主机名  
+
+修改之后会在系统重启之后生效。
+
 ## 4 Localisation Options
 此项可设置语言、时区、键盘布局 和 WiFi 国家等本地化配置：
 
