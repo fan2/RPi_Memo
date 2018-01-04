@@ -47,13 +47,7 @@ vncserver -geometry 800x600
 [macOS Sierra: Allow Remote Desktop to access your computer](https://support.apple.com/kb/PH25556?viewlocale=en_US&locale=en_US)  
 [How to display your Raspberry Pi’s desktop on a Mac](https://smittytone.wordpress.com/2016/03/02/mac_remote_desktop_pi/)  
 
-### raspberrypi.local
-[How (and Why) to Assign the .local Domain to Your Raspberry Pi](https://www.howtogeek.com/167190/how-and-why-to-assign-the-.local-domain-to-your-raspberry-pi/)  
-[Turning on Bonjour](https://gist.github.com/stonehippo/5642771)  
-[Connecting to Raspberry Pi with Mac OS X](http://raspberry.znix.com/2013/03/connecting-to-raspberry-pi-with-mac-os-x.html)  
-[How to setup mDNS lookups on the Raspberry Pi](http://root42.blogspot.com/2015/02/how-to-setup-mdns-lookups-on-raspberry.html)  
-[Setting up a Bonjour (Zeroconf) service name for your Raspberry Pi and accessing it from an Android App](http://www.dodgycoder.net/2015/02/setting-up-bonjourzeroconfmdnsnsd.html)  
-
+### mDNS
 ![macOS-ARD-failed](macOS-ARD-failed.png)
 
 [how-to-fix-connection-failed-error-on-mac](http://www.adeepbite.com/how-to-fix-connection-failed-error-on-mac/)  

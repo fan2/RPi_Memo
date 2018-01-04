@@ -97,6 +97,73 @@ faner@THOMASFAN-MB0:~|⇒
 
 输入 `exit` 即可 logout 结束 SSH 会话连接。
 
+#### mDNS
+> [How (and Why) to Assign the .local Domain to Your Raspberry Pi](https://www.howtogeek.com/167190/how-and-why-to-assign-the-.local-domain-to-your-raspberry-pi/)  
+> [Setting up a Bonjour (Zeroconf) service name for your Raspberry Pi and accessing it from an Android App](http://www.dodgycoder.net/2015/02/setting-up-bonjourzeroconfmdnsnsd.html)  
+
+> [Turning on Bonjour](https://gist.github.com/stonehippo/5642771)  
+> [Connecting to Raspberry Pi with Mac OS X](http://raspberry.znix.com/2013/03/connecting-to-raspberry-pi-with-mac-os-x.html)  
+> [How to setup mDNS lookups on the Raspberry Pi](http://root42.blogspot.com/2015/02/how-to-setup-mdns-lookups-on-raspberry.html)  
+
+如果没有为 raspbian 设置静态 IP 地址，可能每次输入 ssh 命令之前都要确认 raspbian 分配到的动态 IP 地址。可否像访问 web 网站那样，用户只需输入相对固定且简便易记的域名（Domain），然后由 DNS 解析出具体的 IP 地址，再进行具体的 TCP/IP 通信连接呢？ 
+
+**mDNS**(Multicast Domain Name Service)  即是这样一种提供基于本地 DNS 解析的服务（local DNS resolution system），每台主机通常会对应一个本地局域网共享主机名（internal Sharing Local Hostname），类似 `hostname.local` 的域名结构形式。在访问局域网内的一些网络服务时，我们可以使用共享主机名来代替 IP 地址。
+
+Microsoft 提供的 mDNS 服务框架为 *LLMNR*(Link-local Multicast Name Resolution)；Apple 对 mDNS 服务的实现则是更加知名的 *Bonjour* 局域网发现服务（local network discovery service）。  
+考虑到 Apple Bonjour 服务框架更通用普及，最新的 raspbian 默认已经安装了 `avahi-daemon` 服务。
+
+```shell
+pi@raspberrypi:~ $ avahi-daemon -V
+avahi-daemon 0.6.32
+
+pi@raspberrypi:~ $ apt-cache search avahi-daemon
+avahi-daemon - Avahi mDNS/DNS-SD daemon
+mdns-scan - Scan for mDNS/DNS-SD services published on the local network
+
+pi@raspberrypi:~ $ apt-cache show avahi-daemon
+Package: avahi-daemon
+Source: avahi
+Version: 0.6.32-2
+Architecture: armhf
+Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
+Installed-Size: 244
+Depends: libavahi-common3 (>= 0.6.16), libavahi-core7 (>= 0.6.24), libc6 (>= 2.8), libcap2 (>= 1:2.10), libdaemon0 (>= 0.14), libdbus-1-3 (>= 1.9.14), libexpat1 (>= 2.0.1), init-system-helpers (>= 1.18~), adduser, dbus (>= 0.60), lsb-base (>= 3.0-6), bind9-host | host
+Recommends: libnss-mdns
+Suggests: avahi-autoipd
+Multi-Arch: foreign
+Homepage: http://avahi.org/
+
+# 省略...
+
+Description: Avahi mDNS/DNS-SD daemon
+ Avahi is a fully LGPL framework for Multicast DNS Service Discovery.
+ It allows programs to publish and discover services and hosts
+ running on a local network with no specific configuration. For
+ example you can plug into a network and instantly find printers to
+ print to, files to look at and people to talk to.
+ .
+ This package contains the Avahi Daemon which represents your machine
+ on the network and allows other applications to publish and resolve
+ mDNS/DNS-SD records.
+Description-md5: 13d651a25febc553220e03e75c6f4c7b
+```
+
+raspberrypi/raspbian 默认的 mDNS 名称为 `raspberrypi.local`，这样在 macOS/OpenSSH 访问 RaspberryPi 时，可以用方便识记的域名 `raspberrypi.lcoal` 来代替 `ssh pi@IP` 中复杂的数字 IP 串， 简便易记。
+
+```shell
+faner@MBP-FAN:~|⇒  ssh pi@raspberrypi.local
+pi@raspberrypi.local's password: 
+Linux raspberrypi 4.9.59-v7+ #1047 SMP Sun Oct 29 12:19:23 GMT 2017 armv7l
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Thu Jan  4 00:17:09 2018
+```
+
 ### SecureCRT
 在 SecureCRT 的 Session Manager 中点击 <kbd>+</kbd> 新建会话，打开 New Session Wizard：
 
