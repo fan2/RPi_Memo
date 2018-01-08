@@ -150,6 +150,34 @@ Progress: [ 97%] [########################################################..]
 Asia | China
 
 ## 更新 sources.list
+
+```shell
+# man sources.list
+SOURCES.LIST(5)                              APT                              SOURCES.LIST(5)
+
+NAME
+       sources.list - List of configured APT data sources
+
+DESCRIPTION
+       The source list /etc/apt/sources.list and the files contained in
+       /etc/apt/sources.list.d/ are designed to support any number of active sources and a
+       variety of source media. The files list one source per line (one-line style) or
+       contain multiline stanzas defining one or more sources per stanza (deb822 style), with
+       the most preferred source listed first (in case a single version is available from
+       more than one source). The information available from the configured sources is
+       acquired by apt-get update (or by an equivalent command from another APT front-end).
+
+SOURCES.LIST.D
+       The /etc/apt/sources.list.d directory provides a way to add sources.list entries in
+       separate files. Two different file formats are allowed as described in the next two
+       sections. Filenames need to have either the extension .list or .sources depending on
+       the contained format. The filenames may only contain letters (a-z and A-Z), digits
+       (0-9), underscore (_), hyphen (-) and period (.) characters. Otherwise APT will print
+       a notice that it has ignored a file, unless that file matches a pattern in the
+       Dir::Ignore-Files-Silently configuration list - in which case it will be silently
+       ignored.
+```
+
 执行 `sudo vim /etc/apt/sources.list` 启动编辑，注释掉原来的 `deb http://... stretch main contrib non-free rpi`，添加中科大的 deb 和 deb-src。
 
 ```Shell
