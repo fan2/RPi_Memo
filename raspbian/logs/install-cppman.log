@@ -1,0 +1,142 @@
+
+pi@raspberrypi:~ $ apt search cppman
+Sorting... Done
+Full Text Search... Done
+cppman/stable 0.4.8-3 all
+  C++ 98/11 manual pages for Linux, with source from cplusplus.com
+
+pi@raspberrypi:~ $ apt-cache search cppman
+cppman - C++ 98/11 manual pages for Linux, with source from cplusplus.com
+
+pi@raspberrypi:~ $ apt show cppman
+Package: cppman
+Version: 0.4.8-3
+Priority: optional
+Section: python
+Maintainer: Python Applications Packaging Team <python-apps-team@lists.alioth.debian.org>
+Installed-Size: 897 kB
+Depends: python3:any (>= 3.3.2-2~), bsdmainutils, groff-base, python3-bs4, python3-html5lib
+Recommends: less
+Homepage: https://github.com/aitjcize/cppman/
+Download-Size: 138 kB
+APT-Sources: http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf Packages
+Description: C++ 98/11 manual pages for Linux, with source from cplusplus.com
+ cppman is a tool to download C++ 98/11 manual from cplusplus.com. It creates a
+ similar interface to the man command, and provides syntax highlight, hyperlink
+ features.
+
+pi@raspberrypi:~ $ apt-cache show cppman
+Package: cppman
+Version: 0.4.8-3
+Installed-Size: 876
+Maintainer: Python Applications Packaging Team <python-apps-team@lists.alioth.debian.org>
+Architecture: all
+Depends: python3:any (>= 3.3.2-2~), bsdmainutils, groff-base, python3-bs4, python3-html5lib
+Recommends: less
+Size: 137512
+SHA256: df3a8f469c0dc9f59ceaf583e50b289c25f0a70a67ed18a7d894373a6c2e0101
+SHA1: 51bf739dbb01bd0b9200254ab3550272de88ef5a
+MD5sum: 3e511cfd99a05467938ea34d135fde40
+Description: C++ 98/11 manual pages for Linux, with source from cplusplus.com
+ cppman is a tool to download C++ 98/11 manual from cplusplus.com. It creates a
+ similar interface to the man command, and provides syntax highlight, hyperlink
+ features.
+Description-md5: 0caff99410493041ec3ed3cad4214018
+Homepage: https://github.com/aitjcize/cppman/
+Section: python
+Priority: optional
+Filename: pool/main/c/cppman/cppman_0.4.8-3_all.deb
+
+pi@raspberrypi:~ $ apt-cache depends cppman
+cppman
+  Depends: <python3:any>
+    python3
+  Depends: bsdmainutils
+  Depends: groff-base
+  Depends: python3-bs4
+  Depends: python3-html5lib
+  Recommends: less
+
+pi@raspberrypi:~ $ apt-get install cppman
+E: Could not open lock file /var/lib/dpkg/lock - open (13: Permission denied)
+E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
+pi@raspberrypi:~ $ sudo apt-get install cppman
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  python3-bs4 python3-html5lib python3-lxml python3-webencodings
+Suggested packages:
+  python3-genshi python3-lxml-dbg python-lxml-doc
+The following NEW packages will be installed:
+  cppman python3-bs4 python3-html5lib python3-lxml python3-webencodings
+0 upgraded, 5 newly installed, 0 to remove and 0 not upgraded.
+Need to get 1,113 kB of archives.
+After this operation, 4,974 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python3-bs4 all 4.5.3-1 [86.6 kB]
+Get:2 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python3-webencodings all 0.5-2 [10.4 kB]
+Get:3 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python3-html5lib all 0.999999999-1 [86.3 kB]
+Get:4 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf cppman all 0.4.8-3 [138 kB]
+Get:5 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python3-lxml armhf 3.7.1-1 [792 kB]
+Fetched 1,113 kB in 2s (490 kB/s)     
+Selecting previously unselected package python3-bs4.
+(Reading database ... 131036 files and directories currently installed.)
+Preparing to unpack .../python3-bs4_4.5.3-1_all.deb ...
+Unpacking python3-bs4 (4.5.3-1) ...
+Selecting previously unselected package python3-webencodings.
+Preparing to unpack .../python3-webencodings_0.5-2_all.deb ...
+Unpacking python3-webencodings (0.5-2) ...
+Selecting previously unselected package python3-html5lib.
+Preparing to unpack .../python3-html5lib_0.999999999-1_all.deb ...
+Unpacking python3-html5lib (0.999999999-1) ...
+Selecting previously unselected package cppman.
+Preparing to unpack .../cppman_0.4.8-3_all.deb ...
+Unpacking cppman (0.4.8-3) ...
+Selecting previously unselected package python3-lxml.
+Preparing to unpack .../python3-lxml_3.7.1-1_armhf.deb ...
+Unpacking python3-lxml (3.7.1-1) ...
+Setting up python3-webencodings (0.5-2) ...
+Setting up python3-lxml (3.7.1-1) ...
+Setting up python3-bs4 (4.5.3-1) ...
+Setting up python3-html5lib (0.999999999-1) ...
+Processing triggers for man-db (2.7.6.1-2) ...
+Setting up cppman (0.4.8-3) ...
+pi@raspberrypi:~ $ cppman -v
+/usr/bin/cppman Ver 0.4.8
+Copyright (C) 2010 Wei-Ning Huang
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Written by Wei-Ning Huang (AZ) <aitjcize@gmail.com>.
+
+pi@raspberrypi:~ $ cppman -h
+Usage: cppman [OPTION...] PAGE...
+
+Options:
+  -s SOURCE, --source=SOURCE
+                        Select source, either 'cppreference.com' or
+                        'cplusplus.com'. Default is 'cplusplus.com'.
+  -c, --cache-all       Cache all available man pages from cppreference.com
+                        and cplusplus.com to enable offline browsing.
+  -C, --clear-cache     Clear all cached files.
+  -f KEYWORD, --find-page=KEYWORD
+                        Find man page.
+  -o, --force-update    Force cppman to update existing cache when '--cache-
+                        all' or browsing man pages that were already cached.
+  -m MANDB, --use-mandb=MANDB
+                        Accepts 'true' or 'false'. If true, cppman adds
+                        manpage path to mandb so that you can view C++
+                        manpages with `man' command. The default value is
+                        'false'.
+  -p PAGER, --pager=PAGER
+                        Select pager to use, accepts 'vim', 'less' or
+                        'system'. 'system' uses $PAGER environment as pager.
+                        The default value is 'vim'.
+  -r, --rebuild-index   rebuild index database for the selected source, either
+                        'cppreference.com' or 'cplusplus.com'.
+  -v, --version         Show version information.
+  --force-columns=FORCE_COLUMNS
+                        Force terminal columns.
+  -h, --help            show this help message and exit
