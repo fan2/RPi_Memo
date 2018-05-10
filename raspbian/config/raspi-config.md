@@ -72,11 +72,13 @@ Raspberry Pi 3 Model B Rev 1.2
 
 ## 1 Change User Password
 raspbian 默认账户为 pi，默认密码为 raspberry。  
-该项可修改默认密码：
+菜单中的 `change_pass` 项可修改默认密码：
 
 ![1-Change_User_Password](./raspi-config/1-Change_User_Password/1-Change_User_Password.png)
 
 > [树莓派 - 修改pi账号密码,开启root账号](http://blog.csdn.net/yoie01/article/details/45115067)  
+
+也可以在终端会话通过 passwd 命令来更换密码。
 
 ## 2 Hostname
 raspbian 默认机器名称为 raspberrypi，该项可修改：

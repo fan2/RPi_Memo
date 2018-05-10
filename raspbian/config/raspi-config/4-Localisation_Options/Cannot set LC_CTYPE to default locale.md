@@ -1,4 +1,5 @@
 ## locale
+
 ```shell
 # man locale on raspbian
 DESCRIPTION
@@ -45,6 +46,7 @@ usage: /usr/bin/localedef [-c] [-f charmap-file] [-u codesetname] [-i localdef-f
 执行 `man locale` 可查看命令语法（*SYNOPSIS*）和 LANG、LC_ALL、LC_CTYPE 等语系环境变量（*ENVIRONMENT*）的详细说明。
 
 ### macOS
+
 macOS 系统的 `Language & Region` 选用 **Chinese**（简体中文） 作为首选语言（Primary），终端执行 `locale` 查看语系变量：
 
 ```shell
@@ -80,6 +82,7 @@ macOS 没有定义 LANG 环境变量，如果定义了，它将替代所有未�
 这里未定义 LANG 变量， LC_CTYPE 被 fallback 设为 UTF-8，其他 `LC_*` 变量则 fallback 为 `C`。
 
 ### raspbian & CentOS
+
 通过 VNC 连接 raspbian，直接执行 `locale` 命令查看树莓派 raspbian 系统原生语系变量如下：
 
 ```shell
@@ -107,6 +110,7 @@ LC_ALL=
 > Values for variables set in the  environment are printed without double quotes, implied values are printed with double quotes.
 
 ### LC_CTYPE
+
 可参考《鸟哥的linux私房菜》<11.2 shell 的变量功能> - 11.2.4 影响显示结果的语系变量（locale） 。
 
 [locale的设定中LANG、LC_ALL、LANGUAGE环境变量的区别](http://blog.csdn.net/nick357/article/details/8513699)  
@@ -174,6 +178,7 @@ charmap="UTF-8"
 执行 `env | grep LC_CTYPE`、 `export | grep LC_CTYPE`、 `set | grep LC_CTYPE`（包括环境变量与自定义变量）  命令可将 env 结果通过管道传给 grep 过滤出 LC_CTYPE 变量。
 
 ## Cannot set LC_CTYPE & 中文乱码
+
 当 macOS 首选语言设为英文时，存在以下问题：
 
 在终端 SSH 会话中执行 `locale` 提示 `locale: Cannot set LC_CTYPE to default locale: No such file or directory`：
@@ -224,6 +229,7 @@ pi@raspberrypi:~ $
 当 macOS 首选语言为中文时，则无 Cannot set LC_CTYPE/Can't set locale 警告或中文显示乱码问题。
 
 ## analysis
+
 OpenSSH 客户端在建立 SSH 会话连接时（两端读取 ssh/sshd 配置），客户端尝试发送本地语系环境变量（**SendEnv**）到远程 SSH 服务器，远程 SSH 服务器接收并为本次 SSH 会话设置客户端发送过来的语系环境变量（**AcceptEnv**）。
 
 在 SSH 服务器（raspbian/CentOS）执行 `locale -a` 查看支持语系，发现没有 `UTF-8`。  
@@ -239,6 +245,7 @@ OpenSSH 客户端在建立 SSH 会话连接时（两端读取 ssh/sshd 配置）
 ```
 
 ### ssh_config(SendEnv)
+
 SSH 客户端（macOS）配置文件  ssh_config （OpenSSH SSH client configuration files）：
 
 ```shell
@@ -276,6 +283,7 @@ Host *
 ```
 
 ### sshd_config(AcceptEnv)
+
 ```shell
 # man sshd_config on CentOS
      sshd(8) reads configuration data from /etc/ssh/sshd_config (or the file specified with
@@ -326,7 +334,7 @@ AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
 AcceptEnv XMODIFIERS
 ```
 
-在 macOS 终端当前 SSH 会话中执行 `locale` 命令，可以发现 LC_CTYPE 已被修改为了 SSH 客户端的 LC_CTYPE（`UTF-8`，不带双引号）。
+在 raspbian 终端当前 SSH 会话中执行 `locale` 命令，可以发现 LC_CTYPE 已被修改为了 SSH 客户端的 LC_CTYPE（`UTF-8`，不带双引号）。
 
 ```shell
 # macOS OpenSSH to raspbian
@@ -345,6 +353,7 @@ LC_CTYPE=UTF-8
 ```
 
 ## solution
+
 > [linux环境通过ssh连接控制台显示中文乱码问题](http://blog.csdn.net/songylwq/article/details/8842748)  
 > [Mac OS X ssh登陆Linux是终端提示cannot change locale (UTF-8)](http://blog.huatai.me/2015/12/03/Mac-OS-X-ssh-to-Linux-prompt-setlocale-LC-CTYPE-cannot-change-locale-UTF-8/)  
 > [Mac SSH 到 Linux 機器時，出現 cannot change locale (UTF-8) 訊息](http://ephrain.pixnet.net/blog/post/62410613)  
@@ -368,6 +377,7 @@ localedef -i en_US -f UTF-8 en_US.UTF-8
 > gist [LC_CTYPE](https://gist.github.com/ibrahimlawal/bfec7092cb64d46d8f9d1fd2c0c3d9c8)  
 
 ### 方案1 - 禁止终端 Set locale environment variables on startup
+
 在 macOS 终端偏好设置中定位到当前终端配置（Profile）的 Advanced tab 页：
 
 ![macOS-Terminal-Preferences-Profiles-Advanced](macOS-Terminal-Preferences-Profiles-Advanced.png)
@@ -397,6 +407,7 @@ SSH 会话 locale 中的 LC_CTYPE 变量值将为空（unset）。
 > 不建议此方案，建议采用方案3。
 
 ### 方案2 - 修改 SSH 配置屏蔽 SendEnv/AcceptEnv
+
 > [MAC OS X – SSH LC_CTYPE Warning](http://eduroll.eu/?p=119&cpage=1)  
 > [OS X ssh 登录阿里云CentOS关于locale的警告处理](http://lishifu.me/mac,centos,aliyun/2015/10/22/mac-osx-setlocale-lc_ctype-.html)  
 
@@ -417,6 +428,7 @@ $ sudo vim /etc/ssh/ssh_config
 > 不建议此方案，建议采用方案3。
 
 ### 方案3 - 修正 LC_CTYPE 一致
+
 另外一种思路是在执行 ssh 连接后，在 macOS 终端的 SSH 会话中，尝试（export）恢复 LC_CTYPE 为 SSH 服务器接收 `LC_*` 变量覆盖之前的初始值 `en_US.UTF-8`（同 LANG）：
 
 ```shell
@@ -481,3 +493,11 @@ LC_ALL=
 ```
 
 后续 SSH 连接 raspbian/CentOS 服务器就不会再出现警告了。
+
+#### iTerm Profile
+
+通过方案3在 `~/.zshrc` 中配置 **LANG** 和 **LC_CTYPE** 后，当 iTerm2 以默认 Profile 启动 Login shell，再 ssh 连接上 raspbian 后，不会再出现警告。
+
+但是在 iTerm2 中以 Command 类型的 Profile 启动 ssh 会话，连接上 raspbian 后，在终端还是会出现警告。
+
+![iTerm-Preferences-Profile-raspberrypi](iTerm-Preferences-Profile-raspberrypi.png)
