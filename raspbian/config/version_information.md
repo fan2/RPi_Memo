@@ -8,7 +8,7 @@
 
 ## [cpuinfo](https://www.zybuluo.com/SiberiaBear/note/336984)
 
-```Shell
+```shell
 pi@raspberrypi:/ $ cat /proc/cpuinfo
 processor	: 0
 model name	: ARMv7 Processor rev 4 (v7l)
@@ -57,11 +57,12 @@ pi@raspberrypi:/ $
 ```
 
 ### lscpu
+
 **lscpu** - display information about the CPU architecture
 
 lscpu  gathers  CPU  architecture information from sysfs, /proc/cpuinfo and any applicable architecture specific  libraries  (e.g.  librtas  on Powerpc).
 
-```Shell
+```shell
 pi@raspberrypi:~ $ lscpu 
 Architecture:          armv7l
 Byte Order:            Little Endian
@@ -107,9 +108,10 @@ arm-unknown-linux-gnueabihf
 ```
 
 ## uname
+
 uname - print system information
 
-```Shell
+```shell
 pi@raspberrypi:~$ uname
 Linux
 
@@ -121,9 +123,10 @@ Linux raspberrypi 4.9.41-v7+ #1023 SMP Tue Aug 8 16:00:15 BST 2017 armv7l GNU/Li
 ```
 
 ## arch & word
+
 arch - print machine hardware name (same as uname -m)
 
-```Shell
+```shell
 pi@raspberrypi:~ $ arch
 armv7l
 
@@ -138,7 +141,8 @@ pi@raspberrypi:~ $ getconf LONG_BIT
 ```
 
 ## debian_version
-```Shell
+
+```shell
 pi@raspberrypi:~ $ cat /proc/version
 Linux version 4.9.41-v7+ (dc4@dc4-XPS13-9333) (gcc version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611) ) #1023 SMP Tue Aug 8 16:00:15 BST 2017
 
@@ -155,9 +159,10 @@ pi@raspberrypi:~ $ cat /etc/debian_version
 ```
 
 ### lsb_release
+
 lsb_release - print distribution-specific information
 
-```Shell
+```shell
 pi@raspberrypi:~ $ lsb_release -a
 No LSB modules are available.
 Distributor ID:	Raspbian
@@ -167,7 +172,8 @@ Codename:	stretch
 ```
 
 ## dmesg
-```Shell
+
+```shell
 pi@raspberrypi:~/Projects/WORDSIZE $ dmesg more
 [    0.000000] Booting Linux on physical CPU 0x0
 [    0.000000] Linux version 4.9.41-v7+ (dc4@dc4-XPS13-9333) (gcc version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611) ) #1023 SMP Tue Aug 8 16:00:15 BST 2017
@@ -422,7 +428,8 @@ pi@raspberrypi:~/Projects/WORDSIZE $
 ```
 
 ## gcc
-```Shell
+
+```shell
 pi@raspberrypi:~ $ gcc -v
 Using built-in specs.
 COLLECT_GCC=gcc
@@ -434,7 +441,8 @@ gcc version 6.3.0 20170516 (Raspbian 6.3.0-18+rpi1)
 ```
 
 ### data types
-```Shell
+
+```shell
 pi@raspberrypi: $ cpp -dD /dev/null | grep __SIZEOF_LONG__
 #define __SIZEOF_LONG__ 4
 ```
@@ -445,6 +453,7 @@ pi@raspberrypi: $ cpp -dD /dev/null | grep __SIZEOF_LONG__
 > [find out the sizes of data types on a system, without writing a C program?](https://unix.stackexchange.com/questions/115222/possible-to-find-out-the-sizes-of-data-types-int-float-double-on-a-syst)  
 
 ## misc.etc
+
 `/sbin/sysctl -a`：Dump Linux kernel variables  
 `cat /proc/meminfo`：information about Linux Memory  
 `cat /proc/diskstats`  

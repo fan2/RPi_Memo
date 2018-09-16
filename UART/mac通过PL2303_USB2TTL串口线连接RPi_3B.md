@@ -106,7 +106,7 @@ pi@raspberrypi:~$ ls -ls /dev
 
 重启 RPi 3B/raspbian，若 macOS 通过 PL2303 USB2TTL 串口板连接上 RPi 3B 之后，设备树下（`/dev/`）多出节点 `tty.usbserial` 和 `cu.usbserial`，则表明串口连接成功。  
 
-```Shell
+```shell
 ⇒  ls /dev/*.usbserial
 /dev/cu.usbserial  /dev/tty.usbserial
 ```
@@ -119,6 +119,7 @@ pi@raspberrypi:~$ ls -ls /dev
 > 此时，macOS 会自动加载 SD 卡，在 finder 中可进入 MS-DOS FAT32 格式的 boot 文件夹，为配置文件 config.txt 添加一行 `enable_uart=1`，重新将 SD 卡插入 Raspberry Pi 3B 上电重启即可启用串口。
 
 ### tty vs cu
+
 > The difference between the two is that a **TTY** device is used to call into a device/system, and the **CU** device (call-up) is used to call out of a device/system. Thus, this allows for two-way communication at the same time (full-duplex). 
 > 
 > You might notice that each serial device shows up twice in `/dev`, once as a `tty.*` and once as a `cu.*`. So, what's the difference? Well, **TTY** devices are for <u>calling into</u> UNIX systems, whereas CU (Call Up) devices are for <u>calling out</u> from them (eg, modems). We want to *call out* from our Mac, so `/dev/cu.*` is the correct device to use.  
@@ -300,9 +301,10 @@ Minicom is a text-based modem control and terminal emulation program for Unix-li
 Minicom is a *menu-driven* communications program. It also has an auto [ZMODEM](https://en.wikipedia.org/wiki/ZMODEM) download.  
 
 ### install
+
 在 macOS 下，可通过 `brew install minicom` 命令安装 minicom。
 
-```Shell
+```shell
 faner@THOMASFAN-MB0:~/Projects/git/FuturismSchedule|master⚡ 
 ⇒  brew install minicom
 Updating Homebrew...
