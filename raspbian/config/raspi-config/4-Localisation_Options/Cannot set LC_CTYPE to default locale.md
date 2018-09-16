@@ -436,7 +436,7 @@ $ sudo vim /etc/ssh/ssh_config
 pi@raspberrypi:~ $ export LC_CTYPE="en_US.UTF-8"
 
 # echo $ 打印环境变量
-pi@raspberrypi:~ $ echo $LC_CTYPE 
+pi@raspberrypi:~ $ echo $LC_CTYPE
 en_US.UTF-8
 ```
 
@@ -496,8 +496,43 @@ LC_ALL=
 
 #### iTerm Profile
 
-通过方案3在 `~/.zshrc` 中配置 **LANG** 和 **LC_CTYPE** 后，当 iTerm2 以默认 Profile 启动 Login shell，再 ssh 连接上 raspbian 后，不会再出现警告。
+通过方案3在 `~/.zshrc` 中配置 **LANG** 和 **LC_CTYPE** 后，当 iTerm2 以默认 Profile 启动 `Login shell`，再 ssh 连接上 raspbian 后，不会再出现警告。
 
-但是在 iTerm2 中以 Command 类型的 Profile 启动 ssh 会话，连接上 raspbian 后，在终端还是会出现警告。
+```shell
+pi@raspberrypi:~ $ echo $LANG
+en_US.UTF-8
+pi@raspberrypi:~ $ echo $LC_CTYPE
+en_US.UTF-8
+pi@raspberrypi:~ $ ls Music/
+周杰伦-晴天.mp3    玄乐队-西安爱情故事.mp3  赵雷-鼓楼.mp3
+朴树-平凡之路.mp3  许巍-第三极.mp3          达达乐队 - 南方.mp3
+```
+
+但是在 iTerm2 中以 `Command` 类型的 Profile 启动 ssh 会话，连接上 raspbian 后，在终端还是会出现警告。
 
 ![iTerm-Preferences-Profile-raspberrypi](iTerm-Preferences-Profile-raspberrypi.png)
+
+```shell
+pi@raspberrypi:~ $ echo $LANG
+en_US.UTF-8
+pi@raspberrypi:~ $ echo $LC_CTYPE
+UTF-8
+pi@raspberrypi:~ $ ls Music/
+?????????-??????.mp3     ?????????-??????????????????.mp3  ??????-??????.mp3
+??????-????????????.mp3  ??????-?????????.mp3              ???????????? - ??????.mp3
+```
+
+***临时修正方案***：`export LC_CTYPE="en_US.UTF-8"`。
+
+```shell
+pi@raspberrypi:~ $ export LC_CTYPE="en_US.UTF-8"
+pi@raspberrypi:~ $ echo $LC_CTYPE
+en_US.UTF-8
+pi@raspberrypi:~ $ ls Music/
+周杰伦-晴天.mp3    玄乐队-西安爱情故事.mp3  赵雷-鼓楼.mp3
+朴树-平凡之路.mp3  许巍-第三极.mp3          达达乐队 - 南方.mp3
+```
+
+> 这样可修复显示问题，但是无法输入汉字？
+
+还是将 iTerm 的 Profile Command 从 Command - `ssh pi@raspberrypi.local` 修改为 **Login shell** - Send text at start: `ssh pi@raspberrypi.local`。
