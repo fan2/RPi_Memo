@@ -221,20 +221,16 @@ pi@raspberrypi:~$ cat /etc/apt/sources.list
 #deb-src http://archive.raspbian.org/raspbian/ stretch main contrib non-free rpi
 
 #中科大
-deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
-deb-src http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+#deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+#deb-src http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
 
 #阿里云
-#deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free  
-rpi
-#deb-src http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-ff
-ree rpi
+deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi
+deb-src http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi
 
-#清华大学 
-#deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contribb
- non-free rpi
-#deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main conn
-trib non-free rpi
+#清华大学
+#deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+#deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
 ```
 
 1. deb：软件的位置；  
@@ -274,8 +270,12 @@ pi@raspberrypi:~$ cat /etc/apt/sources.list.d/raspi.list
 #deb-src http://archive.raspberrypi.org/debian/ stretch main ui
 
 #中科大
-deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/ stretch main ui
-deb-src http://mirrors.ustc.edu.cn/archive.raspberrypi.org/ stretch main ui
+deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ stretch main ui
+deb-src http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ stretch main ui
+
+#阿里云
+deb http://mirrors.aliyun.com/debian/ stretch main contrib non-free
+deb-src http://mirrors.aliyun.com/debian/ stretch main contrib non-free
 ```
 
 `sources.list.d` 扩展目录下的 `raspi.list` 为 raspberry pi / raspbian 平台特有的软件源，由 raspberrypi.org 组织提供。
@@ -291,6 +291,7 @@ deb-src http://mirrors.ustc.edu.cn/archive.raspberrypi.org/ stretch main ui
 > [树莓派折腾录一 - 3. 替换软件源](http://blog.csdn.net/wangmi0354/article/details/50836398)  
 > [树莓派新版raspbian系统换国内源](http://www.des8.com/on_computer/raspbian_jessie_sources/)  
 > [为树莓派 raspbian stretch 更换国内镜像源](http://blog.csdn.net/la9998372/article/details/77886806)  
+> [树莓派Raspberry Pi 3 使用阿里云镜像云](https://www.douban.com/note/617546331/)  
 
 ## [清除 apt-get update 失败后的缓冲文件](http://blog.csdn.net/wangmi0354/article/details/50836398)
 
@@ -324,6 +325,8 @@ sudo apt-get upgrade
 ```shell
 # sudo apt-get upgrade
 ```
+
+1Oct18: Unpacking raspberrypi-kernel (1.20180919-1) over (1.20171029-1)
 
 3. Upgrade any held back packages:
 
