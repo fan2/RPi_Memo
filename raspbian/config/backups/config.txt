@@ -22,11 +22,11 @@
 #framebuffer_height=720
 
 # uncomment if hdmi display is not detected and composite is being output
-#hdmi_force_hotplug=1
+hdmi_force_hotplug=1
 
 # uncomment to force a specific HDMI mode (this will force VGA)
-#hdmi_group=1
-#hdmi_mode=1
+hdmi_group=2
+hdmi_mode=82
 
 # uncomment to force a HDMI mode rather than DVI. This can make audio work in
 # DMT (computer monitor) modes
@@ -54,3 +54,21 @@
 
 # Enable audio (loads snd_bcm2835)
 dtparam=audio=on
+
+########## add by fan2 ##########
+# switches the Bluetooth function to use the mini UART (ttyS0),
+# and restores UART0/ttyAMA0 to GPIOs 14 and 15.
+dtoverlay=pi3‐miniuart‐bt
+
+########## add by fan2 ##########
+# disables the Bluetooth device
+# and restores UART0/ttyAMA0 to GPIOs 14 and 15.
+#dtoverlay=pi3‐disable‐bt
+
+########## add by fan2 ##########
+# re-enabled the Linux console
+#0: if ttyAMA0 is assigned to the BT module
+#1: if the mini UART is assigned to the BT module
+enable_uart=1
+
+gpu_mem=128
