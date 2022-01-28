@@ -215,7 +215,7 @@ Choose 1-4 [2]:
 
 ```shell
 pi@raspberrypi:~$ cat /etc/apt/sources.list
-# comment by thomasfan, 27Sept17.
+# comment by faner, 27Sept17.
 #deb http://mirrordirector.raspbian.org/raspbian/ stretch main contrib non-free rpi
 # Uncomment line below then 'apt-get update' to enable 'apt-get source'
 #deb-src http://archive.raspbian.org/raspbian/ stretch main contrib non-free rpi
@@ -225,16 +225,17 @@ pi@raspberrypi:~$ cat /etc/apt/sources.list
 #deb-src http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
 
 #阿里云
-deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi
-deb-src http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi
+#deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi
+#deb-src http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi
 
 #清华大学
-#deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
-#deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
 ```
 
 1. deb：软件的位置；  
-2. deb-src：软件的源代码位置，一般放在同目录下的 `source/` 子文件夹下；   
+2. deb-src：软件的源代码位置，一般放在同目录下的 `source/` 子文件夹下；  
+3. **注意**：最新 RPi4，请将 stretch 修改为 `buster`。  
 
 **url**：镜像源 - http://mirrors.ustc.edu.cn/raspbian/raspbian/  
 **dists**：发行版（distributions）；  
@@ -264,19 +265,25 @@ deb-src http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-fr
 
 ```shell
 pi@raspberrypi:~$ cat /etc/apt/sources.list.d/raspi.list
-# comment by thomasfan, 03Oct17.
+# comment by faner, 03Oct17.
 #deb http://archive.raspberrypi.org/debian/ stretch main ui
 # Uncomment line below then 'apt-get update' to enable 'apt-get source'
 #deb-src http://archive.raspberrypi.org/debian/ stretch main ui
 
 #中科大
-deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ stretch main ui
-deb-src http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ stretch main ui
+#deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ stretch main ui
+#deb-src http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ stretch main ui
 
 #阿里云
-deb http://mirrors.aliyun.com/debian/ stretch main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ stretch main contrib non-free
+#deb http://mirrors.aliyun.com/debian/ stretch main contrib non-free
+#deb-src http://mirrors.aliyun.com/debian/ stretch main contrib non-free
+
+#清华大学
+deb http://mirror.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui
+deb-src http://mirror.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui
 ```
+
+**注意**：最新 RPi4，请将 stretch 修改为 `buster`。  
 
 `sources.list.d` 扩展目录下的 `raspi.list` 为 raspberry pi / raspbian 平台特有的软件源，由 raspberrypi.org 组织提供。
 
@@ -292,6 +299,8 @@ deb-src http://mirrors.aliyun.com/debian/ stretch main contrib non-free
 > [树莓派新版raspbian系统换国内源](http://www.des8.com/on_computer/raspbian_jessie_sources/)  
 > [为树莓派 raspbian stretch 更换国内镜像源](http://blog.csdn.net/la9998372/article/details/77886806)  
 > [树莓派Raspberry Pi 3 使用阿里云镜像云](https://www.douban.com/note/617546331/)  
+> [教你如何给树莓派更换软件源](https://zhuanlan.zhihu.com/p/98079246)  
+> [树莓派4 raspberrypi buster 使用清华源安装docker](https://www.daimajiaoliu.com/daima/47999eeca900406)  
 
 ## [清除 apt-get update 失败后的缓冲文件](http://blog.csdn.net/wangmi0354/article/details/50836398)
 
@@ -305,6 +314,12 @@ sudo mkdir -pv /var/lib/apt/lists/partial
 sudo apt-get clean
 sudo apt-get update ##rebuilds the index files
 sudo apt-get upgrade
+```
+
+如果执行 update 时遇到以下错误，也可执行以上命令重建索引：
+
+```
+E: Some index files failed to download. They have been ignored, or old ones used instead.
 ```
 
 # [UPDATING AND UPGRADING RASPBIAN](https://www.raspberrypi.org/documentation/raspbian/updating.md)
@@ -427,4 +442,82 @@ deb [allow-insecure=yes] http://www.deb-multimedia.org jessie main
 ```shell
 sudo rm -i /etc/apt/sources.list.d/tmsu-ubuntu-daily-artful.list
 sudo apt update
+```
+
+### RPi4-tsinghua
+
+最新 RPi4，替换了清华大学的源后，执行 update 报错 GPG error，尝试添加 --allow-unauthenticated 选项也不行。
+
+```Shell
+ $ sudo apt-get update
+Get:1 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease [15.0 kB]
+Hit:2 http://mirror.tuna.tsinghua.edu.cn/raspberrypi buster InRelease
+Err:1 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 9165938D90FDDD2E
+Reading package lists... Done
+W: GPG error: http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 9165938D90FDDD2E
+E: The repository 'http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease' is not signed.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+```
+
+参考 [解决树莓派更换源之后出错的问题](https://www.jianshu.com/p/c64deffb1308)：
+
+```Shell
+$ gpg --keyserver  keyserver.ubuntu.com --recv-keys 9165938D90FDDD2E
+$ gpg --export --armor  9165938D90FDDD2E | sudo apt-key add -
+```
+
+执行以上两条 gpg 命令添加公钥之后，重新 update 报有些包不支持 arm64 ！？
+
+```Shell
+$ sudo apt-get update
+Get:1 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease [15.0 kB]
+Hit:2 http://mirror.tuna.tsinghua.edu.cn/raspberrypi buster InRelease
+Get:3 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster/contrib Sources [78.5 kB]
+Get:4 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster/rpi Sources [1132 B]
+Get:5 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster/non-free Sources [139 kB]
+Get:6 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster/main Sources [11.4 MB]
+Get:7 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster/main armhf Packages [13.0 MB]
+Get:8 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster/contrib armhf Packages [58.8 kB]
+Get:9 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster/non-free armhf Packages [104 kB]
+Get:10 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster/rpi armhf Packages [1360 B]
+Fetched 24.7 MB in 10s (2424 kB/s)
+Reading package lists... Done
+N: Skipping acquire of configured file 'main/binary-arm64/Packages' as repository 'http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease' doesn't support architecture 'arm64'
+N: Skipping acquire of configured file 'contrib/binary-arm64/Packages' as repository 'http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease' doesn't support architecture 'arm64'
+N: Skipping acquire of configured file 'non-free/binary-arm64/Packages' as repository 'http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease' doesn't support architecture 'arm64'
+N: Skipping acquire of configured file 'rpi/binary-arm64/Packages' as repository 'http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease' doesn't support architecture 'arm64'
+```
+
+参考 [I'm on 64-bit Raspberry Pi OS, but arm64 packages unsupported](https://forums.raspberrypi.com/viewtopic.php?t=317040&sid=e2df30ffaaceffe929770fbaf18a9b82)，尝试执行一次 `sudo apt full-upgrade`。
+
+```Shell
+ $ sudo apt-get update
+Get:1 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease [15.0 kB]
+Hit:2 http://mirror.tuna.tsinghua.edu.cn/raspberrypi buster InRelease
+Fetched 15.0 kB in 6s (2662 B/s)
+Reading package lists... Done
+N: Skipping acquire of configured file 'main/binary-arm64/Packages' as repository 'http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease' doesn't support architecture 'arm64'
+N: Skipping acquire of configured file 'contrib/binary-arm64/Packages' as repository 'http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease' doesn't support architecture 'arm64'
+N: Skipping acquire of configured file 'non-free/binary-arm64/Packages' as repository 'http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease' doesn't support architecture 'arm64'
+N: Skipping acquire of configured file 'rpi/binary-arm64/Packages' as repository 'http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease' doesn't support architecture 'arm64'
+```
+
+换成阿里云的源，还是报相同的错误！
+
+[raspotify doesn't support architecture 'arm64' #263](https://github.com/dtcooper/raspotify/issues/263)
+
+Just run the below before installation:
+
+```Shell
+# 增加 arm32 支持？
+dpkg --add-architecture armhf
+```
+
+[Skipping acquire of configured file '.. doesn't support architecture 'arm64'](https://stackoverflow.com/questions/69602691/skipping-acquire-of-configured-file-doesnt-support-architecture-arm64)
+
+```Shell
+# 移除 arm64 支持？
+sudo dpkg --remove-architecture arm64
 ```

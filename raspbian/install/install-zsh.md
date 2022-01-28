@@ -148,7 +148,6 @@ plugins=(
   git
   debian
   svn
-  git
   copydir
   z
   wd

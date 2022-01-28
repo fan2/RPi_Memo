@@ -22,7 +22,7 @@
 在终端运行 `df –h` 命令查看挂载的设备：
 
 ```shell
-faner@@MBP-FAN:~|⇒  df -h
+faner@MBP-FAN:~|⇒  df -h
 Filesystem                          Size   Used  Avail Capacity iused      ifree %iused  Mounted on
 /dev/disk1                         465Gi  381Gi   84Gi    83% 3642819 4291324460    0%   /
 devfs                              191Ki  191Ki    0Bi   100%     661          0  100%   /dev
@@ -54,14 +54,14 @@ localhost:/iP1OctnxPGjSI5sSWt55eI  465Gi  465Gi    0Bi   100%       0          0
 格式化后运行 `diskutil list` 命令查看详细的设备节点信息，可以看到文件系统已经格式化为 DOS_FAT_32：
 
 ```shell
-faner@@MBP-FAN:~|⇒  diskutil list
+faner@MBP-FAN:~|⇒  diskutil list
 
 /dev/disk3 (external, physical):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
    0:     FDisk_partition_scheme                        *64.0 GB    disk3
    1:                 DOS_FAT_32 RPi                     64.0 GB    disk3s1
 
-faner@@MBP-FAN:~|⇒  
+faner@MBP-FAN:~|⇒  
 ```
 
 ## 卸载分区卷
@@ -69,7 +69,7 @@ faner@@MBP-FAN:~|⇒
 运行 `diskutil unmount` 命令将分区卸载：
 
 ```shell
-faner@@MBP-FAN:~|⇒  diskutil unmount /dev/disk3s1 
+faner@MBP-FAN:~|⇒  diskutil unmount /dev/disk3s1 
 Volume RPi on disk3s1 unmounted
 ```
 
@@ -87,17 +87,17 @@ a64d742bc525b548f0435581fac5876b50a4e9ba1d1cd6433358b4ab6c7a770b  /Users/faner/D
 
 ```shell
 Last login: Sun Sep 17 12:17:55 on ttys000
-faner@@MBP-FAN:~|⇒  cd /Users/faner/Downloads 
-faner@@MBP-FAN:~/Downloads|⇒  sudo dd bs=1m if=2017-09-07-raspbian-stretch.img of=/dev/rdisk3 conv=sync
+faner@MBP-FAN:~|⇒  cd /Users/faner/Downloads 
+faner@MBP-FAN:~/Downloads|⇒  sudo dd bs=1m if=2017-09-07-raspbian-stretch.img of=/dev/rdisk3 conv=sync
 Password:
 
 4688+1 records in
 4689+0 records out
 4916772864 bytes transferred in 377.643199 secs (13019625 bytes/sec)
-faner@@MBP-FAN:~/Downloads|⇒  
+faner@MBP-FAN:~/Downloads|⇒  
 ```
 
-大约要静默等待几分钟，中途并无 verbose 日志输出。可以按下 control+T 发送 `SIGINFO` 信号，打印写入进度。  
+大约要静默等待几分钟，中途并无 verbose 日志输出。可以（多次）按下 control+T 发送 `SIGINFO` 信号，打印当前写入进度。  
 最终写入完成，屏幕输出信息如上。  
 
 ## 确认写入结果
@@ -105,7 +105,7 @@ faner@@MBP-FAN:~/Downloads|⇒
 写入系统镜像成功后，再次运行 `diskutil list` 命令，可以查看到设备节点 disk3 下多出了一个 boot 分区（disk3s1）和一个 linux 系统分区（disk3s2）。
 
 ```shell
-faner@@MBP-FAN:~|⇒  diskutil list
+faner@MBP-FAN:~|⇒  diskutil list
 
 /dev/disk3 (external, physical):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
