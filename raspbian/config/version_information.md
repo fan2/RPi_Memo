@@ -6,9 +6,26 @@
 - **SoC**：`Raspberry Pi 3 Model B v1.2`(2015)  
 - **OS**：`2017-09-07-raspbian-stretch.zip`
 
-## [cpuinfo](https://www.zybuluo.com/SiberiaBear/note/336984)
+## uname
 
-```shell
+uname - print system information
+
+```Shell
+pi@raspberrypi:~$ uname
+Linux
+
+pi@raspberrypi:~$ uname -mrs
+Linux 4.9.41-v7+ armv7l
+
+pi@raspberrypi:~ $ uname -a
+Linux raspberrypi 4.9.41-v7+ #1023 SMP Tue Aug 8 16:00:15 BST 2017 armv7l GNU/Linux
+```
+
+## cpuinfo
+
+查看 cpu 信息：
+
+```Shell
 pi@raspberrypi:/ $ cat /proc/cpuinfo
 processor	: 0
 model name	: ARMv7 Processor rev 4 (v7l)
@@ -62,7 +79,7 @@ pi@raspberrypi:/ $
 
 lscpu  gathers  CPU  architecture information from sysfs, /proc/cpuinfo and any applicable architecture specific  libraries  (e.g.  librtas  on Powerpc).
 
-```shell
+```Shell
 pi@raspberrypi:~ $ lscpu 
 Architecture:          armv7l
 Byte Order:            Little Endian
@@ -78,18 +95,60 @@ CPU min MHz:           600.0000
 BogoMIPS:              38.40
 Flags:                 half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm crc32
 
-pi@raspberrypi:~ $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq 
+pi@raspberrypi:~ $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq
 600000
 
 pi@raspberrypi:~ $ vcgencmd get_config arm_freq
 arm_freq=1200
 ```
 
+## diskinfo
+
+查看磁盘信息，约合64G：
+
+```Shell
+pi$ df -lh
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        59G  7.3G   49G  13% /
+devtmpfs        433M     0  433M   0% /dev
+tmpfs           438M     0  438M   0% /dev/shm
+tmpfs           438M   17M  421M   4% /run
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+tmpfs           438M     0  438M   0% /sys/fs/cgroup
+/dev/mmcblk0p1   42M   23M   19M  55% /boot
+tmpfs            88M     0   88M   0% /run/user/1000
+```
+
+## meminfo
+
+查看内存信息，约合1G：
+
+```Shell
+pi$ cat /proc/meminfo
+MemTotal:         895524 kB
+MemFree:          535540 kB
+MemAvailable:     714044 kB
+Buffers:           33760 kB
+Cached:           200664 kB
+SwapCached:            0 kB
+Active:           192428 kB
+Inactive:         122920 kB
+```
+
+执行 `free -m` 查看剩余可用内存：
+
+```Shell
+pi$ free -m
+              total        used        free      shared  buff/cache   available
+Mem:            874         109         523          17         241         697
+Swap:            99           0          99
+```
+
 ## OSTYPE & MACHTYPE
 
-```shell
+```Shell
 # macOS
-faner@THOMASFAN-MB0:~|⇒  echo $OSTYPE   
+faner@THOMASFAN-MB0:~|⇒  echo $OSTYPE
 darwin17.0
 faner@THOMASFAN-MB0:~|⇒  echo $HOSTTYPE
 
@@ -97,7 +156,7 @@ faner@THOMASFAN-MB0:~|⇒  echo $MACHTYPE
 x86_64
 ```
 
-```shell
+```Shell
 # raspbian
 pi@raspberrypi:~ $ echo $OSTYPE
 linux-gnueabihf
@@ -107,26 +166,11 @@ pi@raspberrypi:~ $ echo $MACHTYPE
 arm-unknown-linux-gnueabihf
 ```
 
-## uname
-
-uname - print system information
-
-```shell
-pi@raspberrypi:~$ uname
-Linux
-
-pi@raspberrypi:~$ uname -mrs
-Linux 4.9.41-v7+ armv7l
-
-pi@raspberrypi:~ $ uname -a
-Linux raspberrypi 4.9.41-v7+ #1023 SMP Tue Aug 8 16:00:15 BST 2017 armv7l GNU/Linux
-```
-
 ## arch & word
 
 arch - print machine hardware name (same as uname -m)
 
-```shell
+```Shell
 pi@raspberrypi:~ $ arch
 armv7l
 
@@ -142,7 +186,7 @@ pi@raspberrypi:~ $ getconf LONG_BIT
 
 ## debian_version
 
-```shell
+```Shell
 pi@raspberrypi:~ $ cat /proc/version
 Linux version 4.9.41-v7+ (dc4@dc4-XPS13-9333) (gcc version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611) ) #1023 SMP Tue Aug 8 16:00:15 BST 2017
 
@@ -154,7 +198,7 @@ Generated using pi-gen, https://github.com/RPi-Distro/pi-gen, 496e41575eeb9fa13f
 pi@raspberrypi:~ $ cat /etc/issue
 Raspbian GNU/Linux 9 \n \l
 
-pi@raspberrypi:~ $ cat /etc/debian_version 
+pi@raspberrypi:~ $ cat /etc/debian_version
 9.1
 ```
 
@@ -162,7 +206,7 @@ pi@raspberrypi:~ $ cat /etc/debian_version
 
 lsb_release - print distribution-specific information
 
-```shell
+```Shell
 pi@raspberrypi:~ $ lsb_release -a
 No LSB modules are available.
 Distributor ID:	Raspbian
@@ -173,7 +217,7 @@ Codename:	stretch
 
 ## dmesg
 
-```shell
+```Shell
 pi@raspberrypi:~/Projects/WORDSIZE $ dmesg more
 [    0.000000] Booting Linux on physical CPU 0x0
 [    0.000000] Linux version 4.9.41-v7+ (dc4@dc4-XPS13-9333) (gcc version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611) ) #1023 SMP Tue Aug 8 16:00:15 BST 2017
@@ -429,7 +473,7 @@ pi@raspberrypi:~/Projects/WORDSIZE $
 
 ## gcc
 
-```shell
+```Shell
 pi@raspberrypi:~ $ gcc -v
 Using built-in specs.
 COLLECT_GCC=gcc
@@ -442,7 +486,7 @@ gcc version 6.3.0 20170516 (Raspbian 6.3.0-18+rpi1)
 
 ### data types
 
-```shell
+```Shell
 pi@raspberrypi: $ cpp -dD /dev/null | grep __SIZEOF_LONG__
 #define __SIZEOF_LONG__ 4
 ```
