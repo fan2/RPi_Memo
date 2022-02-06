@@ -7,9 +7,7 @@
 
 ## 选购 TF(Micro SD) 卡
 
-从 elinux 的 [RPi SD cards](https://elinux.org/RPi_SD_cards) 网站上可以查看 RPi 支持哪些 SD 卡，可选购 [Raspbian Preinstalled SD cards](http://thepihut.com/products/raspbian-preinstalled-sd-card)。
-
-@img ![SanDisk](https://cdn.shopify.com/s/files/1/0176/3274/products/100040_2_grande_359fbc73-0e36-49ee-8aa7-8454ffc1c2e2_1024x1024.jpg)
+从 elinux 的 [RPi SD cards](https://elinux.org/RPi_SD_cards) 网站上可以查看 RPi 支持哪些 SD 卡。
 
 本人选购的是 `Samsung EVO microSDXC 64G` 的 TF(Micro SD) 卡。
 
@@ -119,7 +117,15 @@ faner@MBP-FAN:~|⇒  diskutil list
 将刻录好的 microSD 卡插入 Raspberry Pi 背面底板的 SD 卡插槽，上电启动。  
 默认配置从 microSD 卡引导（启动），当检测到装有 raspbian 系统的可引导 microSD 卡时，将启动 raspbian 系统。  
 在没有启动系统前，只有红色电源指示灯常亮；启动 raspbian 系统过程中，绿灯会常亮一段时间；系统启动完毕，绿灯偶尔会闪一下。  
-接下来，通过 USB 连接键盘鼠标、HDMI 接上显示屏后，即可进入 raspbian 系统图形界面。  
+
+## 连接 raspberry pi
+
+为了在上电启动后，通过 SSH 连接上 RPi，我们需要配置无线WiFi网络，使 RPi 接入 WLAN。
+
+一般来说，有两种配置思路：
+
+1. 在 macOS 命令行中进入SD卡文件目录，直接编辑对应的WiFi配置文件，参考 [ifconfig-iwconfig](../../WLAN/ifconfig-iwconfig.md)-无屏配置WiFi 和 [为raspbian设置静态IP地址](../../WLAN/为raspbian设置静态IP地址.md)。  
+2. 将 SD 卡插入 RPi 并上电启动，通过 USB 连接键盘鼠标和显示器，在 RPi 图形界面中编辑WiFi网络连接配置。  
 
 ## references
 

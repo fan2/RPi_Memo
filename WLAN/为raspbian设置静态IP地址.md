@@ -16,6 +16,7 @@ Codename:	stretch
 ```
 
 # 设置静态 IP
+
 旧的 raspbian 系统配置静态IP都是修改配置文件 [`/etc/network/interfaces`](http://blog.csdn.net/github_35160620/article/details/52107766)，最新的 raspbian stretch 系统配置静态 IP 需要修改的是 `/etc/dhcpcd.conf` 文件，如下 [`/etc/network/interfaces`](http://blog.csdn.net/shaopengf/article/details/52412429) 所示。
 
 ```Shell
@@ -97,5 +98,5 @@ inet 192.168.1.128  netmask 255.255.255.0  broadcast 192.168.1.255
 
 # 参考
 
-> [Raspberry Pi 3安装配置Raspbian过程 - 8. 设置静态IP](http://blog.csdn.net/yss28/article/details/51874104)  
-> [Raspberry PI 3静态IP配置](http://blog.csdn.net/u011973222/article/details/72843127)  
+- [Raspberry Pi 3安装配置Raspbian过程 - 8. 设置静态IP](http://blog.csdn.net/yss28/article/details/51874104)  
+- [Raspberry PI 3静态IP配置](http://blog.csdn.net/u011973222/article/details/72843127)  

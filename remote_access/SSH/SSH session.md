@@ -4,9 +4,9 @@
 [RSYNC](https://www.raspberrypi.org/documentation/remote-access/ssh/rsync.md)  
 
 [Exit SSH session in OSX Terminal](https://superuser.com/questions/404103/exit-ssh-session-in-osx-terminal)  
-[无屏幕和键盘配置树莓派WiFi和SSH](http://shumeipai.nxez.com/2017/09/13/raspberry-pi-network-configuration-before-boot.html?variant=zh-cn)  
 
 ## SoC & OS
+
 - **Host**：MacBookPro11,3/macOS 10.12.6 (16G1023)/Darwin 16.7.0  
 
 - **SoC**：`Raspberry Pi 3 Model B v1.2`(2015)  
@@ -25,7 +25,20 @@ Codename:	stretch
 ```
 
 ## SSH
+
+### 无屏预启SSH
+
+如果手头没有现成的键鼠屏连接进入 RPi 图形用户界面，如何使 RPi 开机即启动 SSH 服务呢？
+
+- [无屏幕和键盘配置树莓派WiFi和SSH](http://shumeipai.nxez.com/2017/09/13/raspberry-pi-network-configuration-before-boot.html?variant=zh-cn)  
+- [树莓派4开发板无屏幕WiFi连接配置](https://blog.csdn.net/weixin_42550800/article/details/102798545)  
+
+将 microSD 卡从 RPi 取出，重新放入读卡器插入 mac USB 口。此时，macOS 会自动加载 SD 卡，在 finder 中可进入 MS-DOS FAT32 格式的 boot 文件夹。
+cd 到 boot 分区卷，执行 `touch ssh` 命令新建一个名为 `ssh` 的空白文件，注意要小写且不要有任何扩展名。
+这样，RPi 在启动之后检测到这个文件会自动启用 SSH 服务。
+
 ### OpenSSH
+
 macOS 标配预装了开源免费的 [OpenSSH](http://www.openssh.com/) 命令行。
 
 终端输入 `ssh -V` 可以查看 ssh 的版本：
@@ -98,6 +111,7 @@ faner@THOMASFAN-MB0:~|⇒
 输入 `exit` 即可 logout 结束 SSH 会话连接。
 
 #### mDNS
+
 > [How (and Why) to Assign the .local Domain to Your Raspberry Pi](https://www.howtogeek.com/167190/how-and-why-to-assign-the-.local-domain-to-your-raspberry-pi/)  
 > [Setting up a Bonjour (Zeroconf) service name for your Raspberry Pi and accessing it from an Android App](http://www.dodgycoder.net/2015/02/setting-up-bonjourzeroconfmdnsnsd.html)  
 
@@ -165,6 +179,7 @@ Last login: Thu Jan  4 00:17:09 2018
 ```
 
 ### SecureCRT
+
 在 SecureCRT 的 Session Manager 中点击 <kbd>+</kbd> 新建会话，打开 New Session Wizard：
 
 1. 协议选择 `SSH2`：
@@ -188,6 +203,7 @@ Last login: Thu Jan  4 00:17:09 2018
 	![5-SecureCRT-Session-Manager](SecureCRT/5-SecureCRT-Session-Manager.png)
 
 ## SCP
+
 [SCP](http://blog.163.com/fjm_520/blog/static/18904914820119284847660/)：secure copy (remote file copy program) 是一个基于 SSH 安全协议的文件传输命令。
 
 与 sftp 不同的是，它只提供主机间的文件传输功能，没有文件管理的功能。
@@ -207,4 +223,5 @@ scp –r local_folder remote_user@host:remote_folder
 以上命令反过来写就是从远程复制（下载）到本地。
 
 ### references
+
 [使用 secureCRT](http://blog.csdn.net/u011299686/article/details/52687747) [在 Linux 与 Windows 之间传输文件](http://blog.csdn.net/rangf/article/details/6096365)  

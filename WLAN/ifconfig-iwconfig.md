@@ -16,6 +16,7 @@ Codename:	stretch
 ```
 
 # ifconfig
+
 > ifconfig - configure a network interface  
 
 1. 执行 `ifconfig -a` 命令可列举显示所有已驱动激活的网络接口状态。
@@ -57,6 +58,7 @@ wlan0: flags=4098<BROADCAST,MULTICAST>  mtu 1500
 ```
 
 ## up | down
+
 `ifconfig wlan0 down`：禁用(shutdown) wlan0。  
 `ifconfig wlan0 up`：启用(activate) wlan0，可指定 IP，如 `ifconfig wlan0 up 192.168.1.111`。  
 
@@ -67,6 +69,7 @@ ifconfig eth1 192.168.1.252 hw ether 00:11:00:00:11:11 netmask 255.255.255.0 bro
 ```
 
 ## resolv
+
 可查看 `/etc/resolv.conf` 中的 DNS 服务器列表：
 
 ```Shell
@@ -79,6 +82,7 @@ nameserver 114.114.114.114
 ```
 
 # iwconfig
+
 > iwconfig - configure a wireless network interface  
 
 linux 下的 iwconfig 命令类似 ifconfig，专门用于查看、配置、诊断无线网络接口。
@@ -120,6 +124,7 @@ wlan0     IEEE 802.11  ESSID:"HiWiFi"
 同 ifconfig，执行 `iwconfig wlan0` 可指定查看无线网卡 wlan0 的接口状态信息。
 
 ## iwlist
+
 iwlist - Get more detailed wireless information from a wireless interface
 
 执行 `sudo iwlist wlan0 scan` 命令，可查看无线网卡扫描到的 WiFi 接入点（Access Point）列表。
@@ -175,9 +180,11 @@ wlan0     Scan completed :
 - Authentication Suites: WPA2-PSK —— WiFi 无线加密方式。  
 
 ## Connect to Wi-Fi
-如果手头有现成的键鼠屏连接进入 Raspberry Pi 3B 图形用户界面（GUI），开启 WiFi 并选择连接到指定 WiFi。如果 WiFi 配置了无线网络访问密码，输入无线路由中预设的密码，即可连接上无线网络。
 
-如果无法进入 GUI，也可通过 linux 的无线配置命令行工具包 iwconfig 来配置连接无线网络。  
+如果手头有现成的键鼠屏，连接进入 RPi 3B 图形用户界面（GUI），开启 WiFi 并选择连接到指定 WiFi。
+如果 WiFi 配置了无线网络访问密码，输入无线路由中预设的密码，即可连接上无线网络。
+
+如果无法进入 GUI，也可通过 linux 的无线配置命令行工具包 iwconfig 来配置连接无线网络。
 若自家无线路由 Cell 01（ESSID:"HiWiFi"）未设置无线安全连接密码，输入以下命令即可指定 wlan0 连接到该网络：
 
 ```Shell
@@ -197,6 +204,7 @@ iwconfig wlan0 essid "HiWiFi" key s:12345678
 如果无线网络的加密方式是 WPA(2)-PSK，不能使用 [`iwconfig wlan0 key xxx`](http://bbs.csdn.net/topics/390212444) 命令连接，得使用 wpa_supplicant 配置方式。
 
 ## wpa_supplicant
+
 - **`wpa_supplicant`**  - Wi-Fi Protected Access client and IEEE 802.1X supplicant  
 	> the program that directly interacts with the network interface.  
 - **`wpa_cli`**  is a text-based *frontend* program for interacting with wpa_supplicant  
@@ -239,16 +247,24 @@ network={
 
 如果有其他备用无线网络连接，可按此方式生成其他无线网络接入点的 network 配置信息块，将其添加到 `/etc/wpa_supplicant/wpa_supplicant.conf` 中。开机启动时，将会自动按顺序尝试连接预配置的网络。也可通过配置 priority 字段来指定连接顺序优先级，priority=0 为第一优先级，按自然数依次降序。
 
----
+### 无屏预配WiFi
 
 如果刚安装好 raspbian 系统，手头没有现成的键鼠屏连接进入 Raspberry Pi 3B 图形用户界面，如何使 RPi 3B 开机启动连接无线网络呢？  
 
+- [设置树莓派WiFi的几种方式](https://zhuanlan.zhihu.com/p/136463580)  
+- [树莓派4b连接WiFi](https://blog.51cto.com/jxnewdate/2674611)  
+- [树莓派4b设置WiFi](https://blog.csdn.net/weixin_42196915/article/details/103064661)  
+- [无屏幕和键盘配置树莓派WiFi和SSH](http://shumeipai.nxez.com/2017/09/13/raspberry-pi-network-configuration-before-boot.html?variant=zh-cn)  
+- [树莓派4开发板无屏幕WiFi连接配置](https://blog.csdn.net/weixin_42550800/article/details/102798545)  
+
 1. 先登入自家无线路由器配置后台，查看无线设置信息，包括 WiFi 名称、加密方式及预设密码。  
-	> TP-LINK [路由器后台管理](http://service.tp-link.com.cn/detail_article_298.html) Web 服务器的本地域名为 `tplogin.cn`，在浏览器输入`tplogin.cn` 或预留 IP 即可访问管理页面。[经典式路由器](http://www.tp-link.com.cn/product_list_300-150wireless.html)的管理地址为 `192.168.1.1`；[便携式路由器](http://www.tp-link.com.cn/product_list_potablewireless.html)的管理地址为 `192.168.1.253`。  
+
+    > TP-LINK [路由器后台管理](http://service.tp-link.com.cn/detail_article_298.html) Web 服务器的本地域名为 `tplogin.cn`，在浏览器输入`tplogin.cn` 或预留 IP 即可访问管理页面。[经典式路由器](http://www.tp-link.com.cn/product_list_300-150wireless.html)的管理地址为 `192.168.1.1`；[便携式路由器](http://www.tp-link.com.cn/product_list_potablewireless.html)的管理地址为 `192.168.1.253`。  
+
 2. 按照 wpa_passphrase 语法生成 netwok 配置信息块（注意删除 `#psk="12345678"`），添加到  `wpa_supplicant.conf` 文件中，重启即可自动连接。  
 
-	- 如果串口已经配置连接正常，可以通过串口连接登录 RPi 3B 的命令行控制台，修改（新建）  `/etc/wpa_supplicant/wpa_supplicant.conf` 文件，添加 WiFi 连接配置信息，重启即会自动连接到 `wpa_supplicant.conf` 中预配的 WiFi。  
-	- 如果尚未配置串口，可以将 microSD 卡从 RPi 取出，重新放入读卡器插入 mac USB 口。此时，macOS 会自动加载 SD 卡，在 finder 中可进入 MS-DOS FAT32 格式的 boot 文件夹。修改（新建）  [`/boot/wpa_supplicant.conf`](http://shumeipai.nxez.com/2017/09/13/raspberry-pi-network-configuration-before-boot.html?variant=zh-cn) 文件，添加 WiFi 连接配置信息，重新将 SD 卡插入 Raspberry Pi 3B，上电重启即可自动连接到  `wpa_supplicant.conf` 中预配的 WiFi。  
+   - 如果串口已经配置连接正常，可以通过串口连接登录 RPi 3B 的命令行控制台，修改（新建）  `/etc/wpa_supplicant/wpa_supplicant.conf` 文件，添加 WiFi 连接配置信息，重启即会自动连接到 `wpa_supplicant.conf` 中预配的 WiFi。  
+   - 如果尚未配置串口，可以将 microSD 卡从 RPi 取出，重新放入读卡器插入 mac USB 口。此时，macOS 会自动加载 SD 卡，在 finder 中可进入 MS-DOS FAT32 格式的 boot 文件夹。修改（新建）`/boot/wpa_supplicant.conf` 文件，添加 WiFi 连接配置信息，重新将 SD 卡插入 Raspberry Pi 3B，上电重启即可自动连接到  `wpa_supplicant.conf` 中预配的 WiFi。  
 
 可输入 `ifconfig wlan0`、`iwconfig wlan0` 或 `wpa_cli -iwlan0 status` 查看 WiFi 无线连接状态参数，确认无线连接是否成功。
 

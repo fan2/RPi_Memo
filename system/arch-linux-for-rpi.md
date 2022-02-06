@@ -1,16 +1,33 @@
 [树莓派可以安装的Linux发行版有哪些？](https://www.zhihu.com/question/31632573)
 
 ## gentoo
+
 [gentoo linux for Raspberry Pi](https://wiki.gentoo.org/wiki/Raspberry_Pi)  
 [Raspberry Pi 3 64 bit Install](https://wiki.gentoo.org/wiki/Raspberry_Pi_3_64_bit_Install)  
 
-## CentOS
-[CentOS Linux on the Raspberry Pi 3](https://wiki.centos.org/SpecialInterestGroup/AltArch/Arm32/RaspberryPi3)
-
 ## openSUSE
+
 [HCL: Raspberry Pi3](https://en.opensuse.org/HCL:Raspberry_Pi3)
 
+## Arch Linux
+
+[怎样在树莓派 4 上安装 Arch Linux](https://bynss.com/linux/617031.html)  
+
+```Shell
+wget https://os.archlinuxarm.org/os/ArchLinuxARM-rpi-aarch64-latest.tar.gz
+```
+
+[树莓派4B安装 ArchLinuxARM](https://zhuanlan.zhihu.com/p/94965146)  
+
+- [给树莓派安装 Arch Linux ARM](https://segmentfault.com/a/1190000039846309)  
+
+```Shell
+# 下载系统镜像
+wget https://mirrors.tuna.tsinghua.edu.cn/archlinuxarm/os/ArchLinuxARM-rpi-4-latest.tar.gz
+```
+
 ## [raspbian](http://www.raspbian.org/)
+
 [在RaspberryPi 3B 上安装 Raspbian Jessie Lite](http://geek.csdn.net/news/detail/136948)  
 [Raspbian GNU/Linux upgrade from Jessie to Raspbian Stretch 9](https://linuxconfig.org/raspbian-gnu-linux-upgrade-from-jessie-to-raspbian-stretch-9)  
 
