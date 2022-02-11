@@ -2,6 +2,7 @@
 [Raspberry Pi 3 Hardware and System Software Reference](http://www.codeguru.com/IoT/raspberry-pi-3-hardware-and-system-software-reference.html)  
 
 ## Raspberry Pi 3
+
 [RASPBERRY PI 3 MODEL B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)  
 
 Single-board computer with wireless LAN and Bluetooth connectivity
@@ -12,6 +13,7 @@ Single-board computer with wireless LAN and Bluetooth connectivity
 [Raspberry Pi 3 Model B components](http://docs-europe.electrocomponents.com/webdocs/14ba/0900766b814ba685.pdf)  
 
 ### datasheet
+
 [Cortex-A53](http://infocenter.arm.com/help/topic/com.arm.doc.subset.cortexa.a53/index.html) @infocenter  
 
 [BCM2837 Spec – Quad Core Cortex A53 Processor – Broadcom](http://www.datasheetcafe.com/bcm2837-datasheet-quad-core-processor-broadcom/)  
@@ -19,6 +21,7 @@ Single-board computer with wireless LAN and Bluetooth connectivity
 [RaspberryPi 3 BCM2837 datasheet？](https://github.com/raspberrypi/documentation/issues/325)  
 
 ### sale
+
 [Raspberry Pi 3 发布，基础售价 35 美元](https://www.oschina.net/news/71103/raspberry-pi-3)  
 [有关 Raspberry Pi 3 的十大事实](https://www.arrow.com/zh-cn/research-and-events/articles/top-ten-things-to-know-about-the-raspberry-pi-3)  
 
@@ -29,6 +32,7 @@ Single-board computer with wireless LAN and Bluetooth connectivity
 [The Raspberry Pi 3](http://www.mcmelectronics.com/content/en-US/raspberry-pi&) @mcmelectronics  
 
 ## what
+
 [树莓派和其他 arm 开发板的本质区别](http://www.jianshu.com/p/626d3c6dbe02)  
 
 [树莓派是什么以及普通人怎么玩？](https://www.zhihu.com/question/20859055)  
@@ -36,6 +40,7 @@ Single-board computer with wireless LAN and Bluetooth connectivity
 [“树莓派”：让孩子爱上编程](http://jjckb.xinhuanet.com/invest/2012-12/07/content_416944.htm) / [用“树莓派”体验编程乐趣](http://news.163.com/12/1201/19/8HLMGR8700014JB5_all.html)  
 
 ## introduction
+
 [生逢其时——树莓派3评测](http://www.eeboard.com/evaluation/raspberrypi3-evaluation/)  
 
 [树莓派开发系列教程1——树莓派介绍](http://blog.csdn.net/xdw1985829/article/details/38779437) 2014-08-23  
@@ -47,6 +52,7 @@ Single-board computer with wireless LAN and Bluetooth connectivity
 [玩转树莓派--xbian打造客厅电视盒](http://blog.sina.com.cn/s/blog_5408140f0101cro2.html)  
  
 ## baking
+
 [Baking Pi – Operating Systems Development](http://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/?test=true)  
 
 [树莓派启动：for Mac](http://blog.csdn.net/selina013/article/details/51029900)  2016-03-31  
