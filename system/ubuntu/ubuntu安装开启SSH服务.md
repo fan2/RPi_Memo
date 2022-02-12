@@ -57,10 +57,44 @@ Install the avahi-daemon package on your Ubuntu server. This utilizes the **mDNS
 ssh faner@rpi4b-ubuntu.local
 ```
 
+#### change username
+
+microHDMI + USB 连接键盘进入 Ubuntu Server tty，参考 [How do I change my username?](https://askubuntu.com/questions/34074/how-do-i-change-my-username) - Valentin Uveges，以 root 登录后修改用户名为 pifan。
+
+- [Proper way of changing username in Ubuntu or any linux](https://unix.stackexchange.com/questions/98461/proper-way-of-changing-username-in-ubuntu-or-any-linux)  
+- [Ubuntu set hostname permanently (computer name) command](https://www.cyberciti.biz/faq/ubuntu-set-hostname-permanently-command/)  
+
+#### change hostname
+
 也可在 ubuntu 中通过 hostnamectl set-hostname 修改机器名：
 
 - [如何在 Ubuntu 20.04 上修改主机名](https://cloud.tencent.com/developer/article/1649332)  
 - [Ubuntu set hostname permanently command](https://www.cyberciti.biz/faq/ubuntu-set-hostname-permanently-command/)  
+
+```Shell
+pifan@ubuntu:~$ hostnamectl
+ Static hostname: ubuntu
+       Icon name: computer
+      Machine ID: c45f627961184d0f900ea534eb047c6f
+         Boot ID: 4fb0fe66f1154654bc8d06942a2bf09b
+Operating System: Ubuntu 21.10
+          Kernel: Linux 5.13.0-1008-raspi
+    Architecture: arm64
+# 修改hostname
+pifan@ubuntu:~$ sudo hostnamectl set-hostname rpi4b-ubuntu
+```
+
+执行 `avahi-daemon -V` 查看版本，提示没有安装，执行 apt install 安装。
+
+```Shell
+pifan@rpi4b-ubuntu:~$ avahi-daemon -V
+Command 'avahi-daemon' not found, but can be installed with:
+sudo apt install avahi-daemon
+
+pifan@rpi4b-ubuntu:~$ sudo apt install avahi-daemon
+```
+
+安装 avahi-daemon 0.8 后， 通过 `ssh pifan@rpi4b-ubuntu.local` 命令成功连接上。
 
 ### arp detect ip from mac
 
