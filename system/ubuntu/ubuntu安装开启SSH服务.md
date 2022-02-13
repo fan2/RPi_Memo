@@ -82,6 +82,8 @@ Operating System: Ubuntu 21.10
     Architecture: arm64
 # 修改hostname
 pifan@ubuntu:~$ sudo hostnamectl set-hostname rpi4b-ubuntu
+pifan@ubuntu:~$ echo $HOST
+rpi4b-ubuntu
 ```
 
 执行 `avahi-daemon -V` 查看版本，提示没有安装，执行 apt install 安装。
