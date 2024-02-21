@@ -35,6 +35,7 @@ It supports glob(7) patterns for matching package names as well as options to li
 查询已安装的 vim 软件包：
 
 ```shell
+# dpkg -l vim
 pi@raspberrypi:~$ apt list --installed | grep vim
 
 WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
@@ -50,6 +51,7 @@ vim-voom/stable,now 5.2-1 all [installed]
 查询已安装的 markdown 软件包：
 
 ```shell
+# dpkg -l markdown
 pi@raspberrypi:~$ apt list --installed | grep markdown
 
 WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
@@ -521,3 +523,39 @@ dpkg --add-architecture armhf
 # 移除 arm64 支持？
 sudo dpkg --remove-architecture arm64
 ```
+
+## Unattended upgrade
+
+### Stuck at Unattended upgrade
+
+reboot 时提示：`A stop job is running for Unattended upgrades`。
+
+Unattended-upgrade in progress during shutdown, please don't turn off the computer Ubuntu 22.04
+
+[关机时Ubuntu-Unattended upgrade in progress during shutdown-CSDN博客](https://blog.csdn.net/dujuancao11/article/details/115335404)
+
+1. 什么是Unattended upgrade？
+
+     - 自动更新机制：自动安装最新的安全或者其他更新
+
+2. 遇到了应该怎么办？
+
+    - 建议不要强行打断，慢慢等！按理说最多更新30mins，可按Esc键返回终端查看已更新时长。
+
+[20.04 - Unattended-upgrades hung on reboot - Ask Ubuntu](https://askubuntu.com/questions/1431629/unattended-upgrades-hung-on-reboot)
+
+[Wtf? Unattended upgrade in progress please don't turn off computer? : r/Lubuntu](https://www.reddit.com/r/Lubuntu/comments/i92x5r/wtf_unattended_upgrade_in_progress_please_dont/)
+
+Disable/remove the unattended-upgrades package OR, ideally read the documentation and set an update schedule for unattended-upgrades that won't interfere with the time you're using the computer, like having it update only when you're asleep.
+
+The internet access issues are probably what were causing your computer to stall like that - it was trying to update, but couldn't because it wasn't connected, so it kept trying over and over again.
+
+[Stuck at Unattended upgrade in progress during shutdown - Support & Help Requests - Ubuntu MATE Community](https://ubuntu-mate.community/t/stuck-at-unattended-upgrade-in-progress-during-shutdown/19568)
+
+### schedule for automatic updates
+
+crontab
+
+[Set a scheduled time for software updates - Ask Ubuntu](https://askubuntu.com/questions/1213053/set-a-scheduled-time-for-software-updates)
+
+[How to Enable Automatic Updates on Ubuntu 22.04](https://linuxopsys.com/topics/ubuntu-automatic-updates)

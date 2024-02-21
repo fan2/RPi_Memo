@@ -15,6 +15,17 @@ Raspberry Pi 4: At least 4 GB RAM required
 
 安装步骤参考 [RPi4B安装Ubuntu_Desktop](./RPi4B安装Ubuntu_Desktop.md)，可通过 RPi-Imager 或手动 Manually 两种方式安装。
 
+[How to check if Ubuntu Desktop or Server is installed? - Ask Ubuntu](https://askubuntu.com/questions/12562/how-to-check-if-ubuntu-desktop-or-server-is-installed)
+
+Check the existing dirs in the home dir(`~/`). In Desktop Edition you'll see folders like Desktop, Downloads, Music, etc. whereas in Server Edition it's empty.
+
+I use only ubuntu-desktop (vanilla) or ubuntu server. For me the `dpkg -l ubuntu-desktop` it's a very reliable method to determine if its a desktop or server.
+
+```bash
+$ dpkg -l ubuntu-desktop
+dpkg-query: no packages found matching ubuntu-desktop
+```
+
 ## 无屏配置
 
 > Ubuntu Desktop 无屏折腾了一通，SSH还是无法连接，最终还是连接键鼠屏进去配置！
