@@ -197,6 +197,8 @@ sudo diskutil eject /dev/rdisk2
 https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu-ports/
 ```
 
+[树莓派ubuntu系统安装以及配置](https://blog.csdn.net/weixin_45563186/article/details/126964381)
+
 [Ubuntu20.04软件源更换](https://zhuanlan.zhihu.com/p/142014944)  
 [ubuntu20.04 LTS 更换国内163源、阿里源、清华源、中科大源](https://www.cnblogs.com/zqifa/p/12910989.html)  
 [Ubuntu 20.04 apt 更换国内源的实现方法](https://cloud.tencent.com/developer/article/1726035) GUI & CLI  

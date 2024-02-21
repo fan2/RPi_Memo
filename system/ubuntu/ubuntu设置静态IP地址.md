@@ -6,6 +6,21 @@ To quickly identify all available Ethernet interfaces, you can use the `ip` comm
 
 [Netplan configuration examples](https://netplan.io/examples/)
 
+[Network Manager | Ubuntu](https://ubuntu.com/core/docs/networkmanager)
+
+**NetworkManager** is a system network service that manages your network devices and connections and attempts to keep network connectivity active when available. It manages Ethernet, WiFi, mobile broadband (WWAN) and PPPoE devices while also providing VPN integration with a variety of different VPN services.
+
+By default network management on Ubuntu Core is handled by systemd’s [networkd](https://www.freedesktop.org/software/systemd/man/systemd-networkd.service.html) and [netplan](https://launchpad.net/netplan). However, when NetworkManager is installed, it will take control of all networking devices in the system by creating a netplan configuration file in which it sets itself as the default network renderer.
+
+What NetworkManager Offers? Currently we provide support for the following high level features:
+
+- WiFi connectivity
+- WAN connectivity (together with ModemManager)
+- Ethernet connectivity
+- WiFi access point creation
+- Shared connections
+- VPN connections
+
 ### netplan1
 
 [Ubuntu Static IP configuration](https://linuxconfig.org/how-to-configure-static-ip-address-on-ubuntu-18-10-cosmic-cuttlefish-linux)
@@ -218,8 +233,8 @@ network:
 # config wifi
   wifis:
     wlan0:
-      dhcp4: no
-      dhcp6: no
+      dhcp4: false
+      dhcp6: false
       access-points:
         "HiWiFi-2.4":
           password: "your_wifi_password"
@@ -286,7 +301,6 @@ rpi4b-ubuntu% sudo netplan apply
 Cannot find unique matching interface for eth0: {'driver': 'bcmgenet smsc95xx lan78xx'}
 ```
 
-
 暂时不用以太网连接，先将 match 和 set-name 这三行注释掉。
 
 ```Shell
@@ -338,3 +352,57 @@ systemctl restart NetworkManager
 
 RPi4B/ubuntu desktop 下经过一番 netplan 折腾，还是没能成功设置静态IP地址。
 最终还是通过键鼠屏进入 rpi4b-ubuntu 桌面，进入设置-网络，手动配置wifi的IPv4静态IP地址。
+
+## Feb21, 2024
+
+好久没有启动 RPi 4B，今天启动后，发现IP没有起来。
+找到之前玩 RPi 3B 时捎带的 PL2303 USB2TTL 串口线，连接上使用命令行 `ls /dev/tty.usbserial*` 找到串口tty名称。
+在 macOS Sonoma 终端通过命令 `screen /dev/tty.usbserial-1130 115200` 成功连接上 RPi 4B。
+
+执行 `ip link show` 显示 wlan0 为 DOWN 状态：
+
+```
+3: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state DOWN mode DORMANT group default qlen 1000
+    link/ether d0:a0:30:d0:30:d3 brd ff:ff:ff:ff:ff:ff
+```
+
+执行 `ip link set wlan0 up`，报错提示如下：
+
+```
+/etc/netplan/50-cloud-init.yaml  Error in network definition: Updated definition 'wlan0' changes device type
+```
+
+**问题分析**：/etc/netplan/50-cloud-init.yaml 中定义了 ethernets/wlan0，与 /etc/netplan/11-rpi-wifi-wlan0.yaml 定义的 wifis/wlan0 冲突了。
+
+**解决方案**：把 /etc/netplan/50-cloud-init.yaml 中关于 ethernets/wlan0 的配置注释屏蔽掉：
+
+```
+$ cat /etc/netplan/50-cloud-init.yaml
+# This file is generated from information provided by the datasource.  Changes
+# to it will not persist across an instance reboot.  To disable cloud-init's
+# network configuration capabilities, write a file
+# /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following:
+# network: {config: disabled}
+network:
+  #    ethernets:
+  #        wlan0:
+  #            dhcp4: true
+  #            match:
+  #                macaddress: dc:a6:32:d1:33:d3
+  #            set-name: wlan0
+    version: 2
+```
+
+再执行 `sudo netplan apply`，成功应用 11-rpi-wifi-wlan0.yaml，bring up wlan0 并配置静态IP。
+
+### refs
+
+[networking - Fail to up interface wlan0 in ubuntu server 22.04 Raspberry Pi - Ask Ubuntu](https://askubuntu.com/questions/1407831/fail-to-up-interface-wlan0-in-ubuntu-server-22-04-raspberry-pi)
+
+> According to the netplan(5) man page, wifi interface(wlan0) needs to be in a `wifis:` section instead of a `ethernets:` section.
+
+[ubuntu - Netplan - Error in network definition: Updated definition changes device type - Server Fault](https://serverfault.com/questions/1088663/netplan-error-in-network-definition-updated-definition-changes-device-type)
+
+按照 Huobur@Medium 提供的方法，没有解决。问题不一样，我这是接口名称冲突，他那是有线和无限网络冲突。
+
+[How to Setup WiFi on Raspberry Pi 4 with Ubuntu 20.04 LTS 64-bit ARM Server](https://huobur.medium.com/how-to-setup-wifi-on-raspberry-pi-4-with-ubuntu-20-04-lts-64-bit-arm-server-ceb02303e49b)

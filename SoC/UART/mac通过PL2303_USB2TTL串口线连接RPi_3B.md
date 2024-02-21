@@ -111,6 +111,8 @@ pi@raspberrypi:~$ ls -ls /dev
 /dev/cu.usbserial  /dev/tty.usbserial
 ```
 
+> RPi 4B 对应的串口是 /dev/tty.usbserial-1130。
+
 ![mac-dev-cu&tty](2-PL2303-USB2TTL/mac-dev-cu&tty.png)
 
 关于 TTY 和 Terminal 的相关概念可参考 [Console-TTY-Terminal.md](./Console-TTY-Terminal.md)。
@@ -244,7 +246,10 @@ Command key:  <kbd>^</kbd><kbd>a</kbd>，前置引导键，意义同 minicom 的
 执行 `screen /dev/tty.usbserial 115200` 命令（可选 8N1）可以连接到串口板：
 
 ```Shell
+# RPi 3B/raspbian
 screen /dev/tty.usbserial 115200
+# RPi 4B/ubuntu
+screen /dev/tty.usbserial-1130 115200
 ```
 
 如果找不到设备（连接失败），则进入 screen 串口控制台窗口，底栏提示 `Cannot exec ‘/dev/tty.usbserial’:  No such file or directory`，过一会自动退出，mac 终端出现以下信息：
