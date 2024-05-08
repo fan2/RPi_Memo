@@ -179,7 +179,7 @@ load: 2.74  cmd: dd 14903 uninterruptible 0.00u 1.21s
                     (free space)                         54.5 GB    -
 ```
 
-接下来，参考 [macOS向microSD写入raspbian-stretch](../raspbian/install/macOS向microSD写入raspbian-stretch.img.md) 为 RPi 配置网络，以便 SSH 远程连接控制。
+接下来，参考 [macOS向microSD写入raspbian-stretch](../../raspbian/install/macOS向microSD写入raspbian-stretch.img.md) 为 RPi 配置网络，以便 SSH 远程连接控制。
 
 最后，执行 eject 命令可以将 SD 卡分区卷安全弹出：
 

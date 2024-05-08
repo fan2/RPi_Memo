@@ -70,11 +70,11 @@ wifis:
 
 ```
 # uncomment if hdmi display is not detected and composite is being output
-# a** by faner, 05Feb22.
+# add by faner, 05Feb22.
 hdmi_force_hotplug=1
 
 # uncomment to force a specific HDMI mode (this will force VGA)
-# a** by faner, 05Feb22.
+# add by faner, 05Feb22.
 hdmi_group=2
 hdmi_mode=82 # 1080p60Hz
 ```
